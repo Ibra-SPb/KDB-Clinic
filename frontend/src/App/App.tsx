@@ -4,12 +4,14 @@ import {
 	AppBar,
 	Button,
 	Container,
+	Grid,
 	IconButton,
+	Paper,
 	Toolbar,
 	Typography,
 } from '@mui/material';
 import MenuItem from '@mui/icons-material/Menu';
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles, ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
 import { Theme } from '../features/Type';
 
@@ -28,37 +30,54 @@ import { Theme } from '../features/Type';
 function App() {
 	// const classes = useStyles();
 	return (
-		<AppBar position='fixed'>
-			<Container fixed>
-				<Toolbar>
-					<IconButton
-						edge='start'
-						// className={classes.menuButton}
-						color='inherit'
-						aria-label='menu'>
-						<MenuItem />
-					</IconButton>
-					<Typography
-						variant='h6'
-						// className={classes.title}
-					>
-						KDN Clinic
-					</Typography>
-					<Box mr={3}>
-						<Button
+		// <ThemeProvider theme={undefined}>
+		<>
+			<AppBar position='fixed'>
+				<Container fixed>
+					<Toolbar>
+						<IconButton
+							edge='start'
+							// className={classes.menuButton}
 							color='inherit'
-							variant='outlined'>
-							Log In
+							aria-label='menu'>
+							<MenuItem />
+						</IconButton>
+						<Typography
+							variant='h6'
+							// className={classes.title}
+						>
+							KDN Clinic
+						</Typography>
+						<Box mr={3}>
+							<Button
+								color='inherit'
+								variant='outlined'>
+								Log In
+							</Button>
+						</Box>
+						<Button
+							variant='contained'
+							color='secondary'>
+							Sign Up
 						</Button>
-					</Box>
-					<Button
-						variant='contained'
-						color='secondary'>
-						Sign Up
-					</Button>
-				</Toolbar>
-			</Container>
-		</AppBar>
+					</Toolbar>
+				</Container>
+			</AppBar>
+
+			<main>
+				<Paper style={{ backgroundColor: 'blue' }}>
+					<Container fixed>
+						<Grid container>
+							<Grid
+								item
+								md={3}></Grid>
+							<div>{/* здесь должна быть карусель */}</div>
+						</Grid>
+					</Container>
+				</Paper>
+			</main>
+			{/* </ThemeProvider> */}
+		</>
 	);
 }
 
