@@ -9,6 +9,13 @@ const app = express();
 const PORT = process.env.PORT ?? 4000;
 config(app);
 
+const authRoute =require('./routes/auth.route')
+
+app.use('/auth', authRoute)
+
+
+
+
 app
   .listen(PORT)
   .on('error', (error) => {
