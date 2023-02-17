@@ -19,6 +19,7 @@ import { Theme } from '../Types/Type';
 import { number } from 'yargs';
 import '../Navigation/NavigationStyle.css';
 import BasicSelect from './BasicSelect/BasicSelect';
+import SignInButton from './Auth/signIn';
 
 const style = {
 	flexgrow: 1,
@@ -40,11 +41,7 @@ function Navigation(): JSX.Element {
 					</Typography>
 					<BasicSelect />
 					<div className='logreg_buttons'>
-						<Box mr={3}>
-							<Button variant='outlined'>
-								<div className='signInButton'>Log In</div>
-							</Button>
-						</Box>
+						<SignInButton />
 						<Button variant='contained'>
 							<div className='signUpButton'>Sign Up</div>
 						</Button>
