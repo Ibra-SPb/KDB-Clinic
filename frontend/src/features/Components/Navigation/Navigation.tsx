@@ -18,7 +18,7 @@ import {
 // import { Theme } from '../Types/Type';
 // import { number } from 'yargs';
 import './NavigationStyle.css';
-import BasicSelect from './BasicSelect/BasicSelect';
+import BasicSelect from './MenuButtons/BasicSelect';
 import SignInButton from './Auth/signIn';
 import SignUpButton from './Auth/signUp';
 import About from './MenuButtons/about';
@@ -29,15 +29,15 @@ import '../Navigation/NavigationStyle.css';
 const style = {
 	flexgrow: 1,
 	marginRight: 1,
-	background: 'black',
+	background: 'green',
 };
 
 function Navigation(): JSX.Element {
 	return (
 		<AppBar position='fixed'>
 			<Container
-				className='navigation'
-				sx={style}>
+				sx={style}
+				className='navigation'>
 				<Toolbar>
 					<Typography
 						variant='h6'
