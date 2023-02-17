@@ -31,6 +31,9 @@ module.exports = {
         },
       },
       date: {
+        type: Sequelize.DATE,
+      },
+      time: {
         type: Sequelize.TEXT,
       },
       status: {
