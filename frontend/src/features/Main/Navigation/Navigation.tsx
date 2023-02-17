@@ -4,36 +4,51 @@ import {
 	Box,
 	Button,
 	Container,
+	createTheme,
+	FormControl,
 	IconButton,
+	InputLabel,
+	makeStyles,
+	MenuItem,
+	Select,
+	SelectChangeEvent,
 	Toolbar,
 	Typography,
 } from '@mui/material';
+import { Theme } from '../Types/Type';
+import { number } from 'yargs';
+import '../Navigation/NavigationStyle.css';
+import BasicSelect from './BasicSelect/BasicSelect';
+
+const style = {
+	flexgrow: 1,
+	marginRight: 1,
+	background: 'black',
+};
 
 function Navigation(): JSX.Element {
 	return (
 		<AppBar position='fixed'>
-			<Container fixed>
+			<Container
+				className='navigation'
+				sx={style}>
 				<Toolbar>
-					<IconButton
-						edge='start'
-						// className={classes.menuButton}
-						color='inherit'
-						aria-label='menu'>
-						{/* <MenuItem /> */}
-					</IconButton>
-					<Typography variant='h6'>KDN Clinic</Typography>
-					<Box mr={3}>
-						<Button
-							color='inherit'
-							variant='outlined'>
-							Log In
+					<Typography
+						variant='h6'
+						className='kdn_logo'>
+						KDN Clinic
+					</Typography>
+					<BasicSelect />
+					<div className='logreg_buttons'>
+						<Box mr={3}>
+							<Button variant='outlined'>
+								<div className='signInButton'>Log In</div>
+							</Button>
+						</Box>
+						<Button variant='contained'>
+							<div className='signUpButton'>Sign Up</div>
 						</Button>
-					</Box>
-					<Button
-						variant='contained'
-						color='secondary'>
-						Sign Up
-					</Button>
+					</div>
 				</Toolbar>
 			</Container>
 		</AppBar>

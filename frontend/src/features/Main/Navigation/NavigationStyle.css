@@ -1,0 +1,32 @@
+.navigation {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	margin-right: 1;
+	background-color: 'white';
+	/* max-width: 1300px !important; */
+}
+
+.signInButton {
+	color: 'red';
+}
+.signUpButton {
+	color: 'inherit';
+}
+.kdn_logo {
+	display: flex;
+	justify-content: flex-start;
+	/* background-color: brown; */
+}
+
+.logreg_buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+.services {
+	background-color: white;
+	max-width: 400px;
+}
