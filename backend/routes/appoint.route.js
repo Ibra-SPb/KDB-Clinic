@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Visit, Doctor, Service, Service_Doctor } = require('../db/models');
 
-router.get('/appoint', async (req, res) => {
+router.get('/visit', async (req, res) => {
   try {
     const visits = await Visit.findAll(
       {

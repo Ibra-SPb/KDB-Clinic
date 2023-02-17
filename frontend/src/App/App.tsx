@@ -16,11 +16,6 @@ import Service from "../features/service/Service";
 import Navigation from '../features/Components/Navigation/Navigation';
 import Main from '../features/Components/Main/Main';
 import { useDispatch, useSelector } from 'react-redux';
-import * as api from './api';
-import { RootState, useAppDispatch } from '../store';
-import Appointment from '../features/Appointment/Appointment';
-import { loadVisit } from '../features/Visit/visitSlice';
-import { loadTable } from '../features/Appointment/tableSlice';
 import SignUp from '../features/Components/Navigation/Auth/signUp';
 import SignIn from '../features/Components/Navigation/Auth/signIn';
 // import Registration from '../features/Auth/Registration';
@@ -71,6 +66,9 @@ function App() {
 						<Main />
 					</main> */}
 				</Route>
+				<Route 
+				path='/appoint'
+				element={<Appointment />}/>
 			</Routes>
 		</div>
 	);
