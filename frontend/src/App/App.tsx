@@ -17,7 +17,10 @@ import { Box } from '@mui/system';
 import { Theme } from '../features/Type';
 import { useDispatch, useSelector } from 'react-redux';
 import * as api from './api';
-import { RootState } from '../store';
+import { RootState, useAppDispatch } from '../store';
+import Appointment from '../features/Appointment/Appointment';
+import { loadVisit } from '../features/Visit/visitSlice';
+import { loadTable } from '../features/Appointment/tableSlice';
 // import Registration from '../features/Auth/Registration';
 // import Authorization from '../features/Auth/Authorization';
 
@@ -35,19 +38,26 @@ import { RootState } from '../store';
 
 function App() {
 	// const classes = useStyles();
-	const dispatch = useDispatch()
+	// const dispatch = useDispatch()
+  // useEffect(() => {
+  //   api.loadVisits().then((data) => dispatch({ type: 'INIT_VISITS', payload: data }));
+  // }, []);
+	const dispatch = useAppDispatch();
   useEffect(() => {
-    api.loadVisits().then((data) => dispatch({ type: 'INIT_VISITS', payload: data }));
-  }, []);
+    dispatch(loadVisit())
+  }, [dispatch])
 
-	const {visits} = useSelector((store:RootState)=>store.visitState)
-	console.log(visits)
+	useEffect(() => {
+    dispatch(loadTable())
+  }, [dispatch])
 
 	return (
 		<div className="App">
 			{/* <Routes> */}
 		{/* // <ThemeProvider theme={undefined}> */}
-
+			<div>
+				<Appointment />
+			</div>
 			<AppBar position='fixed'>
 				<Container fixed>
 					<Toolbar>
@@ -92,6 +102,7 @@ function App() {
 					</Container>
 				</Paper>
 			</main>
+		
 			{/* </ThemeProvider> */}
 	
 		{/* </Routes> */}

@@ -21,7 +21,7 @@ const appointRoute = require('./routes/appoint.route')
 
 // app.use(cors(corsOptions));
 app.use('/auth', authRoute)
-app.use('/api/appoint', appointRoute)
+app.use('/api', appointRoute)
 
 
 
