@@ -15,8 +15,8 @@ import MenuItem from '@mui/icons-material/Menu';
 import { makeStyles, ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
 import { Theme } from '../features/Type';
-import Registration from '../features/Auth/Registration';
-import Authorization from '../features/Auth/Authorization';
+// import Registration from '../features/Auth/Registration';
+// import Authorization from '../features/Auth/Authorization';
 
 // const useStyles = makeStyles((theme: Theme) => ({
 // 	root: {
@@ -34,9 +34,9 @@ function App() {
 	// const classes = useStyles();
 	return (
 		<div className="App">
-			<Routes>
-		// <ThemeProvider theme={undefined}>
-		<>
+			{/* <Routes> */}
+		{/* // <ThemeProvider theme={undefined}> */}
+
 			<AppBar position='fixed'>
 				<Container fixed>
 					<Toolbar>
@@ -82,8 +82,8 @@ function App() {
 				</Paper>
 			</main>
 			{/* </ThemeProvider> */}
-		</>
-		</Routes>
+	
+		{/* </Routes> */}
 		</div>
 	);
 }
