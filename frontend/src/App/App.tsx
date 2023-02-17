@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react';
+import AccountMain from '../features/Account/AccountMain';
+
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import {
-	AppBar,
-	Button,
-	Container,
-	Grid,
-	IconButton,
-	Paper,
-	Toolbar,
-	Typography,
+  AppBar,
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  Paper,
+  Toolbar,
+  Typography,
 } from '@mui/material';
 // import MenuItem from '@mui/icons-material/Menu';
 import { makeStyles, ThemeProvider } from '@mui/material/styles';
@@ -47,56 +49,53 @@ function App() {
 		<div className="App">
 			{/* <Routes> */}
 		{/* // <ThemeProvider theme={undefined}> */}
+      <AppBar position="fixed">
+        <Container fixed>
+          <Toolbar>
+            <IconButton
+              edge="start"
+              // className={classes.menuButton}
+              color="inherit"
+              aria-label="menu"
+            >
+              {/* <MenuItem /> */}
+            </IconButton>
+            <Typography
+              variant="h6"
+              // className={classes.title}
+            >
+              KDB Clinic
+            </Typography>
+            <Box mr={3}>
+              <Button color="inherit" variant="outlined">
+                Log In
+              </Button>
+            </Box>
+            <Button variant="contained" color="secondary">
+              Sign Up
+            </Button>
+            <Button variant="contained" color="secondary">
+              Account
+            </Button>
+          </Toolbar>
+        </Container>
+      </AppBar>
 
-			<AppBar position='fixed'>
-				<Container fixed>
-					<Toolbar>
-						<IconButton
-							edge='start'
-							// className={classes.menuButton}
-							color='inherit'
-							aria-label='menu'>
-							{/* <MenuItem /> */}
-						</IconButton>
-						<Typography
-							variant='h6'
-							// className={classes.title}
-						>
-							KDN Clinic
-						</Typography>
-						<Box mr={3}>
-							<Button
-								color='inherit'
-								variant='outlined'>
-								Log In
-							</Button>
-						</Box>
-						<Button
-							variant='contained'
-							color='secondary'>
-							Sign Up
-						</Button>
-					</Toolbar>
-				</Container>
-			</AppBar>
+      <main>
+        <Paper style={{ backgroundColor: 'blue' }}>
+          <Container fixed>
+            <Grid container>
+              <Grid item md={3}></Grid>
+              <div>{/* здесь должна быть карусель */}</div>
+            </Grid>
+          </Container>
+        </Paper>
+      </main>
+      {/* </ThemeProvider> */}
 
-			<main>
-				<Paper style={{ backgroundColor: 'blue' }}>
-					<Container fixed>
-						<Grid container>
-							<Grid
-								item
-								md={3}></Grid>
-							<div>{/* здесь должна быть карусель */}</div>
-						</Grid>
-					</Container>
-				</Paper>
-			</main>
-			{/* </ThemeProvider> */}
-	
-		{/* </Routes> */}
-		</div>
-	);
+      {/* </Routes> */}
+    </div>
+  );
 }
 
 export default App;
