@@ -1,6 +1,6 @@
 
+import { Visit } from '../features/Appointment/Types/types';
 import { State, Res, User } from '../features/auth/Types/type';
-
 
 export const registr = async (newUser: User): Promise<User> => {
   
@@ -46,6 +46,13 @@ export const logout = async (): Promise<User> => {
 };
 
 export const getUsers = async (): Promise<User[]> => {
-  const res = await fetch('/api/main');
-  return await res.json();
+const res = await fetch('/api/main');
+return await res.json();
+};
+
+//забрать все приемы с бэка
+export const loadVisits = async (): Promise<Visit[]> => {
+  const res = await fetch('/api/appoint', {
+  });
+  return res.json();
 };

@@ -1,22 +1,14 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import AccountMain from '../features/Account/AccountMain';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import {
-	AppBar,
-	Button,
-	Container,
-	Grid,
-	IconButton,
-	Paper,
-	Toolbar,
-	Typography,
-} from '@mui/material';
-import MenuItem from '@mui/icons-material/Menu';
+import { Container, Grid, Paper } from '@mui/material';
+// import MenuItem from '@mui/icons-material/Menu';
 import { makeStyles, ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
-import { Theme } from '../features/Type';
+// import { Theme } from '../features/Type';
 import * as api from './api';
+import { useDispatch } from 'react-redux';
 
 import Navbar from '../features/Navbar/Navbar';
 import MainPage from '../features/MainPage/MainPage';
@@ -57,6 +49,53 @@ useEffect(()=>{
 		</Routes>
 	  </div>
 
+// import { Theme } from '../features/Components/Types/Type';
+// import Navigation from '../features/Components/Navigation/Navigation';
+// import Main from '../features/Components/Main/Main';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { RootState } from '../store';
+// import SignUp from '../features/Components/Navigation/Auth/signUp';
+// import SignIn from '../features/Components/Navigation/Auth/signIn';
+
+// // import Registration from '../features/Auth/Registration';
+// // import Authorization from '../features/Auth/Authorization';
+
+// function App() {
+// 	// const classes = useStyles();
+// 	const dispatch = useDispatch();
+// 	useEffect(() => {
+// 		api.loadVisits().then((data) =>
+// 			dispatch({ type: 'INIT_VISITS', payload: data })
+// 		);
+// 	}, []);
+
+// 	const { visits } = useSelector((store: RootState) => store.visitState);
+// 	console.log(visits);
+
+// 	return (
+// 		<div className='App'>
+// 			<Routes>
+// 				<Route
+// 					path='/'
+// 					element={<Navigation />}>
+// 					{/* <Route
+// 						index
+// 						element={<Main />}
+// 					/> */}
+// 					<Route
+// 						path='/login'
+// 						element={<SignIn />}
+// 					/>
+// 					<Route
+// 						path='/registration'
+// 						element={<SignUp />}
+// 					/>
+// 					{/* <main>
+// 						<Main />
+// 					</main> */}
+// 				</Route>
+// 			</Routes>
+// 		</div>
 	);
 }
 

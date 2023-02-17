@@ -4,17 +4,25 @@ const path = require('path');
 const express = require('express');
 const db = require('./db/models');
 const config = require('./config/config');
+// const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT ?? 4000;
 config(app);
 
-const authRoute =require('./routes/auth.route')
+const authRoute = require('./routes/auth.route')
+const appointRoute = require('./routes/appoint.route')
 
+
+// const corsOptions = {
+//   origin: ['http://localhost:3000'],
+//   optionsSuccessStatus: 200,
+//   credentials: true,
+// };
+
+// app.use(cors(corsOptions));
 app.use('/api/auth', authRoute)
-
-
-
+app.use('/api/appoint', appointRoute)
 
 app
   .listen(PORT)
