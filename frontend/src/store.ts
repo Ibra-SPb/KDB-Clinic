@@ -1,7 +1,8 @@
 import { createStore, combineReducers } from 'redux';
 import { userReducer } from './features/auth/userReduser';
+import { visitReducer } from './features/Appointment/visitReducer'
 
-const store = createStore(combineReducers({ userState: userReducer }));
+const store = createStore(combineReducers({ userState: userReducer, visitState: visitReducer}));
 
 export default store;
 
