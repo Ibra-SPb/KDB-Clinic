@@ -11,7 +11,7 @@ import {
 	Toolbar,
 	Typography,
 } from '@mui/material';
-import MenuItem from '@mui/icons-material/Menu';
+// import MenuItem from '@mui/icons-material/Menu';
 import { makeStyles, ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
 import { Theme } from '../features/Type';
@@ -45,7 +45,7 @@ function App() {
 							// className={classes.menuButton}
 							color='inherit'
 							aria-label='menu'>
-							<MenuItem />
+							{/* <MenuItem /> */}
 						</IconButton>
 						<Typography
 							variant='h6'
