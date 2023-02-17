@@ -1,18 +1,27 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
+
 
 const Appointment = (): JSX.Element => {
   const [page, setPage] = useState('service');
   const [service, setService] = useState('');
+  const [doctor, setDoctor] = useState('');
+
+  const {visits} = useSelector((store:RootState)=>store.visitState)
+  const {service_doctors} = useSelector((store:RootState)=>store.tableState)
+  console.log(visits)
 
   const chooseService = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-    const res = await fetch('http://localhost:4000/appoint/service', {
+    const res = await fetch('http://localhost:4000/api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         service,
+        doctor,
       }),
     })
     const data = await res.json();
@@ -21,20 +30,32 @@ const Appointment = (): JSX.Element => {
 
   return (
     <>
-    {page === 'service' && (
     <div>
       <form onSubmit={chooseService}>
-        <select onChange={(e) => setService(e.target.value)}>
-          <option>Неврология</option>
-          <option>Акупунктура</option>
-          <option>Лечебный массаж</option>
-          <option>Физиотерапия</option>
-          <option>Косметология</option>
-        </select>
-        <button type='submit'>выбрать</button>
+      {page === 'service' && (
+        <div>
+          <select onChange={(e) => setService(e.target.value)}>
+            {service_doctors.map((sd) => 
+            <option>{sd.service.title}</option>
+            )}
+          </select>
+          <button onClick={() => setPage('doctor')}>выбрать</button>
+        </div>
+      )}
+      {page === 'doctor' && (
+        <div>
+          <select onChange={(e) => setDoctor(e.target.value)}>
+            {service_doctors.filter((sd)=> sd.service.title === service).map((sd) => 
+            <option>{sd.doctor.name}</option>)}
+          </select>
+        </div>
+      )}
+
+        
+        <button type='submit'>записаться</button>
       </form>
     </div>
-    )}
+ 
     </>
   )
 }

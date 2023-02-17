@@ -1,16 +1,38 @@
 const router = require('express').Router();
-const { Visit, Doctor, Service } = require('../db/models');
+const { Visit, Doctor, Service, Service_Doctor } = require('../db/models');
 
-router.get('/', async (req, res) => {
+router.get('/appoint', async (req, res) => {
   try {
     const visits = await Visit.findAll(
-
+      {
+        include: [
+          { model: Doctor, as: 'doctor' },
+          { model: Service, as: 'service' }
+        ]
+      }
     );
-    console.log(visits)
     res.status(200).json(visits);
   } catch ({ message }) {
     res.status(500).json(message);
   }
 });
+
+router.get('/table', async (req, res) => {
+  try {
+    const visits = await Service_Doctor.findAll(
+      {
+        include: [
+          { model: Doctor, as: 'doctor' },
+          { model: Service, as: 'service' }
+        ]
+      }
+    );
+    res.status(200).json(visits);
+  } catch ({ message }) {
+    res.status(500).json(message);
+  }
+});
+
+router.post('/', async (req, res) => { })
 
 module.exports = router;

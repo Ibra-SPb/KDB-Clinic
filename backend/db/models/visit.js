@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ User, Doctor, Service }) {
       Visit.belongsTo(User, { foreignKey: "userId" });
-      Visit.belongsTo(Doctor, { foreignKey: "doctorId", as: "doctor" });
-      Visit.belongsTo(Service, { foreignKey: "serviceId", as: "service" });
+      Visit.belongsTo(Doctor, { foreignKey: "doctorId", as: 'doctor' });
+      Visit.belongsTo(Service, { foreignKey: "serviceId", as: 'service' });
     }
   }
   Visit.init(

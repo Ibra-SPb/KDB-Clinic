@@ -1,18 +1,22 @@
-export type Service_Doctor = {
+export type Visit = {
+  userId: number,
   doctorId: number,
   serviceId: number,
-  service: {
-    title: string,
-    price: string,
-  },
+  date: Date,
+  time: string,
+  status: boolean,
   doctor: {
     name: string,
     specific: string,
     info: string,
   },
+  service: {
+    title: string,
+    price: string,
+  }, 
 }
 
 export type State = {
-  service_doctors: Service_Doctor[],
+  visits: Visit[],
   error: undefined | string,
 }
