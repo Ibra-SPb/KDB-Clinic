@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
 import SignUp from '../features/Components/Navigation/Auth/signUp';
 import SignIn from '../features/Components/Navigation/Auth/signIn';
+import Carousel from '../features/Components/Main/Carousel/carousel';
 
 // import Registration from '../features/Auth/Registration';
 // import Authorization from '../features/Auth/Authorization';
@@ -48,11 +49,11 @@ function App() {
 						path='/registration'
 						element={<SignUp />}
 					/>
-					{/* <main>
-						<Main />
-					</main> */}
 				</Route>
 			</Routes>
+			<main>
+				<Main />
+			</main>
 		</div>
 	);
 }
