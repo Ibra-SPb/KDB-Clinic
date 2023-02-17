@@ -30,7 +30,7 @@ export const userReducer = (state:State = init, action:Action):State => {
     case 'LOGOUT':
             return {
               ...state,
-              user: '',
+              user: {},
             };
 
     default: return state;

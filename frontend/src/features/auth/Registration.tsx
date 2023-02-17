@@ -1,24 +1,35 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import * as api from '../../App/api';
 import { RootState } from '../../store';
 
 function Registration(): JSX.Element {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] =useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
+  const nav = useNavigate();
   const dispatch = useDispatch();
 
   const { user, message } = useSelector((store:RootState) => store.userState);
 
   const registr = (e:React.FormEvent<HTMLFormElement>):void => {
+    
     e.preventDefault();
-    api.registr({ name, password, email, password2 }).then((data) => dispatch({
+    api.registr({ name, password, email, phone, password2 }).then((data) => 
+    dispatch({
   type: 'REG_USER',
   payload: data
 }));
-  };
+  if (user !== null) {
+    nav('/');
+  } else {
+    document.querySelector('#error')!.innerHTML = message;
+  }
+};
+
   return (
     <div className="form__container">
       <form
@@ -41,6 +52,14 @@ function Registration(): JSX.Element {
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+        />
+          <label htmlFor="phone">Phone</label>
+        <input
+          id="phone"
+          name="phone"
+          type="text"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
         />
         <label htmlFor="password">Password</label>
         <input

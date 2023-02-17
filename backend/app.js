@@ -11,7 +11,7 @@ config(app);
 
 const authRoute =require('./routes/auth.route')
 
-app.use('/auth', authRoute)
+app.use('/api/auth', authRoute)
 
 
 

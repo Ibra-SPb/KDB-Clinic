@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require ('bcrypt');
-// const { User } = require('../db/models');
+const { User } = require('../db/models');
 
 router.post('/sign-in', async (req, res) => {
     try {
@@ -30,25 +30,48 @@ router.post('/sign-in', async (req, res) => {
 
 
   router.post('/sign-up', async (req, res) => {
+    const {
+      email, phone, name, password, password2,
+    } = req.body;
     try {
-      const {
-        email, name, password, password2,
-      } = req.body;
+      if (userName) {
+        res.status(400).json({
+          message: 'Пользователь с таким именем уже существует'
+        });
+        return
+      }
+      if (userPhone) {
+        res.status(400).json({
+          message: 'Пользователь с таким телефоном уже существует'
+        });
+        return
+      }
+      if (password.length < 6) {
+        res.status(400).json({
+          message: 'Пароль должен содержать более 6 символов',
+        });
+        return;
+      }
+
       if (password !== password2) {
         return res.json({ message: 'Пароли не совпадают', user: {} });
       }
-      if (email && name && password && password2) {
+      
+      if (email && phone && name && password ) {
         let user = await User.findOne({ where: { email } });
+
         if (!user) {
           const hash = await bcrypt.hash(password, 10);
           const newUser = await User.create({
             name,
+            phone,
             email,
             password: hash,
           });
           user = {
             id: newUser.id,
             name: newUser.name,
+            phone: newUser.phone,
             email: newUser.email,
           };
           req.session.userid = user.id;

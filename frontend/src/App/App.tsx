@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import {
@@ -15,76 +16,47 @@ import MenuItem from '@mui/icons-material/Menu';
 import { makeStyles, ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
 import { Theme } from '../features/Type';
-// import Registration from '../features/Auth/Registration';
-// import Authorization from '../features/Auth/Authorization';
+import * as api from './api';
 
-// const useStyles = makeStyles((theme: Theme) => ({
-// 	root: {
-// 		flexGrow: 1,
-// 	},
-// 	menuButton: {
-// 		marginRight: theme.spacing(1),
-// 	},
-// 	title: {
-// 		flexGrow: 1,
-// 	},
-// }));
+import Navbar from '../features/Navbar/Navbar';
+import MainPage from '../features/MainPage/MainPage';
+import NotFound from '../features/NotFound/NotFound';
+import Registration from '../features/auth/Registration';
+import Authorization from '../features/auth/Authorization';
+import Logout from '../features/auth/Logout';
 
-function App() {
-	// const classes = useStyles();
+
+function App(): JSX.Element {
+	const dispatch = useDispatch();
+
+useEffect(()=>{
+	api
+	.getUsers()
+	.then((data)=> dispatch({type: 'INIT_USERS', payload: data}))
+},[dispatch]);
+
+useEffect(()=>{
+	api
+	.checkUser()
+	.then((data)=> dispatch({type:'LOG_USER', payload:data}))
+},[dispatch])
+
+
+
+
 	return (
 		<div className="App">
-			{/* <Routes> */}
-		{/* // <ThemeProvider theme={undefined}> */}
+		<Routes>
+		  <Route path="/" element={<Navbar />}>
+			<Route index element={<MainPage />} />
+			<Route path="/registration" element={<Registration />} />
+			<Route path="/login" element={<Authorization />} />
+			<Route path="/logout" element={<Logout />} />
+			<Route path="*" element={<NotFound />} />
+		  </Route>
+		</Routes>
+	  </div>
 
-			<AppBar position='fixed'>
-				<Container fixed>
-					<Toolbar>
-						<IconButton
-							edge='start'
-							// className={classes.menuButton}
-							color='inherit'
-							aria-label='menu'>
-							<MenuItem />
-						</IconButton>
-						<Typography
-							variant='h6'
-							// className={classes.title}
-						>
-							KDN Clinic
-						</Typography>
-						<Box mr={3}>
-							<Button
-								color='inherit'
-								variant='outlined'>
-								Log In
-							</Button>
-						</Box>
-						<Button
-							variant='contained'
-							color='secondary'>
-							Sign Up
-						</Button>
-					</Toolbar>
-				</Container>
-			</AppBar>
-
-			<main>
-				<Paper style={{ backgroundColor: 'blue' }}>
-					<Container fixed>
-						<Grid container>
-							<Grid
-								item
-								md={3}></Grid>
-							<div>{/* здесь должна быть карусель */}</div>
-						</Grid>
-					</Container>
-				</Paper>
-			</main>
-			{/* </ThemeProvider> */}
-	
-		{/* </Routes> */}
-		</div>
 	);
 }
 

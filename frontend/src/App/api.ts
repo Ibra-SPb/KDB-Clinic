@@ -3,7 +3,8 @@ import { State, Res, User } from '../features/auth/Types/type';
 
 
 export const registr = async (newUser: User): Promise<User> => {
-  const res = await fetch('http://localhost:4000/api/auth/sign-up', {
+  
+  const res = await fetch('/api/auth/sign-up', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -11,39 +12,40 @@ export const registr = async (newUser: User): Promise<User> => {
     body: JSON.stringify({
      name:newUser.name,
      email:newUser.email,
+     phone:newUser.phone,
      password:newUser.password,
      password2:newUser.password2
     }),
   });
-  return res.json();
+  return await res.json();
 };
 
 export const login = async (item: User): Promise<User> => {
-  const res = await fetch('http://localhost:4000/api/auth/sign-in', {
+  const res = await fetch('/api/auth/sign-in', {
     method: 'post',
     headers: { 'Content-type': 'application/json' },
     credentials: 'include',
     body: JSON.stringify(item),
   });
-  return res.json();
+  return await res.json();
 };
 
 export const checkUser = async (): Promise<Res> => {
-  const res = await fetch('http://localhost:4000/api/auth/sign-in', {
+  const res = await fetch('/api/auth/sign-in', {
     credentials: 'include',
   });
   const data = await res.json();
-  return data;
+  return await data;
 };
 
 export const logout = async (): Promise<User> => {
-  const res = await fetch('http://localhost:4000/api/auth/logout', {
+  const res = await fetch('/api/auth/logout', {
     credentials: 'include',
   });
-  return res.json();
+  return await res.json();
 };
 
 export const getUsers = async (): Promise<User[]> => {
-  const res = await fetch('http://localhost:4000/api/main');
-  return res.json();
+  const res = await fetch('/api/main');
+  return await res.json();
 };
