@@ -15,14 +15,16 @@ import {
 	Toolbar,
 	Typography,
 } from '@mui/material';
-import { Theme } from '../Types/Type';
-import { number } from 'yargs';
+// import { Theme } from '../Types/Type';
+// import { number } from 'yargs';
 import './NavigationStyle.css';
 import BasicSelect from './BasicSelect/BasicSelect';
 import SignInButton from './Auth/signIn';
 import SignUpButton from './Auth/signUp';
 import About from './MenuButtons/about';
 import Doctors from './MenuButtons/doctors';
+import LogoutButton from './Auth/logout';
+import '../Navigation/NavigationStyle.css';
 
 const style = {
 	flexgrow: 1,

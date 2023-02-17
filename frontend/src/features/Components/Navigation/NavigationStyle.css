@@ -17,7 +17,8 @@
 .kdn_logo {
 	display: flex;
 	justify-content: flex-start;
-	/* background-color: brown; */
+	margin-right: 50px;
+	background-color: rgb(24, 118, 209);
 }
 
 .logreg_buttons {
@@ -27,6 +28,8 @@
 }
 
 .services {
-	background-color: white;
+	background-color: rgb(24, 118, 209);
+	color: red;
+	font-weight: 400;
 	max-width: 400px;
 }
