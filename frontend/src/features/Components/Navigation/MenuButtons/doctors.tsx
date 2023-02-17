@@ -9,13 +9,24 @@ const style = {
 	background: 'white',
 	borderRadius: 1,
 };
+
+const fontStyle = {
+	fontSize: 10,
+	background: 'white',
+	color: 'orange',
+	borderColor: 'orange',
+};
 export default function Doctors() {
 	return (
 		<Stack
 			spacing={2}
 			direction='row'
 			sx={style}>
-			<Button variant='text'>Врачи</Button>
+			<Button
+				variant='text'
+				sx={fontStyle}>
+				Врачи
+			</Button>
 		</Stack>
 	);
 }

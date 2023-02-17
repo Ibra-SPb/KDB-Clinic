@@ -1,22 +1,5 @@
 import React from 'react';
-import {
-	AppBar,
-	Box,
-	Button,
-	Container,
-	createTheme,
-	FormControl,
-	IconButton,
-	InputLabel,
-	makeStyles,
-	MenuItem,
-	Select,
-	SelectChangeEvent,
-	Toolbar,
-	Typography,
-} from '@mui/material';
-// import { Theme } from '../Types/Type';
-// import { number } from 'yargs';
+import { AppBar, Container, Toolbar, Typography } from '@mui/material';
 import './NavigationStyle.css';
 import BasicSelect from './MenuButtons/BasicSelect';
 import SignInButton from './Auth/signIn';
@@ -47,10 +30,8 @@ function Navigation(): JSX.Element {
 					<BasicSelect />
 					<Doctors />
 					<About />
-					{/* <div className='logreg_buttons'> */}
 					<SignInButton />
 					<SignUpButton />
-					{/* </div> */}
 				</Toolbar>
 			</Container>
 		</AppBar>

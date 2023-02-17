@@ -9,13 +9,24 @@ const style = {
 	background: 'white',
 	borderRadius: 1,
 };
+
+const fontStyle = {
+	fontSize: 10,
+	background: 'white',
+	color: 'orange',
+	borderColor: 'orange',
+};
 export default function SignUpButton() {
 	return (
 		<Stack
 			spacing={2}
 			direction='row'
 			sx={style}>
-			<Button variant='outlined'>Sign Up</Button>
+			<Button
+				variant='outlined'
+				sx={fontStyle}>
+				Sign Up
+			</Button>
 		</Stack>
 	);
 }
