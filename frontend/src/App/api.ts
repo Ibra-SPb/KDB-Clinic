@@ -55,12 +55,12 @@ export const loadService = async (): Promise<Service[]> => {
 
 //забрать все приемы с бэка
 export const loadVisits = async (): Promise<Visit[]> => {
-  const res = await fetch('/api/appoint');
+  const res = await fetch('/api/appoint/visit');
   return res.json();
 };
 
 //забрать связующую таблицу с бэка
 export const loadTables = async (): Promise<Visit[]> => {
-  const res = await fetch('/api/table');
+  const res = await fetch('/api/appoint/table');
   return res.json();
 };
