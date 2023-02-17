@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AccountMain from '../features/Account/AccountMain';
+
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import {
@@ -16,6 +17,9 @@ import {
 import { makeStyles, ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
 import { Theme } from '../features/Type';
+import { useDispatch, useSelector } from 'react-redux';
+import * as api from './api';
+import { RootState } from '../store';
 // import Registration from '../features/Auth/Registration';
 // import Authorization from '../features/Auth/Authorization';
 
@@ -32,12 +36,19 @@ import { Theme } from '../features/Type';
 // }));
 
 function App() {
-  // const classes = useStyles();
-  return (
-    <div className="App">
-      {/* <Routes> */}
-      {/* // <ThemeProvider theme={undefined}> */}
+	// const classes = useStyles();
+	const dispatch = useDispatch()
+  useEffect(() => {
+    api.loadVisits().then((data) => dispatch({ type: 'INIT_VISITS', payload: data }));
+  }, []);
 
+	const {visits} = useSelector((store:RootState)=>store.visitState)
+	console.log(visits)
+
+	return (
+		<div className="App">
+			{/* <Routes> */}
+		{/* // <ThemeProvider theme={undefined}> */}
       <AppBar position="fixed">
         <Container fixed>
           <Toolbar>
