@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import AccountMain from '../features/Account/AccountMain';
+
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { Container, Grid, Paper } from '@mui/material';
@@ -13,16 +15,21 @@ import Main from '../features/Components/Main/Main';
 
 function App() {
 	// const classes = useStyles();
+	const dispatch = useDispatch()
+  useEffect(() => {
+    api.loadVisits().then((data) => dispatch({ type: 'INIT_VISITS', payload: data }));
+  }, []);
+
+	const {visits} = useSelector((store:RootState)=>store.visitState)
+	console.log(visits)
+
 	return (
 		<div className='App'>
 			{/* <Routes> */}
-			{/* // <ThemeProvider theme={undefined}> */}
 			<Navigation />
 			<main>
 				<Main />
 			</main>
-			{/* </ThemeProvider> */}
-
 			{/* </Routes> */}
 		</div>
 	);
