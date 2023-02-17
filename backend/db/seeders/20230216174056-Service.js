@@ -1,4 +1,3 @@
-//servis
 module.exports = {
   async up(queryInterface, Sequelize) {
     const types = [
