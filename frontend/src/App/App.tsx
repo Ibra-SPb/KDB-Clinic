@@ -8,6 +8,7 @@ import { Container, Grid, Paper } from '@mui/material';
 import { makeStyles, ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
 import { Theme } from '../features/Components/Types/Type';
+import Service from "../features/service/Service";
 import Navigation from '../features/Components/Navigation/Navigation';
 import Main from '../features/Components/Main/Main';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,8 +20,13 @@ import SignIn from '../features/Components/Navigation/Auth/signIn';
 // import Authorization from '../features/Auth/Authorization';
 
 function App() {
-	// const classes = useStyles();
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    api
+      .loadService()
+      .then((data) => dispatch({ type: "INIT_SERVICE", payload: data }));
+  }, []);
+  
 	useEffect(() => {
 		api.loadVisits().then((data) =>
 			dispatch({ type: 'INIT_VISITS', payload: data })
@@ -28,7 +34,6 @@ function App() {
 	}, []);
 
 	const { visits } = useSelector((store: RootState) => store.visitState);
-	console.log(visits);
 
 	return (
 		<div className='App'>
