@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import AccountMain from '../features/Account/AccountMain';
-
+import * as api from './api';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { Container, Grid, Paper } from '@mui/material';
@@ -10,27 +10,49 @@ import { Box } from '@mui/system';
 import { Theme } from '../features/Components/Types/Type';
 import Navigation from '../features/Components/Navigation/Navigation';
 import Main from '../features/Components/Main/Main';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../store';
+import SignUp from '../features/Components/Navigation/Auth/signUp';
+import SignIn from '../features/Components/Navigation/Auth/signIn';
+
 // import Registration from '../features/Auth/Registration';
 // import Authorization from '../features/Auth/Authorization';
 
 function App() {
 	// const classes = useStyles();
-	const dispatch = useDispatch()
-  useEffect(() => {
-    api.loadVisits().then((data) => dispatch({ type: 'INIT_VISITS', payload: data }));
-  }, []);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		api.loadVisits().then((data) =>
+			dispatch({ type: 'INIT_VISITS', payload: data })
+		);
+	}, []);
 
-	const {visits} = useSelector((store:RootState)=>store.visitState)
-	console.log(visits)
+	const { visits } = useSelector((store: RootState) => store.visitState);
+	console.log(visits);
 
 	return (
 		<div className='App'>
-			{/* <Routes> */}
-			<Navigation />
-			<main>
-				<Main />
-			</main>
-			{/* </Routes> */}
+			<Routes>
+				<Route
+					path='/'
+					element={<Navigation />}>
+					{/* <Route
+						index
+						element={<Main />}
+					/> */}
+					<Route
+						path='/login'
+						element={<SignIn />}
+					/>
+					<Route
+						path='/registration'
+						element={<SignUp />}
+					/>
+					{/* <main>
+						<Main />
+					</main> */}
+				</Route>
+			</Routes>
 		</div>
 	);
 }

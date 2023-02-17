@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import { Navigate, NavLink } from 'react-router-dom';
 
 const style = {
 	fontColor: 'white',
@@ -18,15 +19,19 @@ const fontStyle = {
 };
 export default function SignUpButton() {
 	return (
-		<Stack
-			spacing={2}
-			direction='row'
-			sx={style}>
-			<Button
-				variant='outlined'
-				sx={fontStyle}>
-				Sign Up
-			</Button>
-		</Stack>
+		<>
+			<NavLink to='/registration'>
+				<Stack
+					spacing={2}
+					direction='row'
+					sx={style}>
+					<Button
+						variant='outlined'
+						sx={fontStyle}>
+						Sign Up
+					</Button>
+				</Stack>
+			</NavLink>
+		</>
 	);
 }

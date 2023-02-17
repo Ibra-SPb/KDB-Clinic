@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import { NavLink } from 'react-router-dom';
 
 const style = {
 	// flexgrow: 1,
@@ -14,14 +15,18 @@ const fontStyle = {
 };
 export default function SignInButton() {
 	return (
-		<Stack
-			direction='row'
-			sx={style}>
-			<Button
-				variant='contained'
-				sx={fontStyle}>
-				<div>Sign In</div>
-			</Button>
-		</Stack>
+		<>
+			<NavLink to='login'>
+				<Stack
+					direction='row'
+					sx={style}>
+					<Button
+						variant='contained'
+						sx={fontStyle}>
+						<div>Sign In</div>
+					</Button>
+				</Stack>
+			</NavLink>
+		</>
 	);
 }
