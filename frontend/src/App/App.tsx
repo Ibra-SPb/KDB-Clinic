@@ -5,9 +5,9 @@ import { Container, Grid, Paper } from '@mui/material';
 // import MenuItem from '@mui/icons-material/Menu';
 import { makeStyles, ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
-import { Theme } from '../features/Main/Types/Type';
-import Navigation from '../features/Main/Navigation/Navigation';
-import Main from '../features/Main/Main/Main';
+import { Theme } from '../features/Components/Types/Type';
+import Navigation from '../features/Components/Navigation/Navigation';
+import Main from '../features/Components/Main/Main';
 // import Registration from '../features/Auth/Registration';
 // import Authorization from '../features/Auth/Authorization';
 

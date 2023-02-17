@@ -2,12 +2,12 @@ import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
-export default function SignInButton() {
+export default function Doctors() {
 	return (
 		<Stack
 			spacing={2}
 			direction='row'>
-			<Button variant='outlined'>Sign Up</Button>
+			<Button variant='text'>Врачи</Button>
 		</Stack>
 	);
 }

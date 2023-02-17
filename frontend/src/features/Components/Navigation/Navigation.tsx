@@ -17,9 +17,12 @@ import {
 } from '@mui/material';
 import { Theme } from '../Types/Type';
 import { number } from 'yargs';
-import '../Navigation/NavigationStyle.css';
+import './NavigationStyle.css';
 import BasicSelect from './BasicSelect/BasicSelect';
 import SignInButton from './Auth/signIn';
+import SignUpButton from './Auth/signUp';
+import About from './MenuButtons/about';
+import Doctors from './MenuButtons/doctors';
 
 const style = {
 	flexgrow: 1,
@@ -40,12 +43,12 @@ function Navigation(): JSX.Element {
 						KDN Clinic
 					</Typography>
 					<BasicSelect />
-					<div className='logreg_buttons'>
-						<SignInButton />
-						<Button variant='contained'>
-							<div className='signUpButton'>Sign Up</div>
-						</Button>
-					</div>
+					<Doctors />
+					<About />
+					{/* <div className='logreg_buttons'> */}
+					<SignInButton />
+					<SignUpButton />
+					{/* </div> */}
 				</Toolbar>
 			</Container>
 		</AppBar>
