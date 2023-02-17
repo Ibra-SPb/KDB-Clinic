@@ -9,9 +9,11 @@ const app = express();
 const PORT = process.env.PORT ?? 4000;
 config(app);
 
-const authRoute = require("./routes/auth.route");
 const serviceRoute = require("./routes/service.route");
+const authRoute = require('./routes/auth.route')
+const appointRoute = require('./routes/appoint.route')
 
+app.use('/api/appoint', appointRoute)
 app.use("/auth", authRoute);
 app.use("/api/service", serviceRoute);
 

@@ -1,4 +1,5 @@
-import { State, Res, User } from "../features/auth/Types/type";
+import { Visit } from '../features/Appointment/Types/types';
+import { State, Res, User } from '../features/auth/Types/type';
 import { Service } from "../features/service/Type/type";
 
 export const registr = async (newUser: User): Promise<User> => {
@@ -50,4 +51,12 @@ export const getUsers = async (): Promise<User[]> => {
 export const loadService = async (): Promise<Service[]> => {
   const res = await fetch("/api/service");
   return await res.json();
+};
+
+//забрать все приемы с бэка
+export const loadVisits = async (): Promise<Visit[]> => {
+  const res = await fetch('/api/appoint', {
+    credentials: 'include',
+  });
+  return res.json();
 };
