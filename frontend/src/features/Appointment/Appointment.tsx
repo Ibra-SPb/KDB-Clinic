@@ -7,14 +7,14 @@ const Appointment = (): JSX.Element => {
   const [page, setPage] = useState('service');
   const [service, setService] = useState('');
   const [doctor, setDoctor] = useState('');
+  const [date, setDate] = useState([new Date()]);
+  const [time, setTime] = useState([])
 
-  const {visits} = useSelector((store:RootState)=>store.visitState)
+  const {services} = useSelector((store:RootState)=>store.serviceState)
   const {service_doctors} = useSelector((store:RootState)=>store.tableState)
-  console.log(service_doctors)
 
-  const chooseService = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-    e.preventDefault();
-    const res = await fetch('http://localhost:4000/api', {
+  const chooseService = async (): Promise<void> => {
+    const res = await fetch('/api/appoint', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,7 +25,9 @@ const Appointment = (): JSX.Element => {
       }),
     })
     const data = await res.json();
-    console.log(data)
+    setPage('date')
+    setDate(data.arrDate)
+    setTime(data.time)
   }
 
   return (
@@ -35,8 +37,8 @@ const Appointment = (): JSX.Element => {
       {page === 'service' && (
         <div>
           <select onChange={(e) => setService(e.target.value)}>
-            {service_doctors.map((sd) => 
-            <option>{sd.service.title}</option>
+            {services.map((service) => 
+            <option>{service.title}</option>
             )}
           </select>
           <button onClick={() => setPage('doctor')}>выбрать</button>
@@ -48,7 +50,13 @@ const Appointment = (): JSX.Element => {
             {service_doctors.filter((sd)=> sd.service.title === service).map((sd) => 
             <option>{sd.doctor.name}</option>)}
           </select>
+          <div>{doctor}</div>
+          <button type='button' onClick={chooseService}>выбрать</button>
         </div>
+      )}
+      {page === 'date' && (
+        <div>выбрать дату</div>
+        {date.map()}
       )}
 
         

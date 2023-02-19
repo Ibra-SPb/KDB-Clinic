@@ -1,26 +1,26 @@
 // features/counter/counterSlice.ts
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { State } from './types/Types';
+import { State } from './Type/type';
 import * as api from '../../App/api';
 // начальный state
-const initialState: State = { service_doctors: [], error: undefined };
+const initialState: State = { services: [], error: undefined };
 
-export const loadTable = createAsyncThunk(
-  'alltables',
+export const loadServices = createAsyncThunk(
+  'allservices',
   () => 
-  api.loadTables()
+  api.loadService()
 )
 
 // обявляем slice с именем “counter”
-const tableSlice = createSlice({
+const servisSlice = createSlice({
  name: 'table',
  initialState,
  reducers: {},
  extraReducers: (builder) => {
-  builder.addCase(loadTable.fulfilled, (state, action) => {
-      state.service_doctors = action.payload;
+  builder.addCase(loadServices.fulfilled, (state, action) => {
+      state.services = action.payload;
   })
-  .addCase(loadTable.rejected, (state, action) => {
+  .addCase(loadServices.rejected, (state, action) => {
     // показываем как меняется state если загрузка прошла успешно
     state.error = action.error.message;
   });
@@ -30,4 +30,4 @@ const tableSlice = createSlice({
 // export const { plus, minus } = createSlice.actions;
 // экспортом по умолчанию будет reducer
 
-export default tableSlice.reducer;
+export default servisSlice.reducer;

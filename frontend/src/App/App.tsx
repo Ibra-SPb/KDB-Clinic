@@ -18,6 +18,7 @@ import Main from '../features/Components/Main/Main';
 import { useDispatch, useSelector } from 'react-redux';
 import SignUp from '../features/Components/Navigation/Auth/signUp';
 import SignIn from '../features/Components/Navigation/Auth/signIn';
+import { loadServices } from '../features/service/servisSlice';
 // import Registration from '../features/Auth/Registration';
 // import Authorization from '../features/Auth/Authorization';
 
@@ -29,6 +30,10 @@ function App() {
 
 	useEffect(() => {
     dispatch(loadTable())
+  }, [dispatch])
+
+	useEffect(() => {
+    dispatch(loadServices())
   }, [dispatch])
   
   //const dispatch = useDispatch();
