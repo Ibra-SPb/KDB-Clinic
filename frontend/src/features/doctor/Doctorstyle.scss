@@ -1,0 +1,179 @@
+.photo {
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px 10px 0 0;
+}
+.doctorDIv {
+  width: 24%;
+  margin-bottom: 1em;
+  text-align: center;
+  background-color: aqua;
+  position: relative;
+  border-radius: 10px;
+}
+.doctorImg {
+  padding: 50%;
+  position: relative;
+  overflow: hidden;
+}
+.allDoctor__container {
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.container {
+  width: 1300px;
+  margin: 2em auto;
+}
+.doctorInfo {
+  padding: 0.5em;
+  box-sizing: border-box;
+}
+.random {
+  margin: 1em 0;
+  font-weight: 500;
+  font-size: 1.1em;
+  line-height: 25px;
+  color: #1d2f3c;
+  transition: color 0.3s;
+  box-sizing: border-box;
+}
+.random2 {
+  flex: 1;
+  font-size: 0.9em;
+  line-height: 19px;
+  letter-spacing: 0.02em;
+  color: #7d8694;
+  height: 40px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.random3 {
+  font-weight: 400;
+  font-size: 0.8em;
+  margin: 1em 0;
+  box-sizing: border-box;
+}
+// .allDoctor__container {
+//   margin-top: 20px;
+//   display: grid;
+//   grid-template-columns: repeat(5, 1fr);
+//   grid-template-rows: repeat(5, 1fr);
+//   grid-column-gap: 0px;
+//   grid-row-gap: 0px;
+//   box-sizing: border-box;
+// }
+
+// .doctorDIv {
+//   &__1 {
+//     grid-area: 1 / 1 / 2 / 2;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//     box-sizing: border-box;
+//   }
+//   &__2 {
+//     grid-area: 1 / 2 / 2 / 3;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__3 {
+//     grid-area: 1 / 3 / 2 / 4;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__4 {
+//     grid-area: 1 / 4 / 2 / 5;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__5 {
+//     grid-area: 2 / 1 / 3 / 2;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__6 {
+//     grid-area: 2 / 2 / 3 / 3;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__7 {
+//     grid-area: 2 / 3 / 3 / 4;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__8 {
+//     grid-area: 2 / 4 / 3 / 5;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__9 {
+//     grid-area: 3 / 1 / 4 / 2;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__10 {
+//     grid-area: 3 / 2 / 4 / 3;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__11 {
+//     grid-area: 3 / 3 / 4 / 4;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__12 {
+//     grid-area: 3 / 4 / 4 / 5;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__13 {
+//     grid-area: 4 / 1 / 5 / 2;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__14 {
+//     grid-area: 4 / 2 / 5 / 3;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__15 {
+//     grid-area: 4 / 3 / 5 / 4;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__16 {
+//     grid-area: 4 / 4 / 5 / 5;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__17 {
+//     grid-area: 5 / 1 / 6 / 2;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__18 {
+//     grid-area: 5 / 2 / 6 / 3;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__19 {
+//     grid-area: 5 / 3 / 6 / 4;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+//   &__20 {
+//     grid-area: 5 / 4 / 6 / 5;
+//     background-color: rgb(230, 230, 230);
+//     border-radius: 10px;
+//   }
+// }

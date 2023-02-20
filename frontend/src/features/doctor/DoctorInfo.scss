@@ -1,0 +1,27 @@
+.doctor__Item {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.doctor__Photo {
+  width: 40%;
+  padding: 20%;
+  position: relative;
+  overflow: hidden;
+}
+.doctor__Img {
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px 10px 0 0;
+}
+.doctor__Info {
+  width: 49%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
