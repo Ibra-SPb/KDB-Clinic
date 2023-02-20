@@ -9,47 +9,21 @@ const OneDoctor = ({ oneDoctor }: { oneDoctor: Doctor }) => {
   console.log(doctorId);
 
   return (
-    <div className="doctorDIv">
-      <div>{oneDoctor.name}</div>
-      <div>{oneDoctor.specific}</div>
-      <div className="photoDotcorDiv">
-        <img src={oneDoctor.img}></img>
+    <div className={`doctorDIv`}>
+      <div className="doctorImg">
+        <img className="photo" src={oneDoctor.img}></img>
       </div>
-      <NavLink to={`/doctors/:${oneDoctor.id}`}>подробная информация</NavLink>
+      {/* <div className="random"> */}
+      <div className="doctorInfo">
+      <div className="random">{oneDoctor.name}</div>
+      <p className="random2">{oneDoctor.specific}</p>
+      {/* </div> */}
+      <NavLink to={`/doctors/:${oneDoctor.id}`}>
+        <p className="random3">подробная информация</p>
+      </NavLink>
+      </div>
     </div>
   );
 };
-// const OneDoctor = ({ oneDoctor }: { oneDoctor: Doctor }) => {
-//   const [page, setPage] = useState("standart");
-//   return (
-//     <>
-//       {" "}
-//       {page === "standart" ? (
-//         <div className="doctorDIv">
-//           <div>{oneDoctor.id}</div>
-//           <div>{oneDoctor.name}</div>
-//           <div>{oneDoctor.specific}</div>
-//           <div className="photoDotcorDiv">
-//             <img src={oneDoctor.img}></img>
-//           </div>
-//           <button onClick={() => setPage("info")}>Подродная информация</button>
-//           {/* <NavLink to={`/doctors/${oneDoctor.id}`}>подробная информация</NavLink> */}
-//           {/* <div>{oneDoctor.info}</div> */}
-//         </div>
-//       ) : (
-//         <div className="doctorDIv">
-//           <div>{oneDoctor.id}</div>
-//           <div>{oneDoctor.name}</div>
-//           <div>{oneDoctor.specific}</div>
-//           <div className="photoDotcorDiv">
-//             <img className="ptohoDoctor" src={oneDoctor.img}></img>
-//           </div>
-//           <div>{oneDoctor.info}</div>
-//           <button onClick={() => setPage("standart")}>Скрыть</button>
-//         </div>
-//       )}
-//     </>
-//   );
-// };
 
 export default OneDoctor;

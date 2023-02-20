@@ -1,27 +1,21 @@
 const router = require('express').Router();
 const bcrypt = require ('bcrypt');
-// const { User } = require('../db/models');
+const { User } = require('../db/models');
 
 router.post('/sign-in', async (req, res) => {
+
     try {
       const { email, password } = req.body;
       if (email && password) {
         let user = await User.findOne({ where: { email } });
         if (user && (await bcrypt.compare(password, user.password))) {
-          user = {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            img: user.img,
-            phone: user.phone,
-          };
-          req.session.userid = user.id;
-          res.status(201).json(user);
+          req.session.userId = user.id;
+          res.status(201).json({user});
         } else {
-          res.status(403).json({ message: 'Неверный email или пароль' });
+          res.status(403).json({ error: 'Неверный email или пароль' });
         }
       } else {
-        res.status(403).json({ message: 'Заполните все поля' });
+        res.status(403).json({ error: 'Заполните все поля' });
       }
     } catch ({ message }) {
       res.status(500).json(message);
@@ -30,45 +24,70 @@ router.post('/sign-in', async (req, res) => {
 
 
   router.post('/sign-up', async (req, res) => {
-    try {
-      const {
-        email, name, password, password2,
-      } = req.body;
-      if (password !== password2) {
-        return res.json({ message: 'Пароли не совпадают', user: {} });
-      }
-      if (email && name && password && password2) {
+    const {
+      email, phone, name, password, password2,
+    } = req.body;
+    try {            
+                  if (email && phone && name && password ) {
         let user = await User.findOne({ where: { email } });
+        if (password !== password2) {
+          return res
+          .status(400)
+            .json({ message: 'Пароли не совпадают', status: false });
+        }
         if (!user) {
           const hash = await bcrypt.hash(password, 10);
           const newUser = await User.create({
             name,
+            phone,
             email,
             password: hash,
           });
           user = {
             id: newUser.id,
             name: newUser.name,
+            phone: newUser.phone,
             email: newUser.email,
           };
-          req.session.userid = user.id;
-          res.status(201).json({ message: '', user });
+          req.session.userId = user.id;
+          res.status(201).json({ user });
         } else {
-          res.status(403).json({ message: 'Такой email уже существует', user: {} });
+          res.status(403).json({ error: 'Такой email уже существует' });
         }
       } else {
-        res.status(403).json({ message: 'Заполните все поля', user: {} });
+        res.status(403).json({ error: 'Заполните все поля' });
       }
     } catch ({ message }) {
       res.json(message);
     }
   });
 
-  router.get('/logout', (req, res) => {
-    req.session.destroy(() =>
-      res.clearCookie('user_sid').json({ message: 'Session destroy' })
-    );
+  router.delete('/logout', (req, res) => {
+    req.session.destroy(() =>{
+      res.clearCookie('user_sid').json({ error: 'Сессия удалена' })
+    })
   });
+
+
+
+  router.get('/session', async (req,res) =>{
+    try{
+    if (req.session.userId){
+      const actualUser = await User.findOne({
+        where: {id: req.session.userId}
+      })
+      const user ={
+        id: actualUser.id,
+        name: actualUser.name,
+        email:actualUser.email,
+        phone:actualUser.phone,
+      };
+      res.status(201).json({message:'ок', user});
+        }
+      } catch ({message}){
+        res.json({message});
+      }
+    })
   
   module.exports = router;
 
