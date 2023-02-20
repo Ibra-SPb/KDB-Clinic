@@ -20,6 +20,7 @@ import Authorization from '../features/auth/Authorization';
 import { checkUser } from '../features/auth/authSlice';
 import Main from '../features/Components/Main/Main';
 import { useSelector } from 'react-redux';
+import Contacts from '../features/Contacts/Contacts';
 
 function App() {
 const {user} = useSelector((store: RootState) => store.userState)
@@ -62,6 +63,7 @@ const {user} = useSelector((store: RootState) => store.userState)
         <Route path="/" element={<Navbar />}>
           <Route index element={<Main />} />
           <Route index element={<Service />} />
+          <Route path="/contacts" element={<Contacts/>} />
           <Route path="/enterPage" element={<Authorization />} />
           <Route path="/enterPage/registration" element={<Registration />} />
           <Route path="/doctors" element={<Doctor />} />

@@ -24,6 +24,13 @@ function Navbar(): JSX.Element {
     <>
       <div className="nav__container">
         <ul className="nav__list">
+        <>
+            <li>
+              <NavLink className="nav__list-item" to="/contacts">
+               <button>Контакты</button>
+              </NavLink>
+            </li>
+          </>
           {('email' in user) ? (
             <>
             <li>
