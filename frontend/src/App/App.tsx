@@ -22,6 +22,7 @@ import { useSelector } from 'react-redux';
 import AccountMain from '../features/Account/AccountMain';
 import Profile from '../features/Account/Profile';
 import AccountVisits from '../features/Account/AccountVisits';
+import Footer from '../features/Components/Footer/Footer';
 
 function App() {
 	const { user } = useSelector((store: RootState) => store.userState);
@@ -100,7 +101,11 @@ function App() {
 					path='/services'
 					element={<Service />}
 				/>
+				{/* <Route
+					index
+					element={<Footer />}></Route> */}
 			</Routes>
+			<Footer />
 		</div>
 	);
 }

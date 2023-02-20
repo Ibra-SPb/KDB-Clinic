@@ -13,7 +13,7 @@ function Main(): JSX.Element {
 			<div className='container main_container'>
 				<Service />
 			</div>
-			<Footer />
+			{/* <Footer /> */}
 		</div>
 	);
 }
