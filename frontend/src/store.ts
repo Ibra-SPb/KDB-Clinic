@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
+import userSlice from './features/auth/authSlice';
 import tableSlice from "./features/Appointment/tableSlice";
 import doctorSlice from "./features/doctor/doctorSlice";
 import serviceSlice from "./features/service/serviceSlice";
@@ -12,6 +13,7 @@ const store = configureStore({
     tableState: tableSlice,
     serviceState: serviceSlice,
     doctorState: doctorSlice,
+    userState: userSlice,
   },
 });
 // для правильной типизации будем использовать useAppDispatch вместо

@@ -45,7 +45,6 @@ const Appointment = (): JSX.Element => {
       }),
     })
     const data = await res.json();
-    console.log(data)
   }
 
   return (

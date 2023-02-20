@@ -8,7 +8,6 @@ const config = require("./config/config");
 const app = express();
 const PORT = process.env.PORT ?? 4000;
 config(app);
-
 const serviceRoute = require("./routes/service.route");
 const authRoute = require("./routes/auth.route");
 const appointRoute = require("./routes/appoint.route");
