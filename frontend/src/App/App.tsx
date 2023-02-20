@@ -12,66 +12,61 @@ import { Container, Grid, Paper } from '@mui/material';
 import { makeStyles, ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
 import { Theme } from '../features/Components/Types/Type';
-import Service from "../features/service/Service";
+import Service from '../features/service/Service';
 import Navigation from '../features/Components/Navigation/Navigation';
 import Main from '../features/Components/Main/Main';
 import { useDispatch, useSelector } from 'react-redux';
 import SignUp from '../features/Components/Navigation/Auth/signUp';
 import SignIn from '../features/Components/Navigation/Auth/signIn';
+import Profile from '../features/Account/Profile';
+import AccountVisits from '../features/Account/AccountVisits';
 // import Registration from '../features/Auth/Registration';
 // import Authorization from '../features/Auth/Authorization';
 
 function App() {
-	const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(loadVisit())
-  }, [dispatch])
+    dispatch(loadVisit());
+  }, [dispatch]);
 
-	useEffect(() => {
-    dispatch(loadTable())
-  }, [dispatch])
-  
+  useEffect(() => {
+    dispatch(loadTable());
+  }, [dispatch]);
+
   //const dispatch = useDispatch();
   //useEffect(() => {
-   // api
-    //  .loadService()
-    //  .then((data) => dispatch({ type: "INIT_SERVICE", payload: data }));
+  // api
+  //  .loadService()
+  //  .then((data) => dispatch({ type: "INIT_SERVICE", payload: data }));
   //}, []);
   //
-	//useEffect(() => {
-		//api.loadVisits().then((data) =>
-		//	dispatch({ type: 'INIT_VISITS', payload: data })
-		//);
-	//}, []);
+  //useEffect(() => {
+  //api.loadVisits().then((data) =>
+  //	dispatch({ type: 'INIT_VISITS', payload: data })
+  //);
+  //}, []);
 
-	return (
-		<div className='App'>
-			<Routes>
-				<Route
-					path='/'
-					element={<Navigation />}>
-					{/* <Route
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Navigation />}>
+          {/* <Route
 						index
 						element={<Main />}
 					/> */}
-					<Route
-						path='/login'
-						element={<SignIn />}
-					/>
-					<Route
-						path='/registration'
-						element={<SignUp />}
-					/>
-					{/* <main>
+          <Route path="/login" element={<SignIn />} />
+          <Route path="/registration" element={<SignUp />} />
+          {/* <main>
 						<Main />
 					</main> */}
-				</Route>
-				<Route 
-				path='/appoint'
-				element={<Appointment />}/>
-			</Routes>
-		</div>
-	);
+        </Route>
+        <Route path="/appoint" element={<Appointment />} />
+        <Route path="/account" element={<AccountMain />} />
+        <Route path="/account/profile" element={<Profile />} />
+        <Route path="/account/visits" element={<AccountVisits />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;

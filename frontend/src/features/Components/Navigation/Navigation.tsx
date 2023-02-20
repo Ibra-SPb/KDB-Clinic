@@ -8,34 +8,31 @@ import About from './MenuButtons/about';
 import Doctors from './MenuButtons/doctors';
 import LogoutButton from './Auth/logout';
 import '../Navigation/NavigationStyle.css';
+import AccountMain from '../../Account/AccountMain';
 
 const style = {
-	flexgrow: 1,
-	marginRight: 1,
-	background: 'green',
+  flexgrow: 1,
+  marginRight: 1,
+  background: 'green',
 };
 
 function Navigation(): JSX.Element {
-	return (
-		<AppBar position='fixed'>
-			<Container
-				sx={style}
-				className='navigation'>
-				<Toolbar>
-					<Typography
-						variant='h6'
-						className='kdn_logo'>
-						KDN Clinic
-					</Typography>
-					<BasicSelect />
-					<Doctors />
-					<About />
-					<SignInButton />
-					<SignUpButton />
-				</Toolbar>
-			</Container>
-		</AppBar>
-	);
+  return (
+    <AppBar position="fixed">
+      <Container sx={style} className="navigation">
+        <Toolbar>
+          <Typography variant="h6" className="kdn_logo">
+            KDN Clinic
+          </Typography>
+          <BasicSelect />
+          <Doctors />
+          <About />
+          <SignInButton />
+          <SignUpButton />
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
 }
 
 export default Navigation;

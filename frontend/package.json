@@ -96,6 +96,7 @@
 		]
 	},
 	"devDependencies": {
-		"@redux-devtools/extension": "^3.2.5"
+		"@redux-devtools/extension": "^3.2.5",
+		"typescript-plugin-css-modules": "^4.2.1"
 	}
 }
