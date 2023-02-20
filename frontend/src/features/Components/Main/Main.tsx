@@ -1,14 +1,20 @@
 import { Container, Grid, Paper } from '@mui/material';
 import React from 'react';
-import Carousel from './Carousel/carousel';
+// import Carousel from './Carousel/Carousel';
+import Service from '../../service/Service';
+import Footer from '../Footer/Footer';
 
 function Main(): JSX.Element {
 	return (
-		<>
-			<div className='container'>
+		<div>
+			{/* <div className='container'>
 				<Carousel />
+			</div> */}
+			<div className='container main_container'>
+				<Service />
 			</div>
-		</>
+			<Footer />
+		</div>
 	);
 }
 
