@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store';
 import './appoint.css'
 
@@ -11,6 +12,8 @@ const Appointment = (): JSX.Element => {
   const [date, setDate] = useState([{date: new Date(), time: []}]);
   const [dateCh, setDateCh] = useState(new Date())
   const [timeCh, setTimeCh] = useState('');
+  const [status, setStatus] = useState('')
+  const navigate = useNavigate();
 
   const {services} = useSelector((store:RootState)=>store.serviceState)
   const {service_doctors} = useSelector((store:RootState)=>store.tableState)
@@ -27,11 +30,15 @@ const Appointment = (): JSX.Element => {
       }),
     })
     const data = await res.json();
+    data.arrDate.forEach((dt: any) => {
+      dt.date =new Date(dt.date)
+    })
+    setDate(data.arrDate)
     setPage('date')
-    setDate(data.arrCheck)
   }
 
-  const appointMake = async () => {
+  const appointMake = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    e.preventDefault();
     const res = await fetch('/api/appoint/create', {
       method: 'POST',
       headers: {
@@ -45,11 +52,19 @@ const Appointment = (): JSX.Element => {
       }),
     })
     const data = await res.json();
+    if(data.status) {
+    setStatus('ready')
+  }
+  }
+
+  const chooseDateTime = (date: Date, time: string) => {
+    setDateCh(date)
+    setTimeCh(time);
   }
 
   return (
     <>
-    <div>
+    <div className='appointContainer'>
       <form onSubmit={appointMake} className='addAppoint'>
       <div className = 'step'>
         <div className={page === 'service' ? 'active' : 'hidden'}>Выберите услугу</div>
@@ -64,7 +79,10 @@ const Appointment = (): JSX.Element => {
             <option key={service.id}>{service.title}</option>
             )}
           </select>
+        <div className='confirmButtons'>
           <button onClick={() => setPage('doctor')}>выбрать</button>
+          <button onClick={() => navigate(-1)}>назад</button>
+        </div>
         </div>
       )}
 
@@ -74,7 +92,10 @@ const Appointment = (): JSX.Element => {
             {service_doctors.filter((sd)=> sd.service.title === service).map((sd) => 
             <option key={sd.id}>{sd.doctor.name}</option>)}
           </select>
-          <button type='button' onClick={chooseService}>выбрать</button>
+          <div className='confirmButtons'>
+            <button type='button' onClick={chooseService}>выбрать</button>
+            <button onClick={() => setPage('service')}>назад</button>
+          </div>
         </div>
       )}
 
@@ -82,22 +103,60 @@ const Appointment = (): JSX.Element => {
           <div className='choose'>
             <div className='dateTime'>
               {date.map((dt) =>
-                <>
-                  <div key={dt.date.toLocaleString()} className='dateCh' onClick={() => setDateCh(dt.date)}>{dt.date.toLocaleString().slice(0, 10)}</div>
-                    <div className='timeCh'>
-                    {dt.time.map((tm) =>
-                    <div onClick={() => setTimeCh(tm)}>{tm}</div>
-                    )}
+                  <>
+                    <div className='dateTimeOne'>
+                        <div className={dateCh === dt.date ? 'dateChoose' : 'dateCh'} key={dt.date.toLocaleString()}>{dt.date.toLocaleString('ru', {year: 'numeric', month: 'numeric', day: 'numeric', weekday: 'long'})}</div>
+                      <div className='timeCh'>
+                        {dt.time.map((tm) =>
+                          <div className={dateCh === dt.date && timeCh === tm ? 'timeChoose' : 'timeNone'} onClick={() => chooseDateTime(dt.date, tm)}>{tm}</div>
+                        )}
                     </div>
-                    </>
+                    </div>
+                  </>
               )}
             </div>
-            <button type='submit'>записаться</button>
+            <div className='confirmButtons'>
+              <button type='button' onClick={() => setStatus('confirm')}>записаться</button>
+              <button onClick={() => setPage('doctor')}>назад</button>
+            </div>
+            {status === 'confirm' && 
+            (<div className='confirmAppointBack'>
+              <div className='confirmAppoint'>
+                <h1>Подтвердите запись:</h1><br></br>
+                <p>Услуга: {service}</p>
+                <p>Врач: {doctor}</p>
+                <div className='dateTime'>
+                  Дата и время:
+                  <br></br>
+                  <p> {dateCh.toLocaleString('ru', {year: 'numeric', month: 'numeric', day: 'numeric', weekday: 'long'})}</p>
+                  <p> {timeCh}</p>
+                </div>
+                <div className='confirmButtons'>
+                  <button type='submit'>записаться</button>
+                  <button onClick={() => setStatus('')}>назад</button>
+                </div>
+              </div>
+            </div>)}
+            {status === 'ready' && (
+            <div className='confirmAppointBack'>
+              <div className='confirmAppoint'>
+                <h1>Вы записаны:</h1><br></br>
+                <p>Услуга: {service}</p>
+                <p>Врач: {doctor}</p>
+                <div className='dateTime'>
+                  Дата и время:
+                  <br></br>
+                  <p> {dateCh.toLocaleString('ru', {year: 'numeric', month: 'numeric', day: 'numeric', weekday: 'long'})}</p>
+                  <p> {timeCh}</p>
+                </div>
+                <button onClick={() => navigate('/')}>вернуться на главную</button>
+            </div>
+            </div>
+            )}
           </div>
       )}
       </form>
     </div>
- 
     </>
   )
 }
