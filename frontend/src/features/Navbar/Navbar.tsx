@@ -27,11 +27,6 @@ function Navbar(): JSX.Element {
           {('email' in user) ? (
             <>
             <li>
-              <NavLink className="nav__list-item" to="/logout">
-                <>
-              <button type='button' onClick={handlelogout}>Logout</button>
-              </>
-              </NavLink>
             </li>
             <li>Hi</li>
             </>
