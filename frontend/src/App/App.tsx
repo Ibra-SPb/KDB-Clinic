@@ -18,6 +18,7 @@ import Main from '../features/Components/Main/Main';
 import { useDispatch, useSelector } from 'react-redux';
 import SignUp from '../features/Components/Navigation/Auth/signUp';
 import SignIn from '../features/Components/Navigation/Auth/signIn';
+import Carousel from '../features/Components/Main/Carousel/carousel';
 import { loadServices } from '../features/service/servisSlice';
 // import Registration from '../features/Auth/Registration';
 // import Authorization from '../features/Auth/Authorization';
@@ -67,14 +68,14 @@ function App() {
 						path='/registration'
 						element={<SignUp />}
 					/>
-					{/* <main>
-						<Main />
-					</main> */}
 				</Route>
 				<Route 
 				path='/appoint'
 				element={<Appointment />}/>
 			</Routes>
+			<main>
+				<Main />
+			</main>
 		</div>
 	);
 }
