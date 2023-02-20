@@ -1,0 +1,32 @@
+.nav__list {
+	display: flex;
+	justify-content: space-between;
+	margin-top: auto;
+	background-color: green !important;
+	color: orange;
+	height: 120px;
+	font-family: 'Roboto';
+	// text-align: start;
+}
+.nav__container {
+	background-color: green !important;
+	color: red !important;
+	font-family: 'Roboto';
+}
+.KDN_title {
+	color: orange;
+	margin-left: 90px;
+	margin-right: 90px;
+	margin-top: 40px;
+}
+.lk_style {
+	color: orange;
+	margin-left: 90px;
+	margin-right: 90px;
+	margin-top: 40px;
+}
+.menu_buttons {
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: row;
+}

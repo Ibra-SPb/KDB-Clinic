@@ -11,7 +11,6 @@ import ServiceInfo from "../features/service/ServiceInfo";
 import { loadDoctor } from '../features/doctor/doctorSlice';
 import Doctor from '../features/doctor/Doctor';
 import DoctorInfo from '../features/doctor/doctorInfo';
-import Carousel from '../features/Components/Main/Carousel/Carousel';
 import { loadService } from '../features/service/serviceSlice';
 
 import Navbar from '../features/Navbar/Navbar';
@@ -24,19 +23,20 @@ import Contacts from '../features/Contacts/Contacts';
 import AccountMain from '../features/Account/AccountMain';
 import Profile from '../features/Account/Profile';
 import AccountVisits from '../features/Account/AccountVisits';
+import Footer from '../features/Components/Footer/Footer';
 
 function App() {
 
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(loadVisit());
-  }, []);
+	const dispatch = useAppDispatch();
+	useEffect(() => {
+		dispatch(loadVisit());
+	}, []);
 
 	useEffect(() => {
 		dispatch(loadTable());
 	}, []);
 
-useEffect(() => {
+	useEffect(() => {
 		dispatch(loadService());
 	}, []);
 	useEffect(() => {
@@ -45,6 +45,7 @@ useEffect(() => {
 	useEffect(() => {
 		dispatch(checkUser());
 	}, []);
+  
   return (
     <div className="App">
       <Routes>
@@ -64,6 +65,7 @@ useEffect(() => {
           <Route path="/account/visits" element={<AccountVisits />} />
         </Route>
       </Routes>
+      <Footer />
     </div>
   );
 }
