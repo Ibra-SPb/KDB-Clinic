@@ -28,7 +28,7 @@ const Appointment = (): JSX.Element => {
     })
     const data = await res.json();
     setPage('date')
-    setDate(data.arrCheck)
+    setDate(data.arrDate)
   }
 
   const appointMake = async () => {

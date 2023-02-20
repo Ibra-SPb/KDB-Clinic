@@ -48,25 +48,21 @@ router.post('/', async (req, res) => {
     const time = ['09:00', '10:00', '11:00', '12:00', '14:00', '15:00', '16:00']
     const date = new Date()
     let arrDate = [];
-    let arrCheck = [];
 
     for (let i = 1; i <= 7; i++) {
       arrDate.push({ date: new Date(date.getFullYear(), date.getMonth(), date.getDate() + i), time: time })
     }
+    console.log(arrDate)
 
-    visits.filter((vs) => vs.doctor.name === doctor).forEach((vs) => {
-      arrDate.forEach((ad) => {
+    arrDate.forEach((ad) => {
+      visits.filter((vs) => vs.doctor.name === doctor).forEach((vs) => {
         if (vs.date.toLocaleString() === ad.date.toLocaleString()) {
           ad.time = ad.time.filter((tm) => tm !== vs.time)
-          console.log(ad)
-          arrCheck.push(ad)
-        } else if (vs.date.toLocaleString() !== ad.date.toLocaleString()) {
-          arrCheck.push(ad)
         }
       })
     })
 
-    res.status(200).json({ arrCheck })
+    res.status(200).json({ arrDate })
 
   } catch ({ message }) {
     res.status(500).json(message);
