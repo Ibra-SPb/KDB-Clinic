@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../Navigation/NavigationStyle.css';
+import '../Carousel/CarouselStyle.scss';
 
 function Carousel(): JSX.Element {
 	return (

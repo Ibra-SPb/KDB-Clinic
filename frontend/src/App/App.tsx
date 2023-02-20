@@ -10,7 +10,7 @@ import Service from '../features/service/Service';
 import { loadDoctor } from '../features/doctor/doctorSlice';
 import Doctor from '../features/doctor/Doctor';
 import DoctorInfo from '../features/doctor/doctorInfo';
-import Carousel from '../features/Components/Main/Carousel/carousel';
+import Carousel from '../features/Components/Main/Carousel/Carousel';
 import { loadService } from '../features/service/serviceSlice';
 
 import Navbar from '../features/Navbar/Navbar';
@@ -25,40 +25,27 @@ import Profile from '../features/Account/Profile';
 import AccountVisits from '../features/Account/AccountVisits';
 
 function App() {
-  const { user } = useSelector((store: RootState) => store.userState);
-  console.log(user);
+	const { user } = useSelector((store: RootState) => store.userState);
+	console.log(user);
 
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(loadVisit());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(loadTable());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(loadService());
-  }, []);
-  useEffect(() => {
-    dispatch(loadDoctor());
-  }, []);
-  useEffect(() => {
-    dispatch(checkUser());
   }, []);
 
-  //const dispatch = useDispatch();
-  //useEffect(() => {
-  // api
-  //  .loadService()
-  //  .then((data) => dispatch({ type: "INIT_SERVICE", payload: data }));
-  //}, []);
-  //
-  //useEffect(() => {
-  //api.loadVisits().then((data) =>
-  //	dispatch({ type: 'INIT_VISITS', payload: data })
-  //);
-  //}, []);
+	useEffect(() => {
+		dispatch(loadTable());
+	}, []);
+
+useEffect(() => {
+		dispatch(loadService());
+	}, []);
+	useEffect(() => {
+		dispatch(loadDoctor());
+	}, []);
+	useEffect(() => {
+		dispatch(checkUser());
+	}, []);
   return (
     <div className="App">
       <Routes>
