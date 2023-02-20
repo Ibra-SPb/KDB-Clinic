@@ -7,11 +7,6 @@ import { loadVisit } from "../features/Visit/visitSlice";
 import { loadTable } from "../features/Appointment/tableSlice";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { Container, Grid, Paper } from "@mui/material";
-// import MenuItem from '@mui/icons-material/Menu';
-import { makeStyles, ThemeProvider } from "@mui/material/styles";
-import { Box } from "@mui/system";
-import { Theme } from "../features/Components/Types/Type";
 import Service from "../features/service/Service";
 
 import { loadDoctor } from "../features/doctor/doctorSlice";
@@ -23,7 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import SignUp from '../features/Components/Navigation/Auth/signUp';
 import SignIn from '../features/Components/Navigation/Auth/signIn';
 import Carousel from '../features/Components/Main/Carousel/carousel';
-import { loadService } from '../features/service/servisSlice';
+import { loadService } from '../features/service/serviceSlice';
 // import Registration from '../features/Auth/Registration';
 // import Authorization from '../features/Auth/Authorization';
 
