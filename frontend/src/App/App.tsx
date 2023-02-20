@@ -10,7 +10,6 @@ import Service from '../features/service/Service';
 import { loadDoctor } from '../features/doctor/doctorSlice';
 import Doctor from '../features/doctor/Doctor';
 import DoctorInfo from '../features/doctor/doctorInfo';
-import Carousel from '../features/Components/Main/Carousel/Carousel';
 import { loadService } from '../features/service/serviceSlice';
 
 import Navbar from '../features/Navbar/Navbar';
@@ -28,16 +27,16 @@ function App() {
 	const { user } = useSelector((store: RootState) => store.userState);
 	console.log(user);
 
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(loadVisit());
-  }, []);
+	const dispatch = useAppDispatch();
+	useEffect(() => {
+		dispatch(loadVisit());
+	}, []);
 
 	useEffect(() => {
 		dispatch(loadTable());
 	}, []);
 
-useEffect(() => {
+	useEffect(() => {
 		dispatch(loadService());
 	}, []);
 	useEffect(() => {
@@ -46,25 +45,64 @@ useEffect(() => {
 	useEffect(() => {
 		dispatch(checkUser());
 	}, []);
-  return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<Navbar />}>
-          <Route index element={<Main />} />
-          <Route index element={<Service />} />
-          <Route path="/enterPage" element={<Authorization />} />
-          <Route path="/enterPage/registration" element={<Registration />} />
-          <Route path="/doctors" element={<Doctor />} />
-          <Route path="/doctors/:doctorId" element={<DoctorInfo />} />
-          <Route path="/appoint" element={<Appointment />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/account" element={<AccountMain />} />
-          <Route path="/account/profile" element={<Profile />} />
-          <Route path="/account/visits" element={<AccountVisits />} />
-        </Route>
-      </Routes>
-    </div>
-  );
+	return (
+		<div className='App'>
+			<Routes>
+				<Route
+					path='/'
+					element={<Navbar />}>
+					<Route
+						index
+						element={<Main />}
+					/>
+					<Route
+						path='/services'
+						element={<Service />}
+					/>
+					<Route
+						path='/enterPage'
+						element={<Authorization />}
+					/>
+					<Route
+						path='/enterPage/registration'
+						element={<Registration />}
+					/>
+					<Route
+						path='/doctors'
+						element={<Doctor />}
+					/>
+					<Route
+						path='/doctors/:doctorId'
+						element={<DoctorInfo />}
+					/>
+					<Route
+						path='/appoint'
+						element={<Appointment />}
+					/>
+					<Route
+						path='*'
+						element={<NotFound />}
+					/>
+					<Route
+						path='/account'
+						element={<AccountMain />}
+					/>
+					<Route
+						path='/account/profile'
+						element={<Profile />}
+					/>
+					<Route
+						path='/account/visits'
+						element={<AccountVisits />}
+					/>
+				</Route>
+				<Route
+					path='/services'
+					element={<Service />}
+				/>
+			</Routes>
+		</div>
+	);
 }
 
 export default App;
