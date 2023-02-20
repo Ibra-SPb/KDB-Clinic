@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import AccountMain from '../features/Account/AccountMain';
 import * as api from './api';
+import { RootState, useAppDispatch } from '../store';
+import Appointment from '../features/Appointment/Appointment';
+import { loadVisit } from '../features/Visit/visitSlice';
+import { loadTable } from '../features/Appointment/tableSlice';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { Container, Grid, Paper } from '@mui/material';
@@ -8,28 +12,43 @@ import { Container, Grid, Paper } from '@mui/material';
 import { makeStyles, ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
 import { Theme } from '../features/Components/Types/Type';
+import Service from "../features/service/Service";
 import Navigation from '../features/Components/Navigation/Navigation';
 import Main from '../features/Components/Main/Main';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../store';
 import SignUp from '../features/Components/Navigation/Auth/signUp';
 import SignIn from '../features/Components/Navigation/Auth/signIn';
 import Carousel from '../features/Components/Main/Carousel/carousel';
-
+import { loadServices } from '../features/service/servisSlice';
 // import Registration from '../features/Auth/Registration';
 // import Authorization from '../features/Auth/Authorization';
 
 function App() {
-	// const classes = useStyles();
-	const dispatch = useDispatch();
-	useEffect(() => {
-		api.loadVisits().then((data) =>
-			dispatch({ type: 'INIT_VISITS', payload: data })
-		);
-	}, []);
+	const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(loadVisit())
+  }, [dispatch])
 
-	const { visits } = useSelector((store: RootState) => store.visitState);
-	console.log(visits);
+	useEffect(() => {
+    dispatch(loadTable())
+  }, [dispatch])
+
+	useEffect(() => {
+    dispatch(loadServices())
+  }, [dispatch])
+  
+  //const dispatch = useDispatch();
+  //useEffect(() => {
+   // api
+    //  .loadService()
+    //  .then((data) => dispatch({ type: "INIT_SERVICE", payload: data }));
+  //}, []);
+  //
+	//useEffect(() => {
+		//api.loadVisits().then((data) =>
+		//	dispatch({ type: 'INIT_VISITS', payload: data })
+		//);
+	//}, []);
 
 	return (
 		<div className='App'>
@@ -50,6 +69,9 @@ function App() {
 						element={<SignUp />}
 					/>
 				</Route>
+				<Route 
+				path='/appoint'
+				element={<Appointment />}/>
 			</Routes>
 			<main>
 				<Main />
