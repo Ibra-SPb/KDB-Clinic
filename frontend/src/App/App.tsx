@@ -7,6 +7,7 @@ import { loadTable } from '../features/Appointment/tableSlice';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Service from '../features/service/Service';
+import ServiceInfo from "../features/service/ServiceInfo";
 import { loadDoctor } from '../features/doctor/doctorSlice';
 import Doctor from '../features/doctor/Doctor';
 import DoctorInfo from '../features/doctor/doctorInfo';
@@ -25,8 +26,6 @@ import Profile from '../features/Account/Profile';
 import AccountVisits from '../features/Account/AccountVisits';
 
 function App() {
-	const { user } = useSelector((store: RootState) => store.userState);
-	console.log(user);
 
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -58,6 +57,7 @@ useEffect(() => {
           <Route path="/doctors/:doctorId" element={<DoctorInfo />} />
           <Route path="/appoint" element={<Appointment />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/:serviceId" element={<ServiceInfo />} />
           <Route path="/account" element={<AccountMain />} />
           <Route path="/account/profile" element={<Profile />} />
           <Route path="/account/visits" element={<AccountVisits />} />

@@ -5,9 +5,9 @@ import OneService from "./OneService";
 
 const Service = () => {
   const { services } = useSelector((store: RootState) => store.serviceState);
-  
+
   return (
-    <div>
+    <div className="allDoctor__container">
       {services.map((el) => (
         <OneService key={el.id} oneService={el} />
       ))}
