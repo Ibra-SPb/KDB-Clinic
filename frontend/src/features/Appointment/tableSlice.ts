@@ -1,6 +1,6 @@
 // features/counter/counterSlice.ts
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { State } from "./types/Types";
+import { State } from "./Types/types";
 import * as api from "../../App/api";
 // начальный state
 const initialState: State = { service_doctors: [], error: undefined };

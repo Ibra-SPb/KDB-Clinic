@@ -1,5 +1,4 @@
 import { Visit } from "../features/Visit/Types/types";
-import { State, Res, User } from "../features/auth/Types/type";
 import { Service } from "../features/service/Type/type";
 import { Doctor } from "../features/doctor/Type/type";
 import { PayloadAuth, Res, User } from '../features/auth/Types/type';
@@ -51,13 +50,6 @@ export const checkUser = async () => {
   });
   const data = await res.json();
   return await data;
-};
-
-export const logout = async (): Promise<User> => {
-  const res = await fetch("http://localhost:4000/api/auth/logout", {
-    credentials: "include",
-  });
-  return await res.json();
 };
 
 export const getUsers = async (): Promise<User[]> => {

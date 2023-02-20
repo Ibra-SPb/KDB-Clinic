@@ -18,8 +18,13 @@ import NotFound from '../features/NotFound/NotFound';
 import Registration from '../features/auth/Registration';
 import Authorization from '../features/auth/Authorization';
 import { checkUser } from '../features/auth/authSlice';
+import Main from '../features/Components/Main/Main';
+import { useSelector } from 'react-redux';
 
 function App() {
+const {user} = useSelector((store: RootState) => store.userState)
+  console.log(user);
+  
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(loadVisit());
@@ -55,7 +60,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Navbar />}>
-          {/* <Route index element={<MainPage />} /> */}
+          <Route index element={<Main />} />
           <Route index element={<Service />} />
           <Route path="/enterPage" element={<Authorization />} />
           <Route path="/enterPage/registration" element={<Registration />} />

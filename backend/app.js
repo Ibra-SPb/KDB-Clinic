@@ -14,7 +14,7 @@ const appointRoute = require("./routes/appoint.route");
 const doctorRoute = require("./routes/doctor.route");
 
 app.use("/api/appoint", appointRoute);
-app.use("/auth", authRoute);
+app.use("/api/auth", authRoute);
 app.use("/api/service", serviceRoute);
 app.use("/api/doctor", doctorRoute);
 

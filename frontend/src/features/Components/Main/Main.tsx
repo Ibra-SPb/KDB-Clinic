@@ -1,4 +1,3 @@
-import { Container, Grid, Paper } from '@mui/material';
 import React from 'react';
 // import Carousel from './Carousel/Carousel';
 import Service from '../../service/Service';
