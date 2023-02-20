@@ -1,44 +1,72 @@
 import React, { useEffect } from 'react';
+import * as api from './api';
+import { RootState, useAppDispatch } from '../store';
+import Appointment from '../features/Appointment/Appointment';
+import { loadVisit } from '../features/Visit/visitSlice';
+import { loadTable } from '../features/Appointment/tableSlice';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import * as api from './api';
-import { useDispatch } from 'react-redux';
+import Service from '../features/service/Service';
+import { loadDoctor } from '../features/doctor/doctorSlice';
+import Doctor from '../features/doctor/Doctor';
+import DoctorInfo from '../features/doctor/doctorInfo';
+import Carousel from '../features/Components/Main/Carousel/carousel';
+import { loadService } from '../features/service/serviceSlice';
 
 import Navbar from '../features/Navbar/Navbar';
-import RegistrationPage from '../features/auth/RegistrationPage';
-import MainPage from '../features/MainPage/MainPage';
 import NotFound from '../features/NotFound/NotFound';
 import Registration from '../features/auth/Registration';
 import Authorization from '../features/auth/Authorization';
 import { checkUser } from '../features/auth/authSlice';
-import { useAppDispatch } from '../store';
 
+function App() {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(loadVisit());
+  }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(loadTable());
+  }, [dispatch]);
 
-function App(): JSX.Element {
+  useEffect(() => {
+    dispatch(loadService());
+  }, []);
+  useEffect(() => {
+    dispatch(loadDoctor());
+  }, []);
+  useEffect(() => {
+    dispatch(checkUser());
+  }, []);
 
-
-	const dispatch = useAppDispatch();
-
-useEffect(()=>{
-	dispatch(checkUser())
-},[])
-
-
-	return (
-		<div className="App">
-		<Routes>
-		  <Route path="/" element={<Navbar />}>
-			<Route index element={<MainPage />} />
-			<Route path="/enterPage" element={<Authorization />} />
-			<Route path="/enterPage/registration" element={<Registration />} />
-			<Route path="*" element={<NotFound />} />
-		  </Route>
-		</Routes>
-	  </div>
-
-
-	);
+  //const dispatch = useDispatch();
+  //useEffect(() => {
+  // api
+  //  .loadService()
+  //  .then((data) => dispatch({ type: "INIT_SERVICE", payload: data }));
+  //}, []);
+  //
+  //useEffect(() => {
+  //api.loadVisits().then((data) =>
+  //	dispatch({ type: 'INIT_VISITS', payload: data })
+  //);
+  //}, []);
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Navbar />}>
+          {/* <Route index element={<MainPage />} /> */}
+          <Route index element={<Service />} />
+          <Route path="/enterPage" element={<Authorization />} />
+          <Route path="/enterPage/registration" element={<Registration />} />
+          <Route path="/doctors" element={<Doctor />} />
+          <Route path="/doctors/:doctorId" element={<DoctorInfo />} />
+          <Route path="/appoint" element={<Appointment />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </div>
+  );
 }
 
 export default App;

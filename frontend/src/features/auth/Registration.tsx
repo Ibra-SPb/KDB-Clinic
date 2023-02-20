@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import {  useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {  RootState, useAppDispatch } from '../../store';
-import {registrUser} from './authSlice'
+import { RootState, useAppDispatch } from '../../store';
+import { registrUser } from './authSlice';
 
 function Registration(): JSX.Element {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] =useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const nav = useNavigate();
@@ -15,15 +15,14 @@ function Registration(): JSX.Element {
 
   const { user } = useSelector((store: RootState) => store.userState);
   useEffect(() => {
-    
     if ('name' in user) {
       nav('/');
-      }
-      }, [user]);
+    }
+  }, [user]);
 
-  const registr = (e:React.FormEvent<HTMLFormElement>):void => {
+  const registr = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-dispatch(registrUser({ name, email, password, password2, phone }));
+    dispatch(registrUser({ name, email, password, password2, phone }));
   };
 
   return (
@@ -51,7 +50,7 @@ dispatch(registrUser({ name, email, password, password2, phone }));
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-          <label htmlFor="phone">Phone</label>
+        <label htmlFor="phone">Phone</label>
         <input
           id="phone"
           name="phone"
@@ -79,7 +78,7 @@ dispatch(registrUser({ name, email, password, password2, phone }));
           required
         />
         <button type="submit">Зарегистрироваться</button>
-            <p className="error" />
+        <p className="error" />
       </form>
     </div>
   );

@@ -1,12 +1,14 @@
-
-import { Visit } from '../features/Appointment/Types/types';
+import { Visit } from "../features/Visit/Types/types";
+import { State, Res, User } from "../features/auth/Types/type";
+import { Service } from "../features/service/Type/type";
+import { Doctor } from "../features/doctor/Type/type";
 import { PayloadAuth, Res, User } from '../features/auth/Types/type';
 
 export const registr = async (newUser: User): Promise<PayloadAuth> => {
-  const res = await fetch('/api/auth/sign-up', {
-    method: 'POST',
+  const res = await fetch("/api/auth/sign-up", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     credentials: 'include',
     body: JSON.stringify({
@@ -48,16 +50,38 @@ export const checkUser = async () => {
     credentials: 'include',
   });
   const data = await res.json();
-  return data;
+  return await data;
 };
 
+export const logout = async (): Promise<User> => {
+  const res = await fetch("http://localhost:4000/api/auth/logout", {
+    credentials: "include",
+  });
+  return await res.json();
+};
+
+export const getUsers = async (): Promise<User[]> => {
+  const res = await fetch("http://localhost:4000/api/main");
+  return await res.json();
+};
+// забираем все сервисы с бэка
+export const loadService = async (): Promise<Service[]> => {
+  const res = await fetch("/api/service");
+  return await res.json();
+};
+//забираем всех докторов с бэка
+export const loadDoctors = async (): Promise<Doctor[]> => {
+  const res = await fetch("/api/doctor");
+  return await res.json();
+};
 //забрать все приемы с бэка
 export const loadVisits = async (): Promise<Visit[]> => {
-  const res = await fetch('/api/appoint', {
-  });
+  const res = await fetch("/api/appoint/visit");
   return res.json();
 };
 
-export function getUsers() {
-	throw new Error('Function not implemented.');
-}
+//забрать связующую таблицу с бэка
+export const loadTables = async (): Promise<Visit[]> => {
+  const res = await fetch("/api/appoint/table");
+  return res.json();
+};
