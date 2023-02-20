@@ -1,30 +1,31 @@
-import React, { useEffect } from 'react';
-import * as api from './api';
-import { RootState, useAppDispatch } from '../store';
-import Appointment from '../features/Appointment/Appointment';
-import { loadVisit } from '../features/Visit/visitSlice';
-import { loadTable } from '../features/Appointment/tableSlice';
-import './App.css';
-import { Route, Routes } from 'react-router-dom';
-import Service from '../features/service/Service';
-import { loadDoctor } from '../features/doctor/doctorSlice';
-import Doctor from '../features/doctor/Doctor';
-import DoctorInfo from '../features/doctor/doctorInfo';
-import Carousel from '../features/Components/Main/Carousel/carousel';
-import { loadService } from '../features/service/serviceSlice';
+import React, { useEffect } from "react";
+import * as api from "./api";
+import { RootState, useAppDispatch } from "../store";
+import Appointment from "../features/Appointment/Appointment";
+import { loadVisit } from "../features/Visit/visitSlice";
+import { loadTable } from "../features/Appointment/tableSlice";
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Service from "../features/service/Service";
+import { loadDoctor } from "../features/doctor/doctorSlice";
+import Doctor from "../features/doctor/Doctor";
+import DoctorInfo from "../features/doctor/doctorInfo";
+import Carousel from "../features/Components/Main/Carousel/carousel";
+import { loadService } from "../features/service/serviceSlice";
 
-import Navbar from '../features/Navbar/Navbar';
-import NotFound from '../features/NotFound/NotFound';
-import Registration from '../features/auth/Registration';
-import Authorization from '../features/auth/Authorization';
-import { checkUser } from '../features/auth/authSlice';
-import Main from '../features/Components/Main/Main';
-import { useSelector } from 'react-redux';
+import Navbar from "../features/Navbar/Navbar";
+import NotFound from "../features/NotFound/NotFound";
+import Registration from "../features/auth/Registration";
+import Authorization from "../features/auth/Authorization";
+import { checkUser } from "../features/auth/authSlice";
+import Main from "../features/Components/Main/Main";
+import { useSelector } from "react-redux";
+import ServiceInfo from "../features/service/ServiceInfo";
 
 function App() {
-const {user} = useSelector((store: RootState) => store.userState)
+  const { user } = useSelector((store: RootState) => store.userState);
   console.log(user);
-  
+
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(loadVisit());
@@ -44,18 +45,6 @@ const {user} = useSelector((store: RootState) => store.userState)
     dispatch(checkUser());
   }, []);
 
-  //const dispatch = useDispatch();
-  //useEffect(() => {
-  // api
-  //  .loadService()
-  //  .then((data) => dispatch({ type: "INIT_SERVICE", payload: data }));
-  //}, []);
-  //
-  //useEffect(() => {
-  //api.loadVisits().then((data) =>
-  //	dispatch({ type: 'INIT_VISITS', payload: data })
-  //);
-  //}, []);
   return (
     <div className="App">
       <Routes>
@@ -68,6 +57,7 @@ const {user} = useSelector((store: RootState) => store.userState)
           <Route path="/doctors/:doctorId" element={<DoctorInfo />} />
           <Route path="/appoint" element={<Appointment />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/:serviceId" element={<ServiceInfo />} />
         </Route>
       </Routes>
     </div>
