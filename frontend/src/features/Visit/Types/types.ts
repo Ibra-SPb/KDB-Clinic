@@ -1,4 +1,5 @@
 export type Visit = {
+  id: number;
   userId: number,
   doctorId: number,
   serviceId: number,

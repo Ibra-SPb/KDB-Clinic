@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import tableSlice from './features/Appointment/tableSlice';
+import servisSlice from './features/service/servisSlice';
 import visitSlice from './features/Visit/visitSlice';
 // Слайсы - это отдельные модули нашего приложения. У каждого слайса - свой редьюсер.
 const store = configureStore({
@@ -8,6 +9,7 @@ const store = configureStore({
  reducer: {
    visitState: visitSlice,
    tableState: tableSlice,
+   serviceState: servisSlice
  },
 });
 // для правильной типизации будем использовать useAppDispatch вместо
