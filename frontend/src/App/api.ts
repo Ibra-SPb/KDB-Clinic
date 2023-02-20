@@ -53,7 +53,7 @@ export const checkUser = async () => {
 };
 
 export const getUsers = async (): Promise<User[]> => {
-  const res = await fetch("http://localhost:4000/api/main");
+  const res = await fetch("/api/main");
   return await res.json();
 };
 // забираем все сервисы с бэка
