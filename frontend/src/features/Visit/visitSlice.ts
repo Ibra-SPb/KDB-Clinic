@@ -18,7 +18,6 @@ const visitSlice = createSlice({
  reducers: {},
  extraReducers: (builder) => {
   builder.addCase(loadVisit.fulfilled, (state, action) => {
-    console.log(action.payload)
       state.visits = action.payload;
   })
   .addCase(loadVisit.rejected, (state, action) => {

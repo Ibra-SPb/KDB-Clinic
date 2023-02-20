@@ -1,0 +1,73 @@
+.addAppoint {
+  width: 900px;
+  border-radius: 2px solid black;
+  margin: auto;
+}
+
+.step {
+  display:flex;
+  flex-direction: row;
+}
+
+.active, .hidden {
+  width: 300px;
+  height: 30px;
+  text-align: center;
+  padding: 1em;
+}
+
+.active {
+  border-bottom: 2px solid #82c832;
+  color: #82c832;
+}
+
+.hidden {
+  color: grey;
+  opacity: 50%;
+}
+
+.choose {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input, select {
+  background: #fff;
+  padding: 0.7em;
+  margin: 15px 0;
+  width: 30%;
+  outline: none;
+  border: 0;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 1px rgb(0 0 0 / 50%);
+}
+input:focus, select:focus {
+  outline: none;
+}
+button {
+  padding: 0.7em;
+  border: 0;
+  border-radius: 2px;
+  background: #82c832;
+  color: #fff;
+  box-shadow: 1px 1px 1px rgb(0 0 0 / 50%);
+  transition: 1s;
+}
+button:hover {
+  background: #ffa742;
+  box-shadow: none;
+}
+
+.dateTime {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.dateCh {
+  width: 120px;
+  height: 60px;
+}
