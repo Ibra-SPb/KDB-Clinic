@@ -15,7 +15,6 @@ const tableSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadTable.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.service_doctors = action.payload;
       })
       .addCase(loadTable.rejected, (state, action) => {

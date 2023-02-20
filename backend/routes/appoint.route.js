@@ -1,28 +1,32 @@
-const router = require("express").Router();
-const { Visit, Doctor, Service, Service_Doctor } = require("../db/models");
+const router = require('express').Router();
+const { Visit, Doctor, Service, Service_Doctor } = require('../db/models');
 
-router.get("/visit", async (req, res) => {
+router.get('/visit', async (req, res) => {
   try {
-    const visits = await Visit.findAll({
-      include: [
-        { model: Doctor, as: "doctor" },
-        { model: Service, as: "service" },
-      ],
-    });
+    const visits = await Visit.findAll(
+      {
+        include: [
+          { model: Doctor, as: 'doctor' },
+          { model: Service, as: 'service' }
+        ]
+      }
+    );
     res.status(200).json(visits);
   } catch ({ message }) {
     res.status(500).json(message);
   }
 });
 
-router.get("/table", async (req, res) => {
+router.get('/table', async (req, res) => {
   try {
-    const visits = await Service_Doctor.findAll({
-      include: [
-        { model: Doctor, as: "doctor" },
-        { model: Service, as: "service" },
-      ],
-    });
+    const visits = await Service_Doctor.findAll(
+      {
+        include: [
+          { model: Doctor, as: 'doctor' },
+          { model: Service, as: 'service' }
+        ]
+      }
+    );
     res.status(200).json(visits);
   } catch ({ message }) {
     res.status(500).json(message);
@@ -48,12 +52,12 @@ router.post('/', async (req, res) => {
     for (let i = 1; i <= 7; i++) {
       arrDate.push({ date: new Date(date.getFullYear(), date.getMonth(), date.getDate() + i), time: time })
     }
-    console.log(arrDate)
 
     arrDate.forEach((ad) => {
       visits.filter((vs) => vs.doctor.name === doctor).forEach((vs) => {
         if (vs.date.toLocaleString() === ad.date.toLocaleString()) {
           ad.time = ad.time.filter((tm) => tm !== vs.time)
+        } else {
         }
       })
     })
@@ -73,7 +77,9 @@ router.post('/create', async (req, res) => {
     const ser = await Service.findOne({ where: { title: service } })
 
     const visit = await Visit.create({ userId: 1, doctorId: doc.id, serviceId: ser.id, date, time, status: true })
-    res.status(200).json({ visit })
+    if (visit) {
+      res.status(200).json({ status: true })
+    }
   } catch ({ message }) {
     res.status(500).json(message);
   }
