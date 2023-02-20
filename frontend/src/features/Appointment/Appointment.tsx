@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store';
+import { Doctor } from '../doctor/Type/type';
+import { Service } from '../service/Type/type';
 import './appoint.css'
+import { Service_Doctor } from './Types/types';
 
 
 const Appointment = (): JSX.Element => {
@@ -17,6 +20,7 @@ const Appointment = (): JSX.Element => {
 
   const {services} = useSelector((store:RootState)=>store.serviceState)
   const {service_doctors} = useSelector((store:RootState)=>store.tableState)
+  const {doctors} = useSelector((store:RootState)=>store.doctorState)
 
   const chooseService = async (): Promise<void> => {
     const res = await fetch('/api/appoint', {
@@ -74,8 +78,8 @@ const Appointment = (): JSX.Element => {
 
       {page === 'service' && (
         <div className='choose'>
-          <select onChange={(e) => setService(e.target.value)}>
-            {services.map((service) => 
+          <select onChange={(e) => setService(e.target.value)} >
+            {services.map((service: Service) => 
             <option key={service.id}>{service.title}</option>
             )}
           </select>
@@ -89,9 +93,20 @@ const Appointment = (): JSX.Element => {
       {page === 'doctor' && (
         <div className='choose'>
           <select onChange={(e) => setDoctor(e.target.value)}>
-            {service_doctors.filter((sd)=> sd.service.title === service).map((sd) => 
+            {service_doctors.filter((sd: Service_Doctor)=> sd.service.title === service).map((sd: Service_Doctor) => 
             <option key={sd.id}>{sd.doctor.name}</option>)}
           </select>
+            <div>
+              {doctors.filter((doc: Doctor) => doc.name === doctor).map((doc: Doctor) => 
+              <div className='doctorCard'>
+                <img src={doc.img}></img>
+                <div>
+                  <p>Врач: {doc.name}</p>
+                  <p>Специализация: {doc.specific}</p>
+                </div>
+              </div>
+              )}
+            </div>
           <div className='confirmButtons'>
             <button type='button' onClick={chooseService}>выбрать</button>
             <button onClick={() => setPage('service')}>назад</button>
@@ -119,6 +134,7 @@ const Appointment = (): JSX.Element => {
               <button type='button' onClick={() => setStatus('confirm')}>записаться</button>
               <button onClick={() => setPage('doctor')}>назад</button>
             </div>
+
             {status === 'confirm' && 
             (<div className='confirmAppointBack'>
               <div className='confirmAppoint'>
@@ -137,6 +153,7 @@ const Appointment = (): JSX.Element => {
                 </div>
               </div>
             </div>)}
+
             {status === 'ready' && (
             <div className='confirmAppointBack'>
               <div className='confirmAppoint'>
