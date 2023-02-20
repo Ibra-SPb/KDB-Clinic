@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+.allDoctorDiv {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.doctorDIv {
+  border-radius: 10px;
+  width: 25%;
+  margin-bottom: 1em;
+  padding: 1em;
+  box-sizing: border-box;
+}
+img {
+  width: 20%;
+}
