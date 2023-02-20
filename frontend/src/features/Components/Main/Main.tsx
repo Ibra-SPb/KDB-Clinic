@@ -2,13 +2,14 @@ import React from 'react';
 // import Carousel from './Carousel/Carousel';
 import Service from '../../service/Service';
 import Footer from '../Footer/Footer';
+import Carousel from './Carousel/Carousel';
 
 function Main(): JSX.Element {
 	return (
 		<div>
-			{/* <div className='container'>
+			<div className='container_carousel'>
 				<Carousel />
-			</div> */}
+			</div>
 			<div className='container main_container'>
 				<Service />
 			</div>
