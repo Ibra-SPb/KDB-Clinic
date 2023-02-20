@@ -6,6 +6,6 @@ export type Service = {
   price: string;
 };
 export type State = {
-  services: Service[],
-  error: undefined | string,
+  services: Service[];
+  error: undefined | string;
 };
