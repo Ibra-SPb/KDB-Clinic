@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import {  useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import * as api from '../../App/api';
-import { RootState } from '../../store';
+import {  RootState, useAppDispatch } from '../../store';
+import {registrUser} from './authSlice'
 
 function Registration(): JSX.Element {
   const [name, setName] = useState('');
@@ -11,24 +11,20 @@ function Registration(): JSX.Element {
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const nav = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const { user, message } = useSelector((store:RootState) => store.userState);
+  const { user } = useSelector((store: RootState) => store.userState);
+  useEffect(() => {
+    
+    if ('name' in user) {
+      nav('/');
+      }
+      }, [user]);
 
   const registr = (e:React.FormEvent<HTMLFormElement>):void => {
-    
     e.preventDefault();
-    api.registr({ name, password, email, phone, password2 }).then((data) => 
-    dispatch({
-  type: 'REG_USER',
-  payload: data
-}));
-  if (user !== null) {
-    nav('/');
-  } else {
-    document.querySelector('#error')!.innerHTML = message;
-  }
-};
+dispatch(registrUser({ name, email, password, password2, phone }));
+  };
 
   return (
     <div className="form__container">
@@ -44,6 +40,7 @@ function Registration(): JSX.Element {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
         />
         <label htmlFor="email">Email</label>
         <input
@@ -52,6 +49,7 @@ function Registration(): JSX.Element {
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
           <label htmlFor="phone">Phone</label>
         <input
@@ -60,6 +58,7 @@ function Registration(): JSX.Element {
           type="text"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
+          required
         />
         <label htmlFor="password">Password</label>
         <input
@@ -68,6 +67,7 @@ function Registration(): JSX.Element {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
         <label htmlFor="password2">Password 2</label>
         <input
@@ -76,8 +76,10 @@ function Registration(): JSX.Element {
           type="password"
           value={password2}
           onChange={(e) => setPassword2(e.target.value)}
+          required
         />
         <button type="submit">Зарегистрироваться</button>
+            <p className="error" />
       </form>
     </div>
   );

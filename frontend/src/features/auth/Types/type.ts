@@ -10,9 +10,12 @@ export type User = {
   };
    export type State = {
     user:{} | User;
-    message:'' | string;
-    users: User[];
+    error:undefined | string;
+    isAuth: boolean;
    };
   
-  
+   export type PayloadAuth = {
+    user?:User;
+    error?:string;
+   };
   

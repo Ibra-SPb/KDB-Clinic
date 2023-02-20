@@ -1,31 +1,32 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect,useState } from 'react';
+import {  useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import * as api from '../../App/api';
-import { RootState } from '../../store';
+import { RootState, useAppDispatch } from '../../store';
+import {loginUser} from './authSlice'
+import { NavLink, Outlet } from 'react-router-dom';
 
 function Authorization(): JSX.Element {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const nav = useNavigate();
-  const dispatch = useDispatch();
-  const { user, message } = useSelector((store: RootState) => store.userState);
+  const dispatch = useAppDispatch();
 
-  const login = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-    api.login( { password, email }).then((data) =>
-      dispatch({
-        type: 'LOG_USER',
-        payload: data,
-      })
-    );
-    if (user !== null) {
-      nav('/');
-    } else {
-      document.querySelector('#error')!.innerHTML = message;
+
+  const { user } = useSelector((store: RootState) => store.userState);
+  
+  useEffect(() => {
+    if ('email' in user) {
+    nav('/');
     }
+    }, [user]);
+
+  const login = (e:React.FormEvent<HTMLFormElement>):void => {
+    e.preventDefault();
+    dispatch(loginUser({ email, password }));
   };
+
   return (
+    <>
     <div className="form__container">
       <form
         className="form__body"
@@ -38,22 +39,34 @@ function Authorization(): JSX.Element {
           name="email"
           type="text"
           value={email}
+          required
           onChange={(e) => setEmail(e.target.value)}
         />
+        
         <label htmlFor="img">Пароль</label>
         <input
           id="img"
           name="password"
           type="password"
           value={password}
+          required
           onChange={(e) => setPassword(e.target.value)}
         />
 
         <button type="submit" className="button-color">
           Войти
         </button>
+        <p className="error" />
       </form>
+    <>
+              <NavLink className="nav__list-item" to="/enterPage/registration">
+               <button>Регистрация</button>
+              </NavLink>
+            </>
     </div>
+  
+
+    </>
   );
 }
 

@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ User, Doctor, Service }) {
       Visit.belongsTo(User, { foreignKey: "userId" });
       Visit.belongsTo(Doctor, { foreignKey: "doctorId" });
-      Visit.belongsTo(Service, { foreignKey: "servisId" });
+      Visit.belongsTo(Service, { foreignKey: "serviceId" });
     }
   }
   Visit.init(
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
 
-      servisId: {
+      serviceId: {
         type: DataTypes.INTEGER,
         references: {
           model: "Services",

@@ -23,7 +23,7 @@ module.exports = {
           key: "id",
         },
       },
-      servisId: {
+      serviceId: {
         type: Sequelize.INTEGER,
         references: {
           model: "Services",

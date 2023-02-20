@@ -1,9 +1,15 @@
-import { createStore, combineReducers } from 'redux';
-import { userReducer } from './features/auth/userReduser';
-import { visitReducer } from './features/Appointment/visitReducer'
+import {configureStore } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
+import userSlice from './features/auth/authSlice';
 
-const store = createStore(combineReducers({ userState: userReducer, visitState: visitReducer}));
+const store = configureStore({
+    reducer:{
+        userState: userSlice,
+    }
+})
 
+export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export type RootState = ReturnType<typeof store.getState>;
 export default store;
 
-export type RootState = ReturnType<typeof store.getState>;

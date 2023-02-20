@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
     const visits = await Visit.findAll(
 
     );
-    console.log(visits)
+
     res.status(200).json(visits);
   } catch ({ message }) {
     res.status(500).json(message);

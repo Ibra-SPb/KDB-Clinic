@@ -1,7 +1,7 @@
 export type Visit = {
   userId: number,
   doctorId: number,
-  servisId: number,
+  serviceId: number,
   date: Date,
   time: string,
   status: boolean, 
