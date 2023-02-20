@@ -13,15 +13,17 @@ import { makeStyles, ThemeProvider } from "@mui/material/styles";
 import { Box } from "@mui/system";
 import { Theme } from "../features/Components/Types/Type";
 import Service from "../features/service/Service";
-import Navigation from "../features/Components/Navigation/Navigation";
-import Main from "../features/Components/Main/Main";
-import { useDispatch, useSelector } from "react-redux";
-import SignUp from "../features/Components/Navigation/Auth/signUp";
-import SignIn from "../features/Components/Navigation/Auth/signIn";
-import { loadService } from "../features/service/serviceSlice";
+
 import { loadDoctor } from "../features/doctor/doctorSlice";
 import Doctor from "../features/doctor/Doctor";
 import DoctorInfo from "../features/doctor/doctorInfo";
+import Navigation from '../features/Components/Navigation/Navigation';
+import Main from '../features/Components/Main/Main';
+import { useDispatch, useSelector } from 'react-redux';
+import SignUp from '../features/Components/Navigation/Auth/signUp';
+import SignIn from '../features/Components/Navigation/Auth/signIn';
+import Carousel from '../features/Components/Main/Carousel/carousel';
+import { loadService } from '../features/service/servisSlice';
 // import Registration from '../features/Auth/Registration';
 // import Authorization from '../features/Auth/Authorization';
 
@@ -41,7 +43,7 @@ function App() {
   useEffect(() => {
     dispatch(loadDoctor());
   }, []);
-
+  
   //const dispatch = useDispatch();
   //useEffect(() => {
   // api

@@ -1,4 +1,5 @@
 export type Service_Doctor = {
+  id: number,
   doctorId: number,
   serviceId: number,
   service: {
