@@ -48,7 +48,7 @@ export const checkUser = async () => {
     credentials: 'include',
   });
   const data = await res.json();
-  return await data;
+  return data;
 };
 
 //забрать все приемы с бэка

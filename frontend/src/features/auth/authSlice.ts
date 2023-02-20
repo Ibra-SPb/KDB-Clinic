@@ -31,8 +31,8 @@ const initialState:State = {
     )
     export const checkUser = createAsyncThunk(
       'user/session',
-      (action:User) =>
-      api.login(action)
+      () =>
+      api.checkUser()
     )
     
    const userSlice = createSlice({
@@ -58,7 +58,9 @@ const initialState:State = {
       })
         .addCase(logoutUser.fulfilled, (state) => {   
           state.user = {};
-         
+      })
+        .addCase(checkUser.fulfilled, (state, action) =>{
+          state.user = action.payload.user;
       })
 
 

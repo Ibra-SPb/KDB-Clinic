@@ -28,7 +28,7 @@ router.post('/sign-in', async (req, res) => {
       email, phone, name, password, password2,
     } = req.body;
     try {            
-        if (email && phone && name && password ) {
+                  if (email && phone && name && password ) {
         let user = await User.findOne({ where: { email } });
         if (password !== password2) {
           return res
@@ -83,10 +83,7 @@ router.post('/sign-in', async (req, res) => {
         phone:actualUser.phone,
       };
       res.status(201).json({message:'ок', user});
-    return;
         }
-        res.clearCookie('user_sid');
-        res.json({message: 'error'})
       } catch ({message}){
         res.json({message});
       }
