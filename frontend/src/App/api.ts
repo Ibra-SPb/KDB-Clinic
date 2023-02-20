@@ -1,6 +1,7 @@
-import { Visit } from '../features/Visit/Types/types';
-import { State, Res, User } from '../features/auth/Types/type';
+import { Visit } from "../features/Visit/Types/types";
+import { State, Res, User } from "../features/auth/Types/type";
 import { Service } from "../features/service/Type/type";
+import { Doctor } from "../features/doctor/Type/type";
 
 export const registr = async (newUser: User): Promise<User> => {
   const res = await fetch("http://localhost:4000/api/auth/sign-up", {
@@ -47,20 +48,24 @@ export const getUsers = async (): Promise<User[]> => {
   const res = await fetch("http://localhost:4000/api/main");
   return await res.json();
 };
-
+// забираем все сервисы с бэка
 export const loadService = async (): Promise<Service[]> => {
   const res = await fetch("/api/service");
   return await res.json();
 };
-
+//забираем всех докторов с бэка
+export const loadDoctors = async (): Promise<Doctor[]> => {
+  const res = await fetch("/api/doctor");
+  return await res.json();
+};
 //забрать все приемы с бэка
 export const loadVisits = async (): Promise<Visit[]> => {
-  const res = await fetch('/api/appoint/visit');
+  const res = await fetch("/api/appoint/visit");
   return res.json();
 };
 
 //забрать связующую таблицу с бэка
 export const loadTables = async (): Promise<Visit[]> => {
-  const res = await fetch('/api/appoint/table');
+  const res = await fetch("/api/appoint/table");
   return res.json();
 };

@@ -5,7 +5,6 @@ import OneService from "./OneService";
 
 const Service = () => {
   const { services } = useSelector((store: RootState) => store.serviceState);
-  // console.log(services);
   
   return (
     <div>

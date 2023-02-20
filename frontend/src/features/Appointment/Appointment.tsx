@@ -10,7 +10,7 @@ const Appointment = (): JSX.Element => {
 
   const {visits} = useSelector((store:RootState)=>store.visitState)
   const {service_doctors} = useSelector((store:RootState)=>store.tableState)
-  console.log(service_doctors)
+  // console.log(service_doctors)
 
   const chooseService = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
