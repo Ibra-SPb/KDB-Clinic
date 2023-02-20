@@ -7,10 +7,11 @@ import { loadTable } from '../features/Appointment/tableSlice';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Service from '../features/service/Service';
+import ServiceInfo from "../features/service/ServiceInfo";
 import { loadDoctor } from '../features/doctor/doctorSlice';
 import Doctor from '../features/doctor/Doctor';
 import DoctorInfo from '../features/doctor/doctorInfo';
-import Carousel from '../features/Components/Main/Carousel/carousel';
+import Carousel from '../features/Components/Main/Carousel/Carousel';
 import { loadService } from '../features/service/serviceSlice';
 
 import Navbar from '../features/Navbar/Navbar';
@@ -19,44 +20,31 @@ import Registration from '../features/auth/Registration';
 import Authorization from '../features/auth/Authorization';
 import { checkUser } from '../features/auth/authSlice';
 import Main from '../features/Components/Main/Main';
-import { useSelector } from 'react-redux';
 import Contacts from '../features/Contacts/Contacts';
+import AccountMain from '../features/Account/AccountMain';
+import Profile from '../features/Account/Profile';
+import AccountVisits from '../features/Account/AccountVisits';
 
 function App() {
-const {user} = useSelector((store: RootState) => store.userState)
-  console.log(user);
-  
+
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(loadVisit());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(loadTable());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(loadService());
-  }, []);
-  useEffect(() => {
-    dispatch(loadDoctor());
-  }, []);
-  useEffect(() => {
-    dispatch(checkUser());
   }, []);
 
-  //const dispatch = useDispatch();
-  //useEffect(() => {
-  // api
-  //  .loadService()
-  //  .then((data) => dispatch({ type: "INIT_SERVICE", payload: data }));
-  //}, []);
-  //
-  //useEffect(() => {
-  //api.loadVisits().then((data) =>
-  //	dispatch({ type: 'INIT_VISITS', payload: data })
-  //);
-  //}, []);
+	useEffect(() => {
+		dispatch(loadTable());
+	}, []);
+
+useEffect(() => {
+		dispatch(loadService());
+	}, []);
+	useEffect(() => {
+		dispatch(loadDoctor());
+	}, []);
+	useEffect(() => {
+		dispatch(checkUser());
+	}, []);
   return (
     <div className="App">
       <Routes>
@@ -70,6 +58,10 @@ const {user} = useSelector((store: RootState) => store.userState)
           <Route path="/doctors/:doctorId" element={<DoctorInfo />} />
           <Route path="/appoint" element={<Appointment />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/:serviceId" element={<ServiceInfo />} />
+          <Route path="/account" element={<AccountMain />} />
+          <Route path="/account/profile" element={<Profile />} />
+          <Route path="/account/visits" element={<AccountVisits />} />
         </Route>
       </Routes>
     </div>

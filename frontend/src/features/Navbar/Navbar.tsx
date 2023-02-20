@@ -6,6 +6,7 @@ import { RootState } from '../../store';
 
 import {logoutUser} from '../auth/authSlice'
 import { useAppDispatch } from '../../store';
+import AccountMain from '../Account/AccountMain';
 
 
 
@@ -33,13 +34,12 @@ function Navbar(): JSX.Element {
           </>
           {('email' in user) ? (
             <>
-            <li>
+            <AccountMain />
+            {/* <li>
               <NavLink className="nav__list-item" to="/logout">
-                <>
               <button type='button' onClick={handlelogout}>Logout</button>
-              </>
               </NavLink>
-            </li>
+            </li> */}
             <li>Hi</li>
             </>
           ) : (
