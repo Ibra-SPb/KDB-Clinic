@@ -11,7 +11,7 @@ function OneDoctor({ oneDoctor }: { oneDoctor: Doctor }): JSX.Element {
       <div className="doctorInfo">
         <div className="oneDoctorName">{oneDoctor.name}</div>
         <p className="oneDoctorScecific">{oneDoctor.specific}</p>
-        <NavLink to={`/doctors/:${oneDoctor.id}`}>
+        <NavLink className="navlink" to={`/doctors/:${oneDoctor.id}`}>
           <p className="oneDoctorMore">подробная информация</p>
         </NavLink>
       </div>

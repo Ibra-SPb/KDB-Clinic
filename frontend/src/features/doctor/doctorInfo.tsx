@@ -1,8 +1,8 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
-import { RootState } from '../../store';
-import './DoctorInfo.scss';
+import React from "react";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { RootState } from "../../store";
+import "./DoctorInfo.scss";
 
 function DoctorInfo(): JSX.Element {
   const { doctorId } = useParams();
@@ -26,20 +26,25 @@ function DoctorInfo(): JSX.Element {
               <img className="doctor__Img" src={doc.img} alt="doctor_image" />
             </div>
             <div className="doctor__Info">
-              <div>{doc.name}</div>
-              <div>{doc.specific}</div>
+              <div className="oneDoctorName">{doc.name}</div>
 
-              <div>
+
+              <div className="oneDoctor_info">
                 Тут будет лежать какая-то дополнительная информация о докторе -
                 Где родился, где вырос, где учился, ученые степени и т.д.. Ее
                 можно прописать в сидах info, а пока что там есть только ----
                 {doc.info}
-                <div>
-                  Он обучен специальностям:
-                  {docService?.map((el) => el.service.title)}
+                <div className="oneDoctor_specific">
+                  Направлениe:{" "}
+                  {docService?.map((el) => (
+                    <div>{el.service.title}</div>
+                  ))}
                 </div>
-                <button onClick={() => navigation(-1)} type="button">
-                  Вернуться ко всем врачам
+                <button
+                  className="btnDoctors"
+                  onClick={() => navigation("/doctors")}
+                >
+                  &#10226;
                 </button>
               </div>
             </div>

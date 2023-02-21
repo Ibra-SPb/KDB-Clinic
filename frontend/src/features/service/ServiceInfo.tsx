@@ -1,7 +1,7 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
-import { RootState } from '../../store';
+import React from "react";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { RootState } from "../../store";
 
 function ServiceInfo(): JSX.Element {
   const { serviceId } = useParams();
@@ -21,11 +21,11 @@ function ServiceInfo(): JSX.Element {
               <img className="doctor__Img" src={serv.img} alt="doctor_image" />
             </div>
             <div className="doctor__Info">
-              <div>{serv.title}</div>
+              <div className="oneServiceTitle">{serv.title}</div>
               <div>{serv.body}</div>
               <div>{serv.price}</div>
-              <button onClick={() => navigation(-1)} type="button">
-                На главную
+              <button className="btnDoctors" onClick={() => navigation("/")}>
+                &#10226;
               </button>
             </div>
           </div>
