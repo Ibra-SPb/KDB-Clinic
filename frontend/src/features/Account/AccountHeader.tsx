@@ -12,9 +12,9 @@ export default function AccountHeader(): JSX.Element {
         </a>
       </div>
       <div className="account__nickname">
-        <img className='account__image' src="../../../image/account_icon.png" alt="account_icon"/>
+        <img className="account__image" src="../../../IMG/account_icon.png" alt="account_icon" />
         <div>{/* {user.name} */}</div>
-        <button type="button" className='account__appointment'>Записаться на приём</button>
+        <button type="button" className="account__appointment">Записаться на приём</button>
       </div>
     </div>
   );

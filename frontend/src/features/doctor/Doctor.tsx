@@ -1,12 +1,11 @@
-import { log } from "console";
-import React from "react";
-import { useSelector } from "react-redux";
-import { Route, useNavigate } from "react-router-dom";
-import { RootState } from "../../store";
-import OneDoctor from "./OneDoctor";
-import "./Doctorstyle.scss";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { RootState } from '../../store';
+import OneDoctor from './OneDoctor';
+import './Doctorstyle.scss';
 
-const Doctor = () => {
+function Doctor(): JSX.Element {
   const { doctors } = useSelector((store: RootState) => store.doctorState);
   const navigation = useNavigate();
   return (
@@ -21,6 +20,6 @@ const Doctor = () => {
       </button>
     </>
   );
-};
+}
 
 export default Doctor;

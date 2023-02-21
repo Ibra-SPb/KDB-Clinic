@@ -1,24 +1,25 @@
-import { Visit } from "../features/Visit/Types/types";
-import { Service } from "../features/service/Type/type";
-import { Doctor } from "../features/doctor/Type/type";
-import { PayloadAuth, Res, User } from '../features/auth/Types/type';
+import { Visit } from '../features/Visit/Types/types';
+import { Service } from '../features/service/Type/type';
+import { Doctor } from '../features/doctor/Type/type';
+import { PayloadAuth, User } from '../features/auth/Types/type';
+import { Service_Doctor } from '../features/Appointment/Types/types';
 
 export const registr = async (newUser: User): Promise<PayloadAuth> => {
-  const res = await fetch("/api/auth/sign-up", {
-    method: "POST",
+  const res = await fetch('/api/auth/sign-up', {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     credentials: 'include',
     body: JSON.stringify({
-     name:newUser.name,
-     email:newUser.email,
-     phone:newUser.phone,
-     password:newUser.password,
-     password2:newUser.password2
+      name: newUser.name,
+      email: newUser.email,
+      phone: newUser.phone,
+      password: newUser.password,
+      password2: newUser.password2,
     }),
   });
-  return await res.json();
+  return res.json();
 };
 
 export const login = async (item: User): Promise<PayloadAuth> => {
@@ -32,48 +33,49 @@ export const login = async (item: User): Promise<PayloadAuth> => {
     }),
   });
 
-  return await res.json()
+  return res.json();
 };
 
-export const logout = async () => {
+export const logout = async (): Promise<PayloadAuth> => {
   const res = await fetch('/api/auth/logout', {
-    method: 'DELETE'
+    method: 'DELETE',
   });
   if (!res.ok) {
-    throw new Error('Oшибка')
+    throw new Error('Oшибка');
   }
+  return res.json();
 };
 
-export const checkUser = async () => {
+export const checkUser = async (): Promise<PayloadAuth> => {
   const res = await fetch('/api/auth/session', {
     credentials: 'include',
   });
   const data = await res.json();
-  return await data;
+  return data;
 };
 
 export const getUsers = async (): Promise<User[]> => {
-  const res = await fetch("http://localhost:4000/api/main");
-  return await res.json();
+  const res = await fetch('/api/main');
+  return res.json();
 };
 // забираем все сервисы с бэка
 export const loadService = async (): Promise<Service[]> => {
-  const res = await fetch("/api/service");
-  return await res.json();
+  const res = await fetch('/api/service');
+  return res.json();
 };
-//забираем всех докторов с бэка
+// забираем всех докторов с бэка
 export const loadDoctors = async (): Promise<Doctor[]> => {
-  const res = await fetch("/api/doctor");
-  return await res.json();
+  const res = await fetch('/api/doctor');
+  return res.json();
 };
-//забрать все приемы с бэка
+// забрать все приемы с бэка
 export const loadVisits = async (): Promise<Visit[]> => {
-  const res = await fetch("/api/appoint/visit");
+  const res = await fetch('/api/appoint/visit');
   return res.json();
 };
 
-//забрать связующую таблицу с бэка
-export const loadTables = async (): Promise<Visit[]> => {
-  const res = await fetch("/api/appoint/table");
+// забрать связующую таблицу с бэка
+export const loadTables = async (): Promise<Service_Doctor[]> => {
+  const res = await fetch('/api/appoint/table');
   return res.json();
 };

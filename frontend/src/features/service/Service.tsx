@@ -1,9 +1,9 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
-import OneService from "./OneService";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
+import OneService from './OneService';
 
-const Service = () => {
+function Service(): JSX.Element {
   const { services } = useSelector((store: RootState) => store.serviceState);
 
   return (
@@ -13,6 +13,6 @@ const Service = () => {
       ))}
     </div>
   );
-};
+}
 
 export default Service;

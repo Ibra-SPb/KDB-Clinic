@@ -1,17 +1,17 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { State } from "./Type/type";
-import * as api from "../../App/api";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { State } from './Type/type';
+import * as api from '../../App/api';
 
 const initialState: State = {
   services: [],
   error: undefined,
 };
-export const loadService = createAsyncThunk("allservices", () =>
+export const loadService = createAsyncThunk('allservices', () =>
   api.loadService()
 );
 
 const serviceSlice = createSlice({
-  name: "service",
+  name: 'service',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
