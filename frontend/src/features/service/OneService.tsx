@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Service } from './Type/type';
+import './OneServiceStyle.scss';
 
 function OneService({ oneService }: { oneService: Service }): JSX.Element {
   return (

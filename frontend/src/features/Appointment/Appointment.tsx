@@ -6,6 +6,7 @@ import { Doctor } from '../doctor/Type/type';
 import { Service } from '../service/Type/type';
 import './appoint.css';
 import { Service_Doctor } from './Types/types';
+import './AppointmetStyle.scss';
 
 function Appointment(): JSX.Element {
   const [page, setPage] = useState('service');
@@ -239,7 +240,11 @@ function Appointment(): JSX.Element {
                       </p>
                       <p> {timeCh}</p>
                     </div>
-                    <button type="button" onClick={() => navigate('/')}>
+                    <button
+                      className="main_page_btn"
+                      type="button"
+                      onClick={() => navigate('/')}
+                    >
                       вернуться на главную
                     </button>
                   </div>

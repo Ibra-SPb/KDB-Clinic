@@ -2,13 +2,17 @@ a {
   text-decoration: none;
 }
 
-// .auth_btns {
-//   position: absolute;
-//   right: 0;
-//   margin-right: 20px;
-// }
+.auth_btns {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+}
 
 .navbar_btn {
   display: flex;
   justify-content: column;
+}
+.container-fluid {
+  background-color: #bee6a8 !important;
+  height: 90px;
 }
