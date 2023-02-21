@@ -19,9 +19,7 @@ function Appointment(): JSX.Element {
   const navigate = useNavigate();
 
   const { services } = useSelector((store: RootState) => store.serviceState);
-  const { serviceDoctors } = useSelector(
-    (store: RootState) => store.tableState
-  );
+  const { serviceDoctors } = useSelector((store: RootState) => store.tableState);
   const { doctors } = useSelector((store: RootState) => store.doctorState);
 
   const chooseService = async (): Promise<void> => {
@@ -36,9 +34,11 @@ function Appointment(): JSX.Element {
       }),
     });
     const data = await res.json();
+
     data.arrDate.forEach((dt: any) => {
       dt.date = new Date(dt.date);
     });
+
     setDate(data.arrDate);
     setPage('date');
   };
@@ -112,8 +112,7 @@ function Appointment(): JSX.Element {
             <div className="choose">
               <select onChange={(e) => setDoctor(e.target.value)}>
                 <option>Выберите врача</option>
-                {serviceDoctors
-                  .filter((sd: Service_Doctor) => sd.service.title === service)
+                {serviceDoctors.filter((sd: Service_Doctor) => sd.service.title === service)
                   .map((sd: Service_Doctor) => (
                     <option key={sd.id}>{sd.doctor.name}</option>
                   ))}

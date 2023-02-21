@@ -5,7 +5,7 @@ import * as api from '../../App/api';
 // начальный state
 const initialState: State = { stocks: [], error: undefined };
 
-export const loadStock = createAsyncThunk('alltables', () => api.loadStocks());
+export const loadStock = createAsyncThunk('allstocks', () => api.loadStocks());
 
 // обявляем slice с именем “counter”
 const stockSlice = createSlice({
