@@ -8,11 +8,16 @@ a {
   margin-right: 20px;
 }
 
-.navbar_btn {
-  display: flex;
-  justify-content: column;
-}
+// .navbar_btn {
+//   display: flex;
+//   max-width: 100%;
+//   justify-content: space-between;
+//   background-color: aqua;
+// }
 .container-fluid {
+  display: flex !important;
+  justify-content: space-between !important;
+  max-width: 100%;
   background-color: #bee6a8 !important;
   height: 90px;
 }
