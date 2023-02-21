@@ -80,6 +80,7 @@ function Registration(): JSX.Element {
           </label>
           <input
             id="password"
+            placeholder="Ваш пароль"
             name="password"
             type="password"
             value={password}
@@ -94,6 +95,7 @@ function Registration(): JSX.Element {
           </label>
           <input
             id="password2"
+            placeholder="Повторите пароль"
             name="password2"
             type="password"
             value={password2}
