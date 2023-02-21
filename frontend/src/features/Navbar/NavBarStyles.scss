@@ -1,32 +1,22 @@
-.nav__list {
+a {
+  text-decoration: none;
+}
+
+.auth_btns {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+}
+
+.navbar_btn {
   display: flex;
-  justify-content: space-between;
-  margin-top: auto;
-  background-color: green !important;
-  color: orange;
-  height: 120px;
-  font-family: 'Roboto';
-  // text-align: start;
+  justify-content: column;
 }
-.nav__container {
-  background-color: green !important;
-  color: red !important;
-  font-family: 'Roboto';
+.container-fluid {
+  background-color: #bee6a8 !important;
+  height: 90px;
 }
-.KDN_title {
-  color: orange;
-  margin-left: 90px;
-  margin-right: 90px;
-  margin-top: 40px;
-}
-.lk_style {
-  color: orange;
-  margin-left: 90px;
-  margin-right: 90px;
-  margin-top: 40px;
-}
-.menu_buttons {
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: row;
+.dropdown-menu {
+  background-color: #fbe7c2;
+  font-size: 20px;
 }

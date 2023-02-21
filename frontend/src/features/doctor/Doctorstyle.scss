@@ -31,6 +31,8 @@
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
+  border-color: #ffa500;
+  border: 10px;
 }
 .container {
   width: 1300px;
@@ -54,7 +56,7 @@
   font-size: 0.9em;
   line-height: 19px;
   letter-spacing: 0.02em;
-  color: #7d8694;
+  color: #373737;
   height: 40px;
   box-sizing: border-box;
   display: flex;
