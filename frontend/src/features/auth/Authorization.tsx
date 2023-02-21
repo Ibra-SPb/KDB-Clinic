@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate, NavLink } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../store';
 import { loginUser } from './authSlice';
+import './AuthorizationStyles.scss';
 
 function Authorization(): JSX.Element {
   const [email, setEmail] = useState('');
@@ -24,39 +25,40 @@ function Authorization(): JSX.Element {
   };
 
   return (
-    <div className="form__container">
-      <form
-        className="form__body"
-        style={{ display: 'flex', flexDirection: 'column' }}
-        onSubmit={login}
-      >
-        <label htmlFor="type">Почта</label>
-        <input
-          id="type"
-          name="email"
-          type="text"
-          value={email}
-          required
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <label htmlFor="img">Пароль</label>
-        <input
-          id="img"
-          name="password"
-          type="password"
-          value={password}
-          required
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <button type="submit" className="button-color">
+    <div className="form__container input_div_form">
+      <form onSubmit={login} className="input_form">
+        <div className="mb-3 input_form">
+          <label htmlFor="exampleInputEmail1" className="form-label">
+            Введите вашу почту
+          </label>
+          <input
+            type="email"
+            className="form-control input_login"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="exampleInputPassword1" className="form-label">
+            Введите пароль
+          </label>
+          <input
+            type="password"
+            className="form-control input_login"
+            id="exampleInputPassword1"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button type="submit" className="log_btn">
           Войти
         </button>
-        <p className="error" />
       </form>
+      <span>или</span>
       <NavLink className="nav__list-item" to="/enterPage/registration">
-        <button type="button">Регистрация</button>
+        <button type="button" className="reg_btn">
+          Зарегистрироваться
+        </button>
       </NavLink>
     </div>
   );
