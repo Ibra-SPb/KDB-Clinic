@@ -20,7 +20,7 @@ function Doctor(): JSX.Element {
         onClick={() => navigation(-1)}
         type="button"
       >
-        Вернуться на главную
+        На главную страницу
       </button>
     </>
   );

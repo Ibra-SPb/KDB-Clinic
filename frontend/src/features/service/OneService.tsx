@@ -14,7 +14,7 @@ function OneService({ oneService }: { oneService: Service }): JSX.Element {
 
         <div>{oneService.price}</div>
         <NavLink to={`/:${oneService.id}`}>
-          <p className="random3">Подробнее</p>
+          <p className="main_page_btn">Подробнее</p>
         </NavLink>
       </div>
     </div>

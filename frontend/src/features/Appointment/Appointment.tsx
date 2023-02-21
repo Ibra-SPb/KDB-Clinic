@@ -245,7 +245,7 @@ function Appointment(): JSX.Element {
                       type="button"
                       onClick={() => navigate('/')}
                     >
-                      вернуться на главную
+                      На главную
                     </button>
                   </div>
                 </div>

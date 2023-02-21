@@ -24,8 +24,12 @@ function ServiceInfo(): JSX.Element {
               <div>{serv.title}</div>
               <div>{serv.body}</div>
               <div>{serv.price}</div>
-              <button onClick={() => navigation('/')} type="button">
-                На главную
+              <button
+                className="main_page_btn"
+                onClick={() => navigation('/')}
+                type="button"
+              >
+                На главную страницу
               </button>
             </div>
           </div>
