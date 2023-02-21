@@ -1,15 +1,15 @@
 // features/counter/counterSlice.ts
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { State } from "./Types/types";
-import * as api from "../../App/api";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { State } from './Types/types';
+import * as api from '../../App/api';
 // начальный state
 const initialState: State = { visits: [], error: undefined };
 
-export const loadVisit = createAsyncThunk("allvisits", () => api.loadVisits());
+export const loadVisit = createAsyncThunk('allvisits', () => api.loadVisits());
 
 // обявляем slice с именем “counter”
 const visitSlice = createSlice({
-  name: "visit",
+  name: 'visit',
   initialState,
   reducers: {},
   extraReducers: (builder) => {

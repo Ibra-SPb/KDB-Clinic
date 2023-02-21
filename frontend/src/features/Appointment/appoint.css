@@ -8,15 +8,16 @@
 }
 
 .addAppoint .step {
-  display:flex;
+  display: flex;
   flex-direction: row;
   margin-bottom: 50px;
 }
 
-.addAppoint .active, .hidden {
+.addAppoint .active,
+.hidden {
   width: 300px;
   height: 50px;
-  text-align:center;
+  text-align: center;
   padding: 1em;
 }
 
@@ -37,27 +38,28 @@
   align-items: center;
 }
 
-.addAppoint .doctorCard{
+.addAppoint .doctorCard {
   width: 500px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 50px 0; 
+  margin: 50px 0;
 }
 
-.doctorCard div{
+.doctorCard div {
   display: flex;
   flex-direction: column;
 }
 
-.doctorCard img{
+.doctorCard img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.addAppoint input, select {
+.addAppoint input,
+select {
   background: #fff;
   padding: 0.7em;
   margin: 15px 0;
@@ -68,7 +70,8 @@
   box-sizing: border-box;
   box-shadow: 1px 1px 1px rgb(0 0 0 / 50%);
 }
-.addAppoint input:focus, select:focus {
+.addAppoint input:focus,
+select:focus {
   outline: none;
 }
 .addAppoint button {
@@ -86,7 +89,7 @@
 }
 
 .addAppoint .confirmButtons {
-  display:flex;
+  display: flex;
   flex-direction: row;
   gap: 5px;
 }
@@ -102,21 +105,21 @@
 .addAppoint .dateCh {
   width: 120px;
   height: 60px;
-  background-color: rgb(183,231,57, 0.8);
+  background-color: rgb(183, 231, 57, 0.8);
   box-shadow: 3px 3px 3px rgb(0 0 0 / 30%);
   border-radius: 3px;
   border-top-right-radius: 10px;
-  color:#fff;
+  color: #fff;
 }
 
 .dateTimeOne {
-  display:flex;
+  display: flex;
   flex-direction: row;
   gap: 100px;
 }
 
 .timeCh {
-  display:flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
   gap: 10px;
@@ -130,28 +133,27 @@
 }
 
 .timeCh div:hover {
-  border: 1px solid rgb(255, 167, 66,  0.5);
+  border: 1px solid rgb(255, 167, 66, 0.5);
 }
 
 .dateChoose {
   width: 120px;
   height: 60px;
-  background-color: rgb(255,167,66, 0.8);
+  background-color: rgb(255, 167, 66, 0.8);
   box-shadow: 3px 3px 3px rgb(0 0 0 / 30%);
   border-radius: 3px;
   border-top-right-radius: 10px;
-  color:#fff;
+  color: #fff;
 }
 
 .timeChoose {
-  border: 2px solid rgb(255, 167, 66,  0.5);
-  color:#ffa742;
+  border: 2px solid rgb(255, 167, 66, 0.5);
+  color: #ffa742;
 }
 
 .timeNone {
   border: 1px solid rgb(128, 128, 128, 0.5);
 }
-
 
 .confirmAppointBack {
   background: rgba(0, 0, 0, 0.7);

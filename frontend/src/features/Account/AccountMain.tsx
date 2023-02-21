@@ -4,7 +4,7 @@ import { useAppDispatch } from '../../store';
 import { logoutUser } from '../auth/authSlice';
 import AccountHeader from './AccountHeader';
 
-export default function AccountMain() {
+export default function AccountMain(): JSX.Element {
   const dispatch = useAppDispatch();
 
   const handlelogout = (): void => {

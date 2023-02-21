@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export type Service_Doctor = {
   id: number,
   doctorId: number,
@@ -12,9 +13,9 @@ export type Service_Doctor = {
     img: string,
     info: string,
   },
-}
+};
 
 export type State = {
-  service_doctors: Service_Doctor[],
+  serviceDoctors: Service_Doctor[],
   error: undefined | string,
-}
+};

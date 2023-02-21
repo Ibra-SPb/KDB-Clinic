@@ -1,18 +1,16 @@
 import React, { useEffect } from 'react';
-import * as api from './api';
-import { RootState, useAppDispatch } from '../store';
+import { Route, Routes } from 'react-router-dom';
+import { useAppDispatch } from '../store';
 import Appointment from '../features/Appointment/Appointment';
 import { loadVisit } from '../features/Visit/visitSlice';
 import { loadTable } from '../features/Appointment/tableSlice';
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
 import Service from '../features/service/Service';
-import ServiceInfo from "../features/service/ServiceInfo";
+import ServiceInfo from '../features/service/ServiceInfo';
 import { loadDoctor } from '../features/doctor/doctorSlice';
 import Doctor from '../features/doctor/Doctor';
 import DoctorInfo from '../features/doctor/doctorInfo';
 import { loadService } from '../features/service/serviceSlice';
-
 import Navbar from '../features/Navbar/Navbar';
 import NotFound from '../features/NotFound/NotFound';
 import Registration from '../features/auth/Registration';
@@ -25,34 +23,33 @@ import Profile from '../features/Account/Profile';
 import AccountVisits from '../features/Account/AccountVisits';
 import Footer from '../features/Components/Footer/Footer';
 
-function App() {
+function App(): JSX.Element {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(loadVisit());
+  }, []);
 
-	const dispatch = useAppDispatch();
-	useEffect(() => {
-		dispatch(loadVisit());
-	}, []);
+  useEffect(() => {
+    dispatch(loadTable());
+  }, []);
 
-	useEffect(() => {
-		dispatch(loadTable());
-	}, []);
+  useEffect(() => {
+    dispatch(loadService());
+  }, []);
+  useEffect(() => {
+    dispatch(loadDoctor());
+  }, []);
+  useEffect(() => {
+    dispatch(checkUser());
+  }, []);
 
-	useEffect(() => {
-		dispatch(loadService());
-	}, []);
-	useEffect(() => {
-		dispatch(loadDoctor());
-	}, []);
-	useEffect(() => {
-		dispatch(checkUser());
-	}, []);
-  
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Navbar />}>
           <Route index element={<Main />} />
-          <Route index element={<Service />} />
-          <Route path="/contacts" element={<Contacts/>} />
+          <Route path="/services" element={<Service />} />
+          <Route path="/contacts" element={<Contacts />} />
           <Route path="/enterPage" element={<Authorization />} />
           <Route path="/enterPage/registration" element={<Registration />} />
           <Route path="/doctors" element={<Doctor />} />

@@ -1,17 +1,17 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { State } from "./Type/type";
-import * as api from "../../App/api";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { State } from './Type/type';
+import * as api from '../../App/api';
 
 const initialState: State = {
   doctors: [],
   error: undefined,
 };
-export const loadDoctor = createAsyncThunk("alldoctors", () =>
+export const loadDoctor = createAsyncThunk('alldoctors', () =>
   api.loadDoctors()
 );
 
 const doctorSlice = createSlice({
-  name: "doctor",
+  name: 'doctor',
   initialState,
   reducers: {},
   extraReducers: (builder) => {

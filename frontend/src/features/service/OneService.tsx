@@ -1,14 +1,12 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
-import { RootState } from "../../store";
-import { Service } from "./Type/type";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { Service } from './Type/type';
 
-const OneService = ({ oneService }: { oneService: Service }) => {
+function OneService({ oneService }: { oneService: Service }): JSX.Element {
   return (
     <div className="doctorDIv">
       <div className="doctorImg">
-        <img className="photo" src={oneService.img}></img>
+        <img className="photo" src={oneService.img} alt="doctor_image" />
       </div>
       <div className="doctorInfo">
         <div className="oneDoctorName">{oneService.title}</div>
@@ -20,6 +18,6 @@ const OneService = ({ oneService }: { oneService: Service }) => {
       </div>
     </div>
   );
-};
+}
 
 export default OneService;

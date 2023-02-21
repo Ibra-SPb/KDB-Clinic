@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
-import { RootState } from "../../store";
-import { Service } from "./Type/type";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { RootState } from '../../store';
 
-const ServiceInfo = (): JSX.Element => {
+function ServiceInfo(): JSX.Element {
   const { serviceId } = useParams();
 
   const navigation = useNavigate();
@@ -14,12 +13,12 @@ const ServiceInfo = (): JSX.Element => {
   );
 
   return (
-    <>
+    <div>
       {serv && (
         <div className="allDoctor__container container">
           <div className="doctor__Item">
             <div className="doctor__Photo">
-              <img className="doctor__Img" src={serv.img}></img>
+              <img className="doctor__Img" src={serv.img} alt="doctor_image" />
             </div>
             <div className="doctor__Info">
               <div>{serv.title}</div>
@@ -32,7 +31,7 @@ const ServiceInfo = (): JSX.Element => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
-};
+}
 export default ServiceInfo;

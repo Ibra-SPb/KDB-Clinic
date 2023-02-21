@@ -1,5 +1,4 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
 import './Account.scss';
 
 export default function AccountVisits(): JSX.Element {
@@ -14,9 +13,9 @@ export default function AccountVisits(): JSX.Element {
             Записаться
           </button> */}
         </div>
-        <div className='visits__table'>
+        <div className="visits__table">
           <table>
-            <tr className='visits__table__head'>
+            <tr className="visits__table__head">
               <th>Врач</th>
               <th>Услуга</th>
               <th>Дата приёма</th>

@@ -1,10 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
+import { configureStore } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
 import userSlice from './features/auth/authSlice';
-import tableSlice from "./features/Appointment/tableSlice";
-import doctorSlice from "./features/doctor/doctorSlice";
-import serviceSlice from "./features/service/serviceSlice";
-import visitSlice from "./features/Visit/visitSlice";
+import tableSlice from './features/Appointment/tableSlice';
+import doctorSlice from './features/doctor/doctorSlice';
+import serviceSlice from './features/service/serviceSlice';
+import visitSlice from './features/Visit/visitSlice';
 // Слайсы - это отдельные модули нашего приложения. У каждого слайса - свой редьюсер.
 const store = configureStore({
   // теперь функция combineReducers не нужна

@@ -1,33 +1,32 @@
 .clinic_photo {
-    width: 50%;
+  width: 50%;
 }
 .map {
-    width: 100%;
-    height: 400px;
-
+  width: 100%;
+  height: 400px;
 }
 .map div {
-    width: 100% !important;
-    height: 400px !important;
+  width: 100% !important;
+  height: 400px !important;
 }
 .contacts {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 3em auto 3em;
-    width: 80%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 3em auto 3em;
+  width: 80%;
 }
 .clinic_info {
-    width: 44%;
-    display: flex;
-    flex-direction:column;
-    justify-content: start;
+  width: 44%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
 }
 .clinic_info {
-    h3{
-        text-align: left;   
-    }
-    p{
-        text-align: left;
-    }
+  h3 {
+    text-align: left;
+  }
+  p {
+    text-align: left;
+  }
 }
