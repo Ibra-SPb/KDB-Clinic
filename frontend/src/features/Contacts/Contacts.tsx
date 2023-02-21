@@ -12,7 +12,7 @@ function Contacts(): JSX.Element {
   return (
     <div className="clinic_cont">
       <div className="map">
-        <YMaps>
+        {/* <YMaps>
           <Map
             defaultState={{
               center: [59.965124, 30.31567],
@@ -23,7 +23,7 @@ function Contacts(): JSX.Element {
             <FullscreenControl options={{ float: 'left' }} />
             <ZoomControl options={{ float: 'left' }} />
           </Map>
-        </YMaps>
+        </YMaps> */}
       </div>
       <div className="contacts">
         <img className="clinic_photo" src="/IMG/tolstoy_2.jpg" alt="" />

@@ -22,6 +22,8 @@ import AccountMain from '../features/Account/AccountMain';
 import Profile from '../features/Account/Profile';
 import AccountVisits from '../features/Account/AccountVisits';
 import Footer from '../features/Components/Footer/Footer';
+import { loadStock } from '../features/Stock/stockSlice';
+import Stocks from '../features/Stock/Stocks';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -42,6 +44,9 @@ function App(): JSX.Element {
   useEffect(() => {
     dispatch(checkUser());
   }, []);
+  useEffect(() => {
+    dispatch(loadStock());
+  }, []);
 
   return (
     <div className="App">
@@ -60,6 +65,7 @@ function App(): JSX.Element {
           <Route path="/account" element={<AccountMain />} />
           <Route path="/account/profile" element={<Profile />} />
           <Route path="/account/visits" element={<AccountVisits />} />
+          <Route path="/stocks" element={<Stocks />} />
         </Route>
       </Routes>
       <Footer />
