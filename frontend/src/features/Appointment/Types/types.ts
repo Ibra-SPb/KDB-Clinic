@@ -10,7 +10,7 @@ export type Service_Doctor = {
   doctor: {
     name: string,
     specific: string,
-    img: string,
+    img?: string,
     info: string,
   },
 };

@@ -10,6 +10,7 @@ import ServiceInfo from '../features/service/ServiceInfo';
 import { loadDoctor } from '../features/doctor/doctorSlice';
 import Doctor from '../features/doctor/Doctor';
 import DoctorInfo from '../features/doctor/doctorInfo';
+import Carousel from '../features/Components/Main/Carousel/carousel';
 import { loadService } from '../features/service/serviceSlice';
 import Navbar from '../features/Navbar/Navbar';
 import NotFound from '../features/NotFound/NotFound';

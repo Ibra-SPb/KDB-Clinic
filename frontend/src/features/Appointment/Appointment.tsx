@@ -70,66 +70,49 @@ function Appointment(): JSX.Element {
   };
 
   return (
-    <div className="appointContainer">
-      <form onSubmit={appointMake} className="addAppoint">
-        <div className="step">
-          <div className={page === 'service' ? 'active' : 'hidden'}>
-            Выберите услугу
-          </div>
-          <div className={page === 'doctor' ? 'active' : 'hidden'}>
-            Выберите доктора
-          </div>
-          <div className={page === 'date' ? 'active' : 'hidden'}>
-            Выберите время
-          </div>
+    <>
+    <div className='appointContainer'>
+      <form onSubmit={appointMake} className='addAppoint'>
+      <div className = 'step'>
+        <div className={page === 'service' ? 'active' : 'hidden'}>Выберите услугу</div>
+        <div className={page === 'doctor' ? 'active' : 'hidden'}>Выберите доктора</div>
+        <div className={page === 'date' ? 'active' : 'hidden'}>Выберите время</div>
+      </div>
+
+      {page === 'service' && (
+        <div className='choose'>
+          <select onChange={(e) => setService(e.target.value)} >
+            <option>Выберите услугу</option>
+            {services.map((service: Service) => 
+            <option key={service.id} value={service.title}>{service.title}</option>
+            )}
+          </select>
+        <div className='confirmButtons'>
+          {service.length > 0 && service !=='Выберите услугу' && <button onClick={() => setPage('doctor')}>выбрать</button>}
+          <button onClick={() => navigate(-1)}>назад</button>
         </div>
-
-        {page === 'service' && (
-          <div className="choose">
-            <select onChange={(e) => setService(e.target.value)}>
-              {services.map((oneService: Service) => (
-                <option key={oneService.id}>{oneService.title}</option>
-              ))}
-            </select>
-            <div className="confirmButtons">
-              <button type="button" onClick={() => setPage('doctor')}>
-                выбрать
-              </button>
-              <button type="button" onClick={() => navigate(-1)}>
-                назад
-              </button>
-            </div>
-          </div>
-        )}
-
-        {page === 'doctor' && (
-          <div className="choose">
-            <select onChange={(e) => setDoctor(e.target.value)}>
-              {serviceDoctors
-                .filter((sd: Service_Doctor) => sd.service.title === service)
-                .map((sd: Service_Doctor) => (
-                  <option key={sd.id}>{sd.doctor.name}</option>
-                ))}
-            </select>
+        </div>
+      {page === 'doctor' && (
+        <div className='choose'>
+          <select onChange={(e) => setDoctor(e.target.value)}>
+            <option>Выберите врача</option>
+            {serviceDoctors.filter((sd: Service_Doctor)=> sd.service.title === service).map((sd: Service_Doctor) => 
+            <option key={sd.id}>{sd.doctor.name}</option>)}
+          </select>
             <div>
-              {doctors
-                .filter((doc: Doctor) => doc.name === doctor)
-                .map((doc: Doctor) => (
-                  <div className="doctorCard">
-                    <img src={doc.img} alt="image_doctor" />
-                    <div>
-                      <p>Врач: {doc.name}</p>
-                      <p>Специализация: {doc.specific}</p>
-                    </div>
-                  </div>
-                ))}
+              {doctors.filter((doc: Doctor) => doc.name === doctor).map((doc: Doctor) => 
+              <div className='doctorCard'>
+                <img src={doc.img}></img>
+                <div>
+                  <p>Врач: {doc.name}</p>
+                  <p>Специализация: {doc.specific}</p>
+                </div>
+              </div>
+              )}
             </div>
-            <div className="confirmButtons">
-              <button type="button" onClick={chooseService}>
-                выбрать
-              </button>
-              <button type="button" onClick={() => setPage('service')}>назад</button>
-            </div>
+          <div className='confirmButtons'>
+            {doctor.length> 0 && doctor !=='Выберите врача' && <button type='button' onClick={chooseService}>выбрать</button>}
+            <button onClick={() => setPage('service')}>назад</button>
           </div>
         )}
 
@@ -166,12 +149,10 @@ function Appointment(): JSX.Element {
                 </div>
               ))}
             </div>
-            <div className="confirmButtons">
-              <button type="button" onClick={() => setStatus('confirm')}>
-                записаться
-              </button>
-              <button type="button" onClick={() => setPage('doctor')}>назад</button>
-            </div>
+            <div className='confirmButtons'>
+              {timeCh.length > 0 && <button type='button' onClick={() => setStatus('confirm')}>записаться</button>}
+              <button onClick={() => setPage('doctor')}>назад</button>
+              </div>
 
             {status === 'confirm' && (
               <div className="confirmAppointBack">
