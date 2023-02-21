@@ -79,12 +79,13 @@ const Appointment = (): JSX.Element => {
       {page === 'service' && (
         <div className='choose'>
           <select onChange={(e) => setService(e.target.value)} >
+            <option>Выберите услугу</option>
             {services.map((service: Service) => 
-            <option key={service.id}>{service.title}</option>
+            <option key={service.id} value={service.title}>{service.title}</option>
             )}
           </select>
         <div className='confirmButtons'>
-          <button onClick={() => setPage('doctor')}>выбрать</button>
+          {service.length > 0 && service !=='Выберите услугу' && <button onClick={() => setPage('doctor')}>выбрать</button>}
           <button onClick={() => navigate(-1)}>назад</button>
         </div>
         </div>
@@ -93,6 +94,7 @@ const Appointment = (): JSX.Element => {
       {page === 'doctor' && (
         <div className='choose'>
           <select onChange={(e) => setDoctor(e.target.value)}>
+            <option>Выберите врача</option>
             {service_doctors.filter((sd: Service_Doctor)=> sd.service.title === service).map((sd: Service_Doctor) => 
             <option key={sd.id}>{sd.doctor.name}</option>)}
           </select>
@@ -108,7 +110,7 @@ const Appointment = (): JSX.Element => {
               )}
             </div>
           <div className='confirmButtons'>
-            <button type='button' onClick={chooseService}>выбрать</button>
+            {doctor.length> 0 && doctor !=='Выберите врача' && <button type='button' onClick={chooseService}>выбрать</button>}
             <button onClick={() => setPage('service')}>назад</button>
           </div>
         </div>
@@ -131,7 +133,7 @@ const Appointment = (): JSX.Element => {
               )}
             </div>
             <div className='confirmButtons'>
-              <button type='button' onClick={() => setStatus('confirm')}>записаться</button>
+              {timeCh.length > 0 && <button type='button' onClick={() => setStatus('confirm')}>записаться</button>}
               <button onClick={() => setPage('doctor')}>назад</button>
             </div>
 

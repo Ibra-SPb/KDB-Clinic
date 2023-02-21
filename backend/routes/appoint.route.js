@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Visit, Doctor, Service, Service_Doctor } = require('../db/models');
+const { Visit, Doctor, Service, Service_Doctor, User } = require('../db/models');
 
 router.get('/visit', async (req, res) => {
   try {
@@ -75,8 +75,9 @@ router.post('/create', async (req, res) => {
 
     const doc = await Doctor.findOne({ where: { name: doctor } })
     const ser = await Service.findOne({ where: { title: service } })
+    const user = await User.findOne({ where: { id: req.session.userId } })
 
-    const visit = await Visit.create({ userId: 1, doctorId: doc.id, serviceId: ser.id, date, time, status: true })
+    const visit = await Visit.create({ userId: user.id, doctorId: doc.id, serviceId: ser.id, date, time, status: true })
     if (visit) {
       res.status(200).json({ status: true })
     }
