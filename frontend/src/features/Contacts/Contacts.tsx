@@ -8,11 +8,20 @@ import {
 } from 'react-yandex-maps';
 import './Contacts.scss';
 
+
 function Contacts(): JSX.Element {
+  function handlechange=(event:any):void=>{
+const docs = [...event.target.files]
+const newFile = new FormData(); 
+docs.forEach((doc)=>{
+  newFile.append('saveDoc', doc)
+})
+dispatch =(AddFiles(newFile))
+  }
   return (
     <div className="clinic_cont">
       <div className="map">
-        {/* <YMaps>
+        <YMaps>
           <Map
             defaultState={{
               center: [59.965124, 30.31567],
@@ -23,7 +32,7 @@ function Contacts(): JSX.Element {
             <FullscreenControl options={{ float: 'left' }} />
             <ZoomControl options={{ float: 'left' }} />
           </Map>
-        </YMaps> */}
+        </YMaps>
       </div>
       <div className="contacts">
         <img className="clinic_photo" src="/IMG/tolstoy_2.jpg" alt="" />
@@ -33,8 +42,10 @@ function Contacts(): JSX.Element {
           <p>Телефон +7(906) 777-77-77</p>
           <p>E-mail info@klmclinic.ru</p>
           <p>Для СМИ pr@klmclinic.ru</p>
+      <input type="file" onChange={handlechange} />
         </div>
       </div>
+
     </div>
   );
 }
