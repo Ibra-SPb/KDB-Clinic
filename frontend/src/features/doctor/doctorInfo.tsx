@@ -38,7 +38,11 @@ function DoctorInfo(): JSX.Element {
                   Он обучен специальностям:
                   {docService?.map((el) => el.service.title)}
                 </div>
-                <button onClick={() => navigation(-1)} type="button">
+                <button
+                  className="main_page_btn"
+                  onClick={() => navigation(-1)}
+                  type="button"
+                >
                   Вернуться ко всем врачам
                 </button>
               </div>

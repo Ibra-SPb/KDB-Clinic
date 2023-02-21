@@ -15,8 +15,12 @@ function Doctor(): JSX.Element {
           <OneDoctor key={el.id} oneDoctor={el} />
         ))}
       </div>
-      <button onClick={() => navigation(-1)} type="button">
-        Вернуться на главную
+      <button
+        className="main_page_btn"
+        onClick={() => navigation(-1)}
+        type="button"
+      >
+        На главную страницу
       </button>
     </>
   );

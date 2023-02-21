@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Service } from './Type/type';
+import './OneServiceStyle.scss';
 
 function OneService({ oneService }: { oneService: Service }): JSX.Element {
   return (
@@ -13,7 +14,7 @@ function OneService({ oneService }: { oneService: Service }): JSX.Element {
 
         <div>{oneService.price}</div>
         <NavLink to={`/:${oneService.id}`}>
-          <p className="random3">подробная информация</p>
+          <p className="main_page_btn">Подробнее</p>
         </NavLink>
       </div>
     </div>
