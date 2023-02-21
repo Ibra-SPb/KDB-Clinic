@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../store';
 import { registrUser } from './authSlice';
+import './AuthorizationStyles.scss';
 
 function Registration(): JSX.Element {
   const [name, setName] = useState('');
@@ -26,58 +27,84 @@ function Registration(): JSX.Element {
   };
 
   return (
-    <div className="form__container">
-      <form
-        className="form__body"
-        style={{ display: 'flex', flexDirection: 'column' }}
-        onSubmit={registr}
-      >
-        <label htmlFor="name">Name</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          name="email"
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <label htmlFor="phone">Phone</label>
-        <input
-          id="phone"
-          name="phone"
-          type="text"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          required
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <label htmlFor="password2">Password 2</label>
-        <input
-          id="password2"
-          name="password2"
-          type="password"
-          value={password2}
-          onChange={(e) => setPassword2(e.target.value)}
-          required
-        />
-        <button type="submit">Зарегистрироваться</button>
+    <div className="form__container input_div_form">
+      <form onSubmit={registr} className="input_form">
+        <div className="mb-3 input_form">
+          <label htmlFor="name" className="form-label">
+            Введите ваше имя
+          </label>
+          <input
+            name="name"
+            type="text"
+            value={name}
+            className="form-control input_login"
+            id="name"
+            placeholder="Иван Иванов"
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-3 input_form">
+          <label htmlFor="email" className="form-label">
+            Введите вашу почту
+          </label>
+          <input
+            placeholder="example@mail.ru"
+            id="email"
+            name="email"
+            type="text"
+            value={email}
+            className="form-control input_login"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-3 input_form">
+          <label htmlFor="phone" className="form-label">
+            Введите ваш телефон
+          </label>
+          <input
+            placeholder="89991234567"
+            id="phone"
+            name="phone"
+            type="text"
+            value={phone}
+            className="form-control input_login"
+            onChange={(e) => setPhone(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-3 input_form">
+          <label htmlFor="password" className="form-label">
+            Введите пароль
+          </label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            value={password}
+            className="form-control input_login"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-3 input_form">
+          <label htmlFor="password2" className="form-label">
+            Повторите пароль
+          </label>
+          <input
+            id="password2"
+            name="password2"
+            type="password"
+            value={password2}
+            className="form-control input_login"
+            onChange={(e) => setPassword2(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" className="registr_btn">
+          Зарегистрироваться
+        </button>
         <p className="error" />
       </form>
     </div>
