@@ -106,7 +106,7 @@ select:focus {
   width: 120px;
   height: 60px;
   background-color: rgb(183, 231, 57, 0.8);
-  box-shadow: 3px 3px 3px rgb(0 0 0 / 30%);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 3px;
   border-top-right-radius: 10px;
   color: #fff;

@@ -24,17 +24,13 @@ import AccountVisits from '../features/Account/AccountVisits';
 import Footer from '../features/Components/Footer/Footer';
 import { loadStock } from '../features/Stock/stockSlice';
 import Stocks from '../features/Stock/Stocks';
+import StockCard from '../features/Stock/StockCard';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(loadVisit());
-  }, []);
-
-  useEffect(() => {
     dispatch(loadTable());
   }, []);
-
   useEffect(() => {
     dispatch(loadService());
   }, []);
@@ -46,6 +42,9 @@ function App(): JSX.Element {
   }, []);
   useEffect(() => {
     dispatch(loadStock());
+  }, []);
+  useEffect(() => {
+    dispatch(loadVisit());
   }, []);
 
   return (
@@ -66,6 +65,7 @@ function App(): JSX.Element {
           <Route path="/account/profile" element={<Profile />} />
           <Route path="/account/visits" element={<AccountVisits />} />
           <Route path="/stocks" element={<Stocks />} />
+          <Route path="/stocks/:id" element={<StockCard />} />
         </Route>
       </Routes>
       <Footer />
