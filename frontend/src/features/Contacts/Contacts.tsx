@@ -10,14 +10,6 @@ import './Contacts.scss';
 
 
 function Contacts(): JSX.Element {
-  function handlechange=(event:any):void=>{
-const docs = [...event.target.files]
-const newFile = new FormData(); 
-docs.forEach((doc)=>{
-  newFile.append('saveDoc', doc)
-})
-dispatch =(AddFiles(newFile))
-  }
   return (
     <div className="clinic_cont">
       <div className="map">
@@ -42,10 +34,8 @@ dispatch =(AddFiles(newFile))
           <p>Телефон +7(906) 777-77-77</p>
           <p>E-mail info@klmclinic.ru</p>
           <p>Для СМИ pr@klmclinic.ru</p>
-      <input type="file" onChange={handlechange} />
         </div>
       </div>
-
     </div>
   );
 }
