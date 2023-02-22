@@ -1,9 +1,8 @@
-const { Model } = require("sequelize");
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class File extends Model {
-
     static associate({ User }) {
-      File.User= File.belongsTo(User, { foreignKey: "userId" });
+      File.User = File.belongsTo(User, { foreignKey: 'userId' });
     }
   }
   File.init(
@@ -13,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "File",
+      modelName: 'File',
     }
   );
-  return User;
+  return File;
 };

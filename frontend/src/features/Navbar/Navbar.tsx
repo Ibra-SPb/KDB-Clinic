@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
 import { logoutUser } from '../auth/authSlice';
 import './NavBarStyles.scss';
+import AccountHeader from '../Account/AccountHeader';
 
 function Navbar(): JSX.Element {
   const { user } = useSelector((store: RootState) => store.userState);
@@ -107,17 +108,29 @@ function Navbar(): JSX.Element {
                   </NavLink>
                 </li>
                 {'email' in user ? (
-                  <li className="nav-item auth_btns">
-                    <NavLink className="nav__list-item" to="/enterPage">
-                      <a
-                        onClick={handlelogout}
-                        className="nav-link active"
-                        href="#"
-                      >
-                        Выйти
-                      </a>
+                  <>
+                    <NavLink to="/appoint">
+                      <AccountHeader />
                     </NavLink>
-                  </li>
+                    <li className="nav-item auth_btns lk_btn">
+                      <NavLink className="nav__list-item" to="/account">
+                        <a className="nav-link active" href="#">
+                          Личный кабинет
+                        </a>
+                      </NavLink>
+                    </li>
+                    <li className="nav-item auth_btns quit_btn">
+                      <NavLink className="nav__list-item" to="/enterPage">
+                        <a
+                          onClick={handlelogout}
+                          className="nav-link active"
+                          href="#"
+                        >
+                          Выйти
+                        </a>
+                      </NavLink>
+                    </li>
+                  </>
                 ) : (
                   <li className="nav-item auth_btns">
                     <NavLink className="nav__list-item" to="/enterPage">
