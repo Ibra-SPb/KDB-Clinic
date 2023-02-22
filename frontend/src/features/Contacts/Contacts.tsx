@@ -8,7 +8,6 @@ import {
 } from 'react-yandex-maps';
 import './Contacts.scss';
 
-
 function Contacts(): JSX.Element {
   return (
     <div className="clinic_cont">

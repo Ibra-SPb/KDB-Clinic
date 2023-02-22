@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store';
 import './stock.css';
 
@@ -10,12 +10,12 @@ function Stock(): JSX.Element {
   const { stocks } = useSelector((store: RootState) => store.stockState);
 
   return (
-    <div>
-      <div className="stockContainer">
-      <h1>Действующие акции</h1>
+    <div className="stocksContainer">
+      <p>Действующие акции</p>
+      <div className="allStocks">
         {stocks.map((stock) => (
           <div className="stockCard" onClick={() => nav(`/stocks/${stock.id}`)}>
-            <p>{stock.title}</p>
+            <div><h1>{stock.title}</h1></div>
           </div>
         )
         )}

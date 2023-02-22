@@ -1,14 +1,16 @@
 .doctor__Item {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   flex-wrap: wrap;
   border-radius: 10px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 .doctor__Photo {
   width: 40%;
   padding: 20%;
   position: relative;
   overflow: hidden;
+  border-radius: 10px 0 0 10px;
 }
 .doctor__Img {
   position: absolute;
@@ -17,12 +19,25 @@
   left: 0;
   width: 100%;
   height: 100%;
-  // border-radius: 10px 10px 0 0;
 }
 .doctor__Info {
   width: 49%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin-left: 80px;
+  margin-top: 10px;
+  font-size: 22px;
+}
+.btnDoctors {
+  margin-top: 150px;
+  margin-left: 500px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  background-color: green !important;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  width: 20%;
+}
+.oneDoctor_info {
+  margin-top: 30px;
+}
+.oneDoctor_specific {
+  margin-top: 30px;
 }

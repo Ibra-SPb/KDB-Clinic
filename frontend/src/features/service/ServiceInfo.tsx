@@ -21,15 +21,15 @@ function ServiceInfo(): JSX.Element {
               <img className="doctor__Img" src={serv.img} alt="doctor_image" />
             </div>
             <div className="doctor__Info">
-              <div>{serv.title}</div>
+              <div className="oneServiceTitle">{serv.title}</div>
               <div>{serv.body}</div>
               <div>{serv.price}</div>
               <button
-                className="main_page_btn"
-                onClick={() => navigation('/')}
                 type="button"
+                className="btnDoctors"
+                onClick={() => navigation('/')}
               >
-                На главную страницу
+                &#10226;
               </button>
             </div>
           </div>

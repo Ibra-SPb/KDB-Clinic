@@ -26,24 +26,25 @@ function DoctorInfo(): JSX.Element {
               <img className="doctor__Img" src={doc.img} alt="doctor_image" />
             </div>
             <div className="doctor__Info">
-              <div>{doc.name}</div>
-              <div>{doc.specific}</div>
+              <div className="oneDoctorName">{doc.name}</div>
 
-              <div>
+              <div className="oneDoctor_info">
                 Тут будет лежать какая-то дополнительная информация о докторе -
                 Где родился, где вырос, где учился, ученые степени и т.д.. Ее
                 можно прописать в сидах info, а пока что там есть только ----
                 {doc.info}
-                <div>
-                  Он обучен специальностям:
-                  {docService?.map((el) => el.service.title)}
+                <div className="oneDoctor_specific">
+                  Направлениe:{' '}
+                  {docService?.map((el) => (
+                    <div>{el.service.title}</div>
+                  ))}
                 </div>
                 <button
-                  className="main_page_btn"
-                  onClick={() => navigation(-1)}
                   type="button"
+                  className="btnDoctors"
+                  onClick={() => navigation('/doctors')}
                 >
-                  Вернуться ко всем врачам
+                  &#10226;
                 </button>
               </div>
             </div>
