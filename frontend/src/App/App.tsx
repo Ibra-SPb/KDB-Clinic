@@ -15,7 +15,7 @@ import Navbar from '../features/Navbar/Navbar';
 import NotFound from '../features/NotFound/NotFound';
 import Registration from '../features/auth/Registration';
 import Authorization from '../features/auth/Authorization';
-import { checkUser } from '../features/auth/authSlice';
+import { checkUser, loadUsers } from '../features/auth/authSlice';
 import Main from '../features/Components/Main/Main';
 import Contacts from '../features/Contacts/Contacts';
 import AccountMain from '../features/Account/AccountMain';
@@ -24,26 +24,19 @@ import AccountVisits from '../features/Account/AccountVisits';
 import Footer from '../features/Components/Footer/Footer';
 import { loadStock } from '../features/Stock/stockSlice';
 import Stocks from '../features/Stock/Stocks';
+import AccountUpload from '../features/Account/AccountUpload';
 import StockCard from '../features/Stock/StockCard';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     dispatch(loadTable());
-  }, []);
-  useEffect(() => {
     dispatch(loadService());
-  }, []);
-  useEffect(() => {
     dispatch(loadDoctor());
-  }, []);
-  useEffect(() => {
     dispatch(checkUser());
-  }, []);
-  useEffect(() => {
     dispatch(loadStock());
-  }, []);
-  useEffect(() => {
+    dispatch(loadUsers());
     dispatch(loadVisit());
   }, []);
 
@@ -65,6 +58,7 @@ function App(): JSX.Element {
             <Route path="/account" element={<AccountMain />} />
             <Route path="/account/profile" element={<Profile />} />
             <Route path="/account/visits" element={<AccountVisits />} />
+            <Route path="/account/upload" element={<AccountUpload />} />
             <Route path="/stocks" element={<Stocks />} />
             <Route path="/stocks/:id" element={<StockCard />} />
           </Route>
