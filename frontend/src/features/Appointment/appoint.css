@@ -1,16 +1,20 @@
 .appointContainer {
   position: relative;
+  min-height: 600px;
+  margin: 50px 0px;
 }
 
 .addAppoint {
   width: 900px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 
 .addAppoint .step {
   display: flex;
   flex-direction: row;
-  margin-bottom: 50px;
 }
 
 .addAppoint .active,
@@ -22,8 +26,8 @@
 }
 
 .addAppoint .active {
-  border-bottom: 2px solid #82c832;
-  color: #82c832;
+  border-bottom: 2px solid rgb(255,188,91);
+  color: rgb(255,188,91);
 }
 
 .addAppoint .hidden {
@@ -36,6 +40,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 }
 
 .addAppoint .doctorCard {
@@ -43,7 +48,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 50px 0;
+  gap: 20px;
 }
 
 .doctorCard div {
@@ -68,7 +73,7 @@ select {
   border: 0;
   border-radius: 5px;
   box-sizing: border-box;
-  box-shadow: 1px 1px 1px rgb(0 0 0 / 50%);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .addAppoint input:focus,
 select:focus {
@@ -77,20 +82,21 @@ select:focus {
 .addAppoint button {
   padding: 0.7em;
   border: 0;
-  border-radius: 2px;
-  background: #82c832;
-  color: #fff;
-  box-shadow: 1px 1px 1px rgb(0 0 0 / 50%);
+  border-radius: 5px;
+  background: rgb(190,230,168);
+  color: black;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   transition: 1s;
 }
 .addAppoint button:hover {
-  background: #ffa742;
+  background: rgb(253,232,193);
   box-shadow: none;
 }
 
 .addAppoint .confirmButtons {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   gap: 5px;
 }
 
@@ -105,9 +111,9 @@ select:focus {
 .addAppoint .dateCh {
   width: 120px;
   height: 60px;
-  background-color: rgb(183, 231, 57, 0.8);
+  background-color: rgb(78,106,96, 0.7);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border-radius: 3px;
+  border-radius: 5px;
   border-top-right-radius: 10px;
   color: #fff;
 }
@@ -130,6 +136,7 @@ select:focus {
   height: 30px;
   border-radius: 5px;
   transition: 1s;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .timeCh div:hover {
@@ -139,7 +146,7 @@ select:focus {
 .dateChoose {
   width: 120px;
   height: 60px;
-  background-color: rgb(255, 167, 66, 0.8);
+  background-color: rgb(255, 167, 66, 0.7);
   box-shadow: 3px 3px 3px rgb(0 0 0 / 30%);
   border-radius: 3px;
   border-top-right-radius: 10px;
@@ -183,4 +190,27 @@ select:focus {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.handle {
+  width: 60px;
+  color: rgb(78,106,96);
+  text-align: center;
+  transition: 1s;
+  font-size: 30px;
+  font-weight: bolder;
+  margin-bottom: 70px;
+}
+
+.handle:hover {
+  transform: scale(1.2);
+  color: #ffa742;
 }
