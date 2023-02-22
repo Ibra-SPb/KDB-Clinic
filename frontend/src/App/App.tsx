@@ -17,7 +17,7 @@ import Registration from '../features/auth/Registration';
 import Authorization from '../features/auth/Authorization';
 import { checkUser } from '../features/auth/authSlice';
 import Main from '../features/Components/Main/Main';
-// import Contacts from '../features/Contacts/Contacts';
+import Contacts from '../features/Contacts/Contacts';
 import AccountMain from '../features/Account/AccountMain';
 import Profile from '../features/Account/Profile';
 import AccountVisits from '../features/Account/AccountVisits';
@@ -54,7 +54,7 @@ function App(): JSX.Element {
           <Route path="/" element={<Navbar />}>
             <Route index element={<Main />} />
             <Route path="/services" element={<Service />} />
-            {/* <Route path="/contacts" element={<Contacts />} /> */}
+            <Route path="/contacts" element={<Contacts />} />
             <Route path="/enterPage" element={<Authorization />} />
             <Route path="/enterPage/registration" element={<Registration />} />
             <Route path="/doctors" element={<Doctor />} />
