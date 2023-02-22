@@ -1,6 +1,6 @@
 .stocksContainer {
   margin-top: 100px;
-  height: 500px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -24,7 +24,7 @@
   padding: 1em;
   width: 500px;
   height: 200px;
-  background: linear-gradient(45deg, rgb(190,230,168), rgb(253,232,193));
+  background: linear-gradient(45deg, rgb(104,173,132), rgb(253,232,193));
   border-radius:5px;
   display: flex;
   justify-content: center;
@@ -34,7 +34,7 @@
 
 .stockCard h1 {
   font-size: 30px;
-  color: #fff;
+  color: white;
 }
 
 .stockContainer {
@@ -69,8 +69,9 @@
 .stockContainer img {
   width: 500px;
   height: auto;
+  object-fit: cover;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .stockContainer p {

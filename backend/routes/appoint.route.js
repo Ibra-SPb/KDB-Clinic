@@ -49,7 +49,7 @@ router.post('/', async (req, res) => {
     const date = new Date()
     let arrDate = [];
 
-    for (let i = 1; i <= 7; i++) {
+    for (let i = 1; i <= 28; i++) {
       arrDate.push({ date: new Date(date.getFullYear(), date.getMonth(), date.getDate() + i), time: time })
     }
 
