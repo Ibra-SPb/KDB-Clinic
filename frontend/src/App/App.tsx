@@ -48,26 +48,28 @@ function App(): JSX.Element {
   }, []);
 
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<Navbar />}>
-          <Route index element={<Main />} />
-          <Route path="/services" element={<Service />} />
-          {/* <Route path="/contacts" element={<Contacts />} /> */}
-          <Route path="/enterPage" element={<Authorization />} />
-          <Route path="/enterPage/registration" element={<Registration />} />
-          <Route path="/doctors" element={<Doctor />} />
-          <Route path="/doctors/:doctorId" element={<DoctorInfo />} />
-          <Route path="/appoint" element={<Appointment />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/:serviceId" element={<ServiceInfo />} />
-          <Route path="/account" element={<AccountMain />} />
-          <Route path="/account/profile" element={<Profile />} />
-          <Route path="/account/visits" element={<AccountVisits />} />
-          <Route path="/stocks" element={<Stocks />} />
-          <Route path="/stocks/:id" element={<StockCard />} />
-        </Route>
-      </Routes>
+    <div className="App main_wrapper">
+      <div className="content">
+        <Routes>
+          <Route path="/" element={<Navbar />}>
+            <Route index element={<Main />} />
+            <Route path="/services" element={<Service />} />
+            {/* <Route path="/contacts" element={<Contacts />} /> */}
+            <Route path="/enterPage" element={<Authorization />} />
+            <Route path="/enterPage/registration" element={<Registration />} />
+            <Route path="/doctors" element={<Doctor />} />
+            <Route path="/doctors/:doctorId" element={<DoctorInfo />} />
+            <Route path="/appoint" element={<Appointment />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/:serviceId" element={<ServiceInfo />} />
+            <Route path="/account" element={<AccountMain />} />
+            <Route path="/account/profile" element={<Profile />} />
+            <Route path="/account/visits" element={<AccountVisits />} />
+            <Route path="/stocks" element={<Stocks />} />
+            <Route path="/stocks/:id" element={<StockCard />} />
+          </Route>
+        </Routes>
+      </div>
       <Footer />
     </div>
   );
