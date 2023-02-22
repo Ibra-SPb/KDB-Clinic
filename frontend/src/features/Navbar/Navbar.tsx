@@ -27,7 +27,6 @@ function Navbar(): JSX.Element {
                 </a>
               </NavLink>
             </div>
-            {/* <div></div> */}
             <button
               className="navbar-toggler"
               type="button"
