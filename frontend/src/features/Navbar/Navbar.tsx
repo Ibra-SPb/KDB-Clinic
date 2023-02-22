@@ -20,11 +20,14 @@ function Navbar(): JSX.Element {
       <div className="navbar_btn">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
-            <NavLink to="/">
-              <a className="navbar-brand" href="#">
-                KDN Clinic
-              </a>
-            </NavLink>
+            <div>
+              <NavLink to="/">
+                <a className="navbar-brand" href="#">
+                  KDN Clinic
+                </a>
+              </NavLink>
+            </div>
+            {/* <div></div> */}
             <button
               className="navbar-toggler"
               type="button"
@@ -40,7 +43,7 @@ function Navbar(): JSX.Element {
               className="collapse navbar-collapse navbar-brand"
               id="navbarSupportedContent"
             >
-              <ul className="navbar-nav mr-auto mb-2 mb-lg-0">
+              <div className="navbar-nav mr-auto mb-2 mb-lg-0 navbar_center">
                 <li className="nav-item dropdown">
                   <a
                     className="nav-link dropdown-toggle active"
@@ -112,7 +115,7 @@ function Navbar(): JSX.Element {
                     <NavLink to="/appoint">
                       <AccountHeader />
                     </NavLink>
-                    <li className="nav-item auth_btns lk_btn">
+                    <li className="nav-item auth_btns lk_btn nav_item">
                       <NavLink className="nav__list-item" to="/account">
                         <a className="nav-link active" href="#">
                           Личный кабинет
@@ -140,7 +143,7 @@ function Navbar(): JSX.Element {
                     </NavLink>
                   </li>
                 )}
-              </ul>
+              </div>
             </div>
           </div>
         </nav>
