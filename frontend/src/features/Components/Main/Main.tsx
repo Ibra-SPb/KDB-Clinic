@@ -4,7 +4,7 @@ import Carousel from './Carousel/carousel';
 
 function Main(): JSX.Element {
   return (
-    <div>
+    <div className="main_page_wrapper">
       <div className="container_carousel">
         <Carousel />
       </div>
