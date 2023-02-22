@@ -13,12 +13,14 @@ const authRoute = require("./routes/auth.route");
 const appointRoute = require("./routes/appoint.route");
 const doctorRoute = require("./routes/doctor.route");
 const stockRoute = require('./routes/stock.route')
+const uploadRoute = require('./routes/upload.route');
 
 app.use("/api/appoint", appointRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/service", serviceRoute);
 app.use("/api/doctor", doctorRoute);
 app.use("/api/stocks", stockRoute);
+app.use("/api/upload", uploadRoute);
 
 app
   .listen(PORT)

@@ -1,7 +1,8 @@
 import { Visit } from '../features/Visit/Types/types';
+// import { State } from '../features/auth/Types/type';
 import { Service } from '../features/service/Type/type';
 import { Doctor } from '../features/doctor/Type/type';
-import { PayloadAuth, User } from '../features/auth/Types/type';
+import { Message, PayloadAuth, User } from '../features/auth/Types/type';
 import { Service_Doctor } from '../features/Appointment/Types/types';
 import { Stock } from '../features/Stock/types/types';
 
@@ -84,5 +85,18 @@ export const loadTables = async (): Promise<Service_Doctor[]> => {
 // забрать акции с бэка
 export const loadStocks = async (): Promise<Stock[]> => {
   const res = await fetch('/api/stocks');
+  return res.json();
+};
+
+export const addFiles = async (files: any): Promise<Message> => {
+  const res = await fetch(`/api/upload/${files.id}`, {
+    method: 'POST',
+    body: files.newFile,
+  });
+  return res.json();
+};
+
+export const loadUsers = async (): Promise<{ users: User[] }> => {
+  const res = await fetch('/api/auth/loadUsers');
   return res.json();
 };

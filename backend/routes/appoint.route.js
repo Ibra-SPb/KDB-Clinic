@@ -72,7 +72,7 @@ router.post('/', async (req, res) => {
 router.post('/create', async (req, res) => {
   try {
     const { doctor, service, date, time } = req.body;
-
+    
     const doc = await Doctor.findOne({ where: { name: doctor } })
     const ser = await Service.findOne({ where: { title: service } })
     const user = await User.findOne({ where: { id: req.session.userId } })
