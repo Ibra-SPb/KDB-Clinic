@@ -4,6 +4,7 @@ import * as api from '../../App/api';
 
 const initialState: State = {
   doctors: [],
+  filterDoc: [],
   error: undefined,
 };
 export const loadDoctor = createAsyncThunk('alldoctors', () =>
@@ -13,11 +14,18 @@ export const loadDoctor = createAsyncThunk('alldoctors', () =>
 const doctorSlice = createSlice({
   name: 'doctor',
   initialState,
-  reducers: {},
+  reducers: {
+    filterDoctors: (state, action) => {
+      state.filterDoc = state.doctors.filter(
+        (el) => el['Service_Doctors.serviceId'] === +action.payload
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadDoctor.fulfilled, (state, action) => {
-        state.doctors = action.payload;
+        state.doctors = action.payload.doctors;
+        state.filterDoc = action.payload.doctorsAll;
       })
       .addCase(loadDoctor.rejected, (state, action) => {
         state.error = action.error.message;
@@ -26,3 +34,4 @@ const doctorSlice = createSlice({
 });
 
 export default doctorSlice.reducer;
+export const { filterDoctors } = doctorSlice.actions;
