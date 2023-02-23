@@ -107,7 +107,7 @@ function Registration(): JSX.Element {
         <button type="submit" className="registr_btn">
           Зарегистрироваться
         </button>
-        <p> {error}</p>
+        <p className="error_btn"> {error}</p>
       </form>
     </div>
   );
