@@ -1,13 +1,9 @@
 import React from 'react';
-// import photo from './errorPage.jpg';
+import photo from './404.png';
 
 function PageNotFound(): JSX.Element {
   return (
-    <>
-
-      <p>jycf</p>
-      {/* <img src={photo} alt="" /> */}
-    </>
+    <img className="photo" src={photo} alt="" />
   );
 }
 
