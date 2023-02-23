@@ -93,8 +93,8 @@ router.post('/create', async (req, res) => {
     });
     const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
     await bot.sendMessage(
-      202606326,
-      `Новая запись:\nДоктор: ${doctor}\nУслуга: ${service}\nДата: ${date}\nВремя: ${time}`
+      232244232,
+      `Новая запись:\nДоктор: ${doctor}\nУслуга: ${service}\nДата: ${date}\nВремя: ${time}\nКлиент: ${user.name}`
     );
     await bot.stopPolling();
     if (visit) {

@@ -21,9 +21,11 @@ function Appointment(): JSX.Element {
   const navigate = useNavigate();
 
   const { services } = useSelector((store: RootState) => store.serviceState);
-  const { serviceDoctors } = useSelector((store: RootState) => store.tableState);
+  const { serviceDoctors } = useSelector(
+    (store: RootState) => store.tableState
+  );
   const { filterDoc } = useSelector((store: RootState) => store.doctorState);
-  
+
   const chooseService = async (): Promise<void> => {
     const res = await fetch('/api/appoint', {
       method: 'POST',
@@ -124,7 +126,7 @@ function Appointment(): JSX.Element {
                   .filter((sd: Service_Doctor) => sd.service.title === service)
                   .map((sd: Service_Doctor) => (
                     <option key={sd.id}>{sd.doctor.name}</option>
-                    ))}
+                  ))}
               </select>
               <div>
                 {filterDoc

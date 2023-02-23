@@ -64,7 +64,7 @@ function App(): JSX.Element {
             <Route path="/stocks/:id" element={<StockCard />} />
             <Route path="/*" element={<PageNotFound />} />
           </Route>
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
       <Footer />
