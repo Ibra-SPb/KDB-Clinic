@@ -1,10 +1,10 @@
-const router = require("express").Router();
-const { Service, Visit } = require("../db/models");
+const router = require('express').Router();
+const { Service } = require('../db/models');
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const service = await Service.findAll({ raw: true });
-    res.json(service);
+    res.json({ service });
   } catch ({ message }) {
     res.json(message);
   }

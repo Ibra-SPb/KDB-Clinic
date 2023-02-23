@@ -10,15 +10,31 @@ export default function AccountMain(): JSX.Element {
   return (
     <div className="account__container">
       <AccountHeader />
-      <div className="account__main">
-        <NavLink to="/account/profile">
-          <button type="button">Профиль</button>
-        </NavLink>
-        <NavLink to="/account/visits"><button type="button">Приёмы</button></NavLink>
-        <NavLink to="/account/results"><button type="button">Результаты</button></NavLink>
-        {'email' in user && user.name === 'admin' && user.id === 1 && (
-          <NavLink to="/account/upload"><button type="button">Загрузка результатов</button></NavLink>
-        )}
+      <div className="account__body">
+        <ul className="account__main">
+          <li>
+            <NavLink to="/account/profile">
+              <a href="#">Профиль</a>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/account/visits">
+              <a href="#">Приёмы</a>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/account/results">
+              <a href="#">Результаты</a>
+            </NavLink>
+          </li>
+          {'email' in user && user.name === 'admin' && user.id === 1 && (
+            <li>
+              <NavLink to="/account/upload">
+                <a href="#">Загрузка результатов</a>
+              </NavLink>
+            </li>
+          )}
+        </ul>
       </div>
     </div>
   );

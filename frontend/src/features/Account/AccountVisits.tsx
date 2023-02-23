@@ -1,41 +1,31 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { RootState } from '../../store';
 import './Account.scss';
 
 export default function AccountVisits(): JSX.Element {
+  const { userVisits } = useSelector((store: RootState) => store.visitState);
+  console.log(userVisits);
+
   return (
     // Условный рендеринг
     <div className="visits__container">
       <h3 className="visits__title">Приёмы</h3>
       <div className="visits__body">
         <div className="visits__main">
-          {/* <span>Приемов нет</span>
+          <span>Приемов нет</span>
           <button type="button" className="account__appointment">
-            Записаться
-          </button> */}
+            <NavLink to="/appoint">Записаться</NavLink>
+          </button>
         </div>
         <div className="visits__table">
-          <table>
-            <tr className="visits__table__head">
-              <th>Врач</th>
-              <th>Услуга</th>
-              <th>Дата приёма</th>
-            </tr>
-            <tr>
-              <td>Какой-то врач</td>
-              <td>Какая-то услуга</td>
-              <td>Какая-то дата</td>
-            </tr>
-            <tr>
-              <td>Какой-то врач</td>
-              <td>Какая-то услуга</td>
-              <td>Какая-то дата</td>
-            </tr>
-            <tr>
-              <td>Какой-то врач</td>
-              <td>Какая-то услуга</td>
-              <td>Какая-то дата</td>
-            </tr>
-          </table>
+          {userVisits.map((visit) => (
+            <div key={visit.id}>
+              {/* <p>{visit.date}</p> */}
+              <p>{visit.time}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

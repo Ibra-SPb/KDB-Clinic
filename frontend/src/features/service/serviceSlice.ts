@@ -4,9 +4,14 @@ import * as api from '../../App/api';
 
 const initialState: State = {
   services: [],
+  userServices: [],
   error: undefined,
 };
 export const loadService = createAsyncThunk('allservices', () =>
+  api.loadService()
+);
+
+export const loadUserService = createAsyncThunk('alluserservices', () =>
   api.loadService()
 );
 
@@ -19,7 +24,13 @@ const serviceSlice = createSlice({
       .addCase(loadService.fulfilled, (state, action) => {
         state.services = action.payload;
       })
+      .addCase(loadUserService.fulfilled, (state, action) => {
+        state.userServices = action.payload;
+      })
       .addCase(loadService.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(loadUserService.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

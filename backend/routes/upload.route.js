@@ -46,11 +46,7 @@ router.get('/', async (req, res) => {
   try {
     const { userId } = req.session;
     const user = await User.findByPk(Number(userId));
-    const userResults = await File.findAll({
-      include: [User],
-      raw: true,
-      order: [['createdAt', 'DESC']],
-    });
+    const userResults = await File.findAll({ where: { userId: user.id } });
     res.status(200).json(userResults);
   } catch (error) {
     request.status(500).json();

@@ -9,13 +9,16 @@ const {
 const TelegramBot = require('node-telegram-bot-api');
 router.get('/visit', async (req, res) => {
   try {
+    const { userId } = req.session;
+    const user = await User.findByPk(Number(userId));
     const visits = await Visit.findAll({
       include: [
         { model: Doctor, as: 'doctor' },
         { model: Service, as: 'service' },
       ],
     });
-    res.status(200).json(visits);
+    const userVisits = await Visit.findAll({ where: { userId: user.id } });
+    res.status(200).json(visits, userVisits);
   } catch ({ message }) {
     res.status(500).json(message);
   }

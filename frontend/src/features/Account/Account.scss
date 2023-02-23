@@ -1,5 +1,39 @@
 .account {
   padding: 20px 0;
+  &__body {
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    padding: 28px 12%;
+    transition: all .50s easy;
+  }
+
+  &__main {
+    display: flex;
+  }
+
+  &__main li {
+    list-style-type: none;
+  }
+
+  &__main a {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 5px 0;
+    margin: 0px 30px;
+    transition: all .50s easy;
+  }
+
+  &__main a:hover {
+    color: var(--main-color);
+  }
+
 
   &__header {
     display: flex;
