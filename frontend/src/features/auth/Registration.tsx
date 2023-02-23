@@ -14,7 +14,7 @@ function Registration(): JSX.Element {
   const nav = useNavigate();
   const dispatch = useAppDispatch();
 
-  const { user } = useSelector((store: RootState) => store.userState);
+  const { user, error } = useSelector((store: RootState) => store.userState);
   useEffect(() => {
     if ('name' in user) {
       nav('/');
@@ -107,7 +107,7 @@ function Registration(): JSX.Element {
         <button type="submit" className="registr_btn">
           Зарегистрироваться
         </button>
-        <p className="error" />
+        <p> {error}</p>
       </form>
     </div>
   );

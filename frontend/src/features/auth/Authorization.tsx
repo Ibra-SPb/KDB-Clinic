@@ -11,7 +11,7 @@ function Authorization(): JSX.Element {
   const nav = useNavigate();
   const dispatch = useAppDispatch();
 
-  const { user } = useSelector((store: RootState) => store.userState);
+  const { user, error } = useSelector((store: RootState) => store.userState);
 
   useEffect(() => {
     if ('email' in user) {
@@ -50,6 +50,7 @@ function Authorization(): JSX.Element {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        <div className="error_btn">{error}</div>
         <button type="submit" className="log_btn">
           Войти
         </button>

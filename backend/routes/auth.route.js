@@ -29,7 +29,7 @@ router.post('/sign-up', async (req, res) => {
       if (password !== password2) {
         return res
           .status(400)
-          .json({ message: 'Пароли не совпадают', status: false });
+          .json({ error: 'Пароли не совпадают', status: false });
       }
       if (!user) {
         const hash = await bcrypt.hash(password, 10);

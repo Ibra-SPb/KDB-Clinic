@@ -41,6 +41,18 @@ module.exports = {
         doctorId: 5,
         serviceId: 1,
       },
+      {
+        doctorId: 6,
+        serviceId: 6,
+      },
+      {
+        doctorId: 7,
+        serviceId: 7,
+      },
+      {
+        doctorId: 8,
+        serviceId: 5,
+      },
     ];
 
     const data = types.map((el) => ({
