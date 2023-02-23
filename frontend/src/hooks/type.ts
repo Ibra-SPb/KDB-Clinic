@@ -1,8 +1,9 @@
-interface UsePaginationProps {
+export type UsePaginationProps = {
   contentPerPage: number;
   count: number;
-}
-interface UsePaginationReturn {
+};
+
+export type UsePaginationReturn = {
   page: number;
   totalPages: number;
   firstContentIndex: number;
@@ -10,5 +11,5 @@ interface UsePaginationReturn {
   nextPage: () => void;
   prevPage: () => void;
   setPage: (page: number) => void;
-}
-type UsePagination = (UsePaginationProps: any) => UsePaginationReturn;
+};
+export type UsePagination = (UsePaginationProps: any) => UsePaginationReturn;

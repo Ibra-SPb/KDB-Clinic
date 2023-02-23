@@ -1,6 +1,6 @@
 import { Visit } from '../features/Visit/Types/types';
 import { Service } from '../features/service/Type/type';
-import { Doctor, PayloadDoctors } from '../features/doctor/Type/type';
+import { PayloadDoctors } from '../features/doctor/Type/type';
 import { Message, PayloadAuth, User } from '../features/auth/Types/type';
 import { Service_Doctor } from '../features/Appointment/Types/types';
 import { Stock } from '../features/Stock/types/types';

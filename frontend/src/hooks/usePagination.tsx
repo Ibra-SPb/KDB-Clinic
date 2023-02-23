@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState } from 'react';
+import { UsePagination } from './type';
+
 const usePagination: UsePagination = ({ contentPerPage, count }) => {
   const [page, setPage] = useState(1);
   // number of pages in total (total items / content on each page)
@@ -8,7 +10,7 @@ const usePagination: UsePagination = ({ contentPerPage, count }) => {
   // index of first item of current page
   const firstContentIndex = lastContentIndex - contentPerPage;
   // change page based on direction either front or back
-  const changePage = (direction: boolean) => {
+  const changePage = (direction: boolean): any => {
     setPage((state) => {
       // move forward
       if (direction) {
@@ -18,16 +20,15 @@ const usePagination: UsePagination = ({ contentPerPage, count }) => {
         }
         return state + 1;
         // go back
-      } else {
+      }
         // if page is the first page, do nothing
         if (state === 1) {
           return state;
         }
         return state - 1;
-      }
     });
   };
-  const setPageSAFE = (num: number) => {
+  const setPageSAFE = (num: number): any => {
     // if number is greater than number of pages, set to last page
     if (num > pageCount) {
       setPage(pageCount);
