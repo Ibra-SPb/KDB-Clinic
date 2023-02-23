@@ -9,11 +9,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ Visit, Service, Service_Doctor }) {
       // Doctor.hasMany(Visit, { foreignKey: "visitId" });
-      Doctor.belongsToMany(Service, {
-        through: Service_Doctor,
-        foreignKey: "doctorId",
-        otherKey: "serviceId",
-      });
+      Doctor.hasMany(Service_Doctor, { foreignKey: "doctorId" });
+      // Doctor.belongsToMany(Service, {
+      //   through: Service_Doctor,
+      //   foreignKey: "doctorId",
+      //   otherKey: "serviceId",
+      // });
     }
   }
   Doctor.init(

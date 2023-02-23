@@ -1,11 +1,14 @@
 import React from 'react';
+// import photo from './errorPage.jpg';
 
-function NotFound(): JSX.Element {
+function PageNotFound(): JSX.Element {
   return (
-    <div>
-      <img src="/img/404.png" alt="" />
-    </div>
+    <>
+
+      <p>jycf</p>
+      {/* <img src={photo} alt="" /> */}
+    </>
   );
 }
 
-export default NotFound;
+export default PageNotFound;

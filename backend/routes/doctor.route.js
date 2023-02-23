@@ -1,10 +1,12 @@
 const router = require("express").Router();
-const { Doctor } = require("../db/models");
+const { Doctor,Service_Doctor} = require("../db/models");
+
 
 router.get("/", async (req, res) => {
   try {
-    const doctor = await Doctor.findAll({ raw: true });
-    res.json(doctor);
+    const doctors = await Doctor.findAll({ raw: true , include:{model:Service_Doctor}});
+    const doctorsAll = await Doctor.findAll({ raw: true });
+    res.json({doctors,doctorsAll});
   } catch ({ message }) {
     res.json(message);
   }

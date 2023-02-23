@@ -31,13 +31,29 @@
   margin-left: 500px;
   margin-bottom: 30px;
   border-radius: 5px;
-  background-color: green !important;
+  background-color: #bee6a8 !important;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
   width: 20%;
 }
 .oneDoctor_info {
+  text-align: justify;
   margin-top: 30px;
 }
 .oneDoctor_specific {
   margin-top: 30px;
+}
+.selectSpecific {
+  width: 12%;
+}
+.alldoc {
+  border-radius: 5px;
+  background-color: #bee6a8 !important;
+  margin-bottom: 20px;
+}
+.bodyService {
+  text-align: justify;
+}
+.priceService{
+  font-size: 20px;
+  margin-top: 20px;
 }

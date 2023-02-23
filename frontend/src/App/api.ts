@@ -1,6 +1,6 @@
 import { Visit } from '../features/Visit/Types/types';
 import { Service } from '../features/service/Type/type';
-import { Doctor } from '../features/doctor/Type/type';
+import { Doctor, PayloadDoctors } from '../features/doctor/Type/type';
 import { Message, PayloadAuth, User } from '../features/auth/Types/type';
 import { Service_Doctor } from '../features/Appointment/Types/types';
 import { Stock } from '../features/Stock/types/types';
@@ -66,7 +66,7 @@ export const loadService = async (): Promise<Service[]> => {
   return res.json();
 };
 // забираем всех докторов с бэка
-export const loadDoctors = async (): Promise<Doctor[]> => {
+export const loadDoctors = async (): Promise<PayloadDoctors> => {
   const res = await fetch('/api/doctor');
   return res.json();
 };

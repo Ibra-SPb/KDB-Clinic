@@ -22,12 +22,12 @@ function ServiceInfo(): JSX.Element {
             </div>
             <div className="doctor__Info">
               <div className="oneServiceTitle">{serv.title}</div>
-              <div>{serv.body}</div>
-              <div>{serv.price}</div>
+              <div className="bodyService">{serv.body}</div>
+              <div className="priceService">{serv.price}*</div>
               <button
                 type="button"
                 className="btnDoctors"
-                onClick={() => navigation('/')}
+                onClick={() => navigation(-1)}
               >
                 &#10226;
               </button>
