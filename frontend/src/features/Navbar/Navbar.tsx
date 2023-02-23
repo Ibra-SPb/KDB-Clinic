@@ -23,7 +23,7 @@ function Navbar(): JSX.Element {
             <div>
               <NavLink to="/">
                 <a className="navbar-brand" href="#">
-                  KDN Clinic
+                  <span className="btn-one">KDB Clinic</span>
                 </a>
               </NavLink>
             </div>
@@ -45,14 +45,14 @@ function Navbar(): JSX.Element {
               <div className="navbar-nav mr-auto mb-2 mb-lg-0 navbar_center">
                 <li className="nav-item dropdown">
                   <a
-                    className="nav-link dropdown-toggle active"
+                    className="nav-link dropdown-toggle active navbar_text "
                     href="#"
                     id="navbarDropdown"
                     role="button"
                     data-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    Услуги
+                    <span className="btn-one">УСЛУГИ</span>
                   </a>
                   <ul
                     className="dropdown-menu"
@@ -97,15 +97,19 @@ function Navbar(): JSX.Element {
                 </li>
                 <li className="nav-item">
                   <NavLink to="/doctors">
-                    <a className="nav-link active" aria-current="page" href="#">
-                      Врачи
+                    <a
+                      className="nav-link active navbar_text"
+                      aria-current="page"
+                      href="#"
+                    >
+                      <span className="btn-three btn-one">ВРАЧИ</span>
                     </a>
                   </NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink to="/contacts">
-                    <a className="nav-link active" href="#">
-                      О нас
+                    <a className="nav-link active navbar_text" href="#">
+                      <span className="btn-one">О НАС</span>
                     </a>
                   </NavLink>
                 </li>
@@ -114,30 +118,33 @@ function Navbar(): JSX.Element {
                     <NavLink to="/appoint">
                       <AccountHeader />
                     </NavLink>
-                    <li className="nav-item auth_btns lk_btn nav_item">
+                    <li className="nav-item auth_btns lk_btn nav_item navbar_text">
                       <NavLink className="nav__list-item" to="/account">
-                        <a className="nav-link active" href="#">
-                          Личный кабинет
+                        <a className="nav-link active lk" href="#">
+                          <span className="btn-one lk"> Личный кабинет</span>
                         </a>
                       </NavLink>
                     </li>
                     <li className="nav-item auth_btns quit_btn">
-                      <NavLink className="nav__list-item" to="/enterPage">
+                      <NavLink
+                        className="nav__list-item navbar_text"
+                        to="/enterPage"
+                      >
                         <a
                           onClick={handlelogout}
                           className="nav-link active"
                           href="#"
                         >
-                          Выйти
+                          <span className="btn-one">Выйти</span>
                         </a>
                       </NavLink>
                     </li>
                   </>
                 ) : (
                   <li className="nav-item auth_btns">
-                    <NavLink className="nav__list-item" to="/enterPage">
-                      <a className="nav-link active" href="#">
-                        Личный кабинет
+                    <NavLink className="nav__list-item " to="/enterPage">
+                      <a className="nav-link active navbar_text" href="#">
+                        <span className="btn-one">Личный кабинет</span>
                       </a>
                     </NavLink>
                   </li>
