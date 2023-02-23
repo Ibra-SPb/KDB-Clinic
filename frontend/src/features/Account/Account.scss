@@ -57,6 +57,7 @@
       display: flex;
       flex: 1;
       align-items: center;
+      margin-bottom: 0 !important;
     }
 
     &_title {
@@ -84,6 +85,7 @@
       letter-spacing: 0.02em;
       color: #1d2f3c;
       text-align: left;
+      margin-bottom: 0 !important;
     }
 
     &_icon {
