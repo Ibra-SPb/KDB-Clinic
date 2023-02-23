@@ -62,8 +62,7 @@
   object-fit: cover;
 }
 
-.addAppoint input,
-select {
+.addAppoint select {
   background: #fff;
   padding: 0.7em;
   margin: 15px 0;
@@ -74,10 +73,15 @@ select {
   box-sizing: border-box;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-.addAppoint input:focus,
-select:focus {
+
+.addAppoint select:focus {
   outline: none;
 }
+
+.addAppoint select:hover {
+  cursor: pointer;
+}
+
 .addAppoint button {
   padding: 0.7em;
   border: 0;
@@ -90,6 +94,7 @@ select:focus {
 .addAppoint button:hover {
   background: rgb(253,232,193);
   box-shadow: none;
+  cursor: pointer
 }
 
 .addAppoint .confirmButtons {
@@ -117,6 +122,16 @@ select:focus {
   color: #fff;
 }
 
+.addAppoint .output {
+  width: 120px;
+  height: 60px;
+  background-color: #c4c2c2;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+  border-top-right-radius: 10px;
+  color: #a6a0a0;
+}
+
 .dateTimeOne {
   display: flex;
   flex-direction: row;
@@ -130,16 +145,9 @@ select:focus {
   gap: 10px;
 }
 
-.timeCh div {
-  width: 60px;
-  height: 30px;
-  border-radius: 5px;
-  transition: 1s;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-
-.timeCh div:hover {
+.timeNone:hover {
   border: 1px solid rgb(255, 167, 66, 0.5);
+  cursor: pointer
 }
 
 .dateChoose {
@@ -153,11 +161,21 @@ select:focus {
 }
 
 .timeChoose {
+  width: 60px;
+  height: 30px;
+  border-radius: 5px;
+  transition: 1s;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border: 2px solid rgb(255, 167, 66, 0.5);
   color: #ffa742;
 }
 
 .timeNone {
+  width: 60px;
+  height: 30px;
+  border-radius: 5px;
+  transition: 1s;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border: 1px solid rgb(128, 128, 128, 0.5);
 }
 
@@ -212,4 +230,5 @@ select:focus {
 .handle:hover {
   transform: scale(1.2);
   color: #ffa742;
+  cursor: pointer
 }
