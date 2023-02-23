@@ -10,12 +10,6 @@ function DoctorInfo(): JSX.Element {
   const navigation = useNavigate();
   const { doctors } = useSelector((store: RootState) => store.doctorState);
   const doc = doctors.find((doctor) => doctor.id === Number(doctorId?.[1]));
-  const { serviceDoctors } = useSelector(
-    (store: RootState) => store.tableState
-  );
-  const docService = serviceDoctors.filter(
-    (el) => el.doctorId === Number(doctorId?.[1])
-  );
 
   return (
     <div>
@@ -29,15 +23,9 @@ function DoctorInfo(): JSX.Element {
               <div className="oneDoctorName">{doc.name}</div>
 
               <div className="oneDoctor_info">
-                Тут будет лежать какая-то дополнительная информация о докторе -
-                Где родился, где вырос, где учился, ученые степени и т.д.. Ее
-                можно прописать в сидах info, а пока что там есть только ----
                 {doc.info}
                 <div className="oneDoctor_specific">
-                  Направлениe:{' '}
-                  {docService?.map((el) => (
-                    <div>{el.service.title}</div>
-                  ))}
+                  Направлениe: {doc.specific}
                 </div>
                 <button
                   type="button"

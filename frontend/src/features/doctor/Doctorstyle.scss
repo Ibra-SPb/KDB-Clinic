@@ -75,3 +75,19 @@
 .oneDoctorName {
   font-weight: 700;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+}
+.page {
+  background-color: white;
+  outline: 0 !important;
+  border: 0;
+  margin: 10px;
+}
+
+.actives {
+  background-color: #bee6a8;
+  border-radius: 5px;
+}
