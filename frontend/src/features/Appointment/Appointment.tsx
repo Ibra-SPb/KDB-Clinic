@@ -57,6 +57,7 @@ function Appointment(): JSX.Element {
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     e.preventDefault();
+    console.log(dateCh);
     const res = await fetch('/api/appoint/create', {
       method: 'POST',
       headers: {

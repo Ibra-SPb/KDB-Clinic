@@ -57,7 +57,7 @@ router.post('/', async (req, res) => {
     const date = new Date();
     let arrDate = [];
     for (let i = 1; i <= 28; i++) {
-      arrDate.push({ date: new Date(date.getFullYear(), date.getMonth(), date.getDate() + i), time: time })
+      arrDate.push({ date: new Date(date.getFullYear(), date.getMonth(), date.getDate() + i, date.getHours() - 3), time: time })
     }
 
     arrDate.forEach((ad) => {
@@ -79,7 +79,7 @@ router.post('/', async (req, res) => {
 
 router.post('/create', async (req, res) => {
   try {
-    const { doctor, service, date, time } = req.body;    
+    const { doctor, service, date, time } = req.body;
     const doc = await Doctor.findOne({ where: { name: doctor } })
     const ser = await Service.findOne({ where: { title: service } })
     const user = await User.findOne({ where: { id: req.session.userId } })
