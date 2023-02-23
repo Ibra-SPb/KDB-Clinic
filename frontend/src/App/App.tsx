@@ -12,7 +12,6 @@ import Doctor from '../features/doctor/Doctor';
 import DoctorInfo from '../features/doctor/doctorInfo';
 import { loadService } from '../features/service/serviceSlice';
 import Navbar from '../features/Navbar/Navbar';
-import NotFound from '../features/NotFound/NotFound';
 import Registration from '../features/auth/Registration';
 import Authorization from '../features/auth/Authorization';
 import { checkUser, loadUsers } from '../features/auth/authSlice';
@@ -26,6 +25,7 @@ import { loadStock } from '../features/Stock/stockSlice';
 import Stocks from '../features/Stock/Stocks';
 import AccountUpload from '../features/Account/AccountUpload';
 import StockCard from '../features/Stock/StockCard';
+import PageNotFound from '../features/NotFound/NotFound';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -53,7 +53,6 @@ function App(): JSX.Element {
             <Route path="/doctors" element={<Doctor />} />
             <Route path="/doctors/:doctorId" element={<DoctorInfo />} />
             <Route path="/appoint" element={<Appointment />} />
-            <Route path="*" element={<NotFound />} />
             <Route path="/:serviceId" element={<ServiceInfo />} />
             <Route path="/account" element={<AccountMain />} />
             <Route path="/account/profile" element={<Profile />} />
@@ -61,6 +60,7 @@ function App(): JSX.Element {
             <Route path="/account/upload" element={<AccountUpload />} />
             <Route path="/stocks" element={<Stocks />} />
             <Route path="/stocks/:id" element={<StockCard />} />
+            <Route path="/*" element={<PageNotFound />} />
           </Route>
         </Routes>
       </div>
