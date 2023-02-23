@@ -29,6 +29,7 @@ import AccountResults from '../features/Account/AccountResults';
 import PageNotFound from '../features/NotFound/NotFound';
 
 function App(): JSX.Element {
+  
   const dispatch = useAppDispatch();
 
   useEffect(() => {
