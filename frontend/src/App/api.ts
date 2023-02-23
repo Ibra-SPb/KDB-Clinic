@@ -1,10 +1,10 @@
 import { Visit } from '../features/Visit/Types/types';
-// import { State } from '../features/auth/Types/type';
 import { Service } from '../features/service/Type/type';
 import { Doctor } from '../features/doctor/Type/type';
 import { Message, PayloadAuth, User } from '../features/auth/Types/type';
 import { Service_Doctor } from '../features/Appointment/Types/types';
 import { Stock } from '../features/Stock/types/types';
+import { Result } from '../features/Account/Types/type';
 
 export const registr = async (newUser: User): Promise<PayloadAuth> => {
   const res = await fetch('/api/auth/sign-up', {
@@ -85,6 +85,11 @@ export const loadTables = async (): Promise<Service_Doctor[]> => {
 // забрать акции с бэка
 export const loadStocks = async (): Promise<Stock[]> => {
   const res = await fetch('/api/stocks');
+  return res.json();
+};
+
+export const loadResults = async (): Promise<Result[]> => {
+  const res = await fetch('/api/upload');
   return res.json();
 };
 
