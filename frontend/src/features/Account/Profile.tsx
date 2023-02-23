@@ -1,9 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store';
 import './Account.scss';
 
 export default function Profile(): JSX.Element {
+  const nav = useNavigate();
   const { user } = useSelector((store: RootState) => store.userState);
 
   return (
@@ -63,6 +65,7 @@ export default function Profile(): JSX.Element {
           </div>
         )}
       </div>
+      <button type="button" className="btn-back" onClick={() => nav(-1)}>Назад</button>
     </div>
   );
 }

@@ -31,6 +31,11 @@ router.post('/sign-up', async (req, res) => {
           .status(400)
           .json({ error: 'Пароли не совпадают', status: false });
       }
+      if (password.length < 6) {
+        return res
+          .status(400)
+          .json({ error: 'Пароль должен содержать более 6 символов' });
+      }
       if (!user) {
         const hash = await bcrypt.hash(password, 10);
         const newUser = await User.create({
@@ -59,9 +64,13 @@ router.post('/sign-up', async (req, res) => {
 });
 
 router.delete('/logout', (req, res) => {
-  req.session.destroy(() => {
-    res.clearCookie('user_sid').json({ error: 'Сессия удалена' });
-  });
+  try {
+    req.session.destroy(() => {
+      res.clearCookie('user_sid').json({ error: 'Сессия удалена' });
+    });
+  } catch ({ message }) {
+    res.json(message);
+  }
 });
 
 router.get('/session', async (req, res) => {

@@ -6,18 +6,18 @@ export type Visit = {
   date: Date;
   time: string;
   status: boolean;
-  doctor: {
-    name: string;
-    specific: string;
-    info: string;
+  doctor?: {
+    name?: string;
+    specific?: string;
+    info?: string;
   };
-  service: {
-    title: string;
-    price: string;
+  service?: {
+    title?: string;
+    price?: string;
   };
 };
 
 export type State = {
-  visits: Visit[];
-  error: undefined | string;
+  visits?: Visit[];
+  error?: undefined | string;
 };
