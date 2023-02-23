@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../../../store';
 import './CarouselStyle.scss';
 
@@ -23,7 +23,6 @@ function Carousel(): JSX.Element {
         <li data-target="#carouselExampleIndicators" data-slide-to="2" />
       </ol>
       <div className="carousel-inner">
-        {/* <NavLink to="stocks/1"> */}
         <div className="carousel-item active" onClick={() => nav('stocks/1')}>
           <div className="salse">{`${stocks[0]?.title}`} со скидкой 20%</div>
           <img
@@ -32,8 +31,6 @@ function Carousel(): JSX.Element {
             alt="firstPromo"
           />
         </div>
-        {/* </NavLink> */}
-        {/* <NavLink to="stocks/2"> */}
         <div className="carousel-item" onClick={() => nav('stocks/2')}>
           <div className="salse">{`${stocks[1]?.title}`}</div>
           <img
@@ -42,8 +39,6 @@ function Carousel(): JSX.Element {
             alt="secondPromo"
           />
         </div>
-        {/* </NavLink> */}
-        {/* <NavLink to="stocks/3"> */}
         <div className="carousel-item" onClick={() => nav('stocks/3')}>
           <div className="salse">{`${stocks[2]?.title}`}</div>
           <img
@@ -52,7 +47,6 @@ function Carousel(): JSX.Element {
             alt="thirdPromo"
           />
         </div>
-        {/* </NavLink> */}
       </div>
       <a
         className="carousel-control-prev"
@@ -61,7 +55,6 @@ function Carousel(): JSX.Element {
         data-slide="prev"
       >
         <span
-          // onClick={() => setCount(count - 1)}
           className="carousel-control-prev-icon"
           aria-hidden="true"
         />
@@ -74,7 +67,6 @@ function Carousel(): JSX.Element {
         data-slide="next"
       >
         <span
-          // onClick={() => setCount(count + 1)}
           className="carousel-control-next-icon"
           aria-hidden="true"
         />
