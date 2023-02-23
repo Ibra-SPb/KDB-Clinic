@@ -39,7 +39,7 @@ function Registration(): JSX.Element {
             value={name}
             className="form-control input_login"
             id="name"
-            placeholder="Иван Иванов"
+            placeholder="Ф.И.О"
             onChange={(e) => setName(e.target.value)}
             required
           />
@@ -49,7 +49,7 @@ function Registration(): JSX.Element {
             Введите вашу почту
           </label>
           <input
-            placeholder="example@mail.ru"
+            placeholder="Электронная почта"
             id="email"
             name="email"
             type="text"
@@ -64,7 +64,7 @@ function Registration(): JSX.Element {
             Введите ваш телефон
           </label>
           <input
-            placeholder="89991234567"
+            placeholder="Номер телефона"
             id="phone"
             name="phone"
             type="text"
@@ -80,7 +80,7 @@ function Registration(): JSX.Element {
           </label>
           <input
             id="password"
-            placeholder="Ваш пароль"
+            placeholder="Пароль"
             name="password"
             type="password"
             value={password}

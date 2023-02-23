@@ -54,7 +54,7 @@ function App(): JSX.Element {
             <Route path="/doctors" element={<Doctor />} />
             <Route path="/doctors/:doctorId" element={<DoctorInfo />} />
             <Route path="/appoint" element={<Appointment />} />
-            <Route path="/:serviceId" element={<ServiceInfo />} />
+            <Route path="/services/:serviceId" element={<ServiceInfo />} />
             <Route path="/account" element={<AccountMain />} />
             <Route path="/account/profile" element={<Profile />} />
             <Route path="/account/visits" element={<AccountVisits />} />
@@ -62,9 +62,8 @@ function App(): JSX.Element {
             <Route path="/account/results" element={<AccountResults />} />
             <Route path="/stocks" element={<Stocks />} />
             <Route path="/stocks/:id" element={<StockCard />} />
-            <Route path="/*" element={<PageNotFound />} />
           </Route>
-            <Route path="*" element={<PageNotFound />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
       <Footer />

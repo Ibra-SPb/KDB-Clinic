@@ -6,7 +6,7 @@ import './OneServiceStyle.scss';
 function OneService({ oneService }: { oneService: Service }): JSX.Element {
   return (
     <div className="doctorDIv">
-      <NavLink className="navlink" to={`/:${oneService.id}`}>
+      <NavLink className="navlink" to={`/services/:${oneService.id}`}>
         <div className="doctorImg">
           <img className="photo" src={oneService.img} alt="doctor_image" />
         </div>

@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
 import { logoutUser } from '../auth/authSlice';
 import './NavBarStyles.scss';
-import AccountHeader from '../Account/AccountHeader';
 import { loadService } from '../service/serviceSlice';
 
 function Navbar(): JSX.Element {
@@ -27,10 +26,8 @@ function Navbar(): JSX.Element {
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
             <div>
-              <NavLink to="/">
-                <a className="navbar-brand" href="#">
-                  <span className="btn-one">KDB Clinic</span>
-                </a>
+              <NavLink className="navbar-brand" to="/">
+                <span className="btn-one">KDB Clinic</span>
               </NavLink>
             </div>
             <button
@@ -76,63 +73,62 @@ function Navbar(): JSX.Element {
                   </ul>
                 </li>
                 <li className="nav-item">
-                  <NavLink to="/doctors">
-                    <a
-                      className="nav-link active navbar_text"
-                      aria-current="page"
-                      href="#"
-                    >
-                      <span className="btn-three btn-one">ВРАЧИ</span>
-                    </a>
+                  <NavLink
+                    className="nav-link active navbar_text"
+                    to="/doctors"
+                  >
+                    <span className="btn-three btn-one">ВРАЧИ</span>
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink to="/stocks">
-                    <a className="nav-link active" aria-current="page" href="#">
-                      Акции
-                    </a>
+                  <NavLink className="nav-link active navbar_text" to="/stocks">
+                    <span className="btn-one">АКЦИИ</span>
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink to="/contacts">
-                    <a className="nav-link active navbar_text" href="#">
-                      <span className="btn-one">О НАС</span>
-                    </a>
+                  <NavLink
+                    className="nav-link active navbar_text"
+                    to="/contacts"
+                  >
+                    <span className="btn-one">КОНТАКТЫ</span>
                   </NavLink>
                 </li>
                 {'email' in user ? (
                   <>
                     <NavLink to="/appoint">
-                      <AccountHeader />
+                      <button
+                        type="button"
+                        className="account__appointment appoint"
+                      >
+                        Записаться на приём
+                      </button>
                     </NavLink>
                     <li className="nav-item auth_btns lk_btn nav_item navbar_text">
-                      <NavLink className="nav__list-item" to="/account">
-                        <a className="nav-link active lk" href="#">
-                          <span className="btn-one lk"> Личный кабинет</span>
-                        </a>
+                      <NavLink
+                        className="nav__list-item nav-link active lk"
+                        to="/account"
+                      >
+                        <span className="btn-one lk"> Личный кабинет</span>
                       </NavLink>
                     </li>
                     <li className="nav-item auth_btns quit_btn">
                       <NavLink
-                        className="nav__list-item navbar_text"
+                        className="nav__list-item navbar_text nav-link active"
                         to="/enterPage"
                       >
-                        <a
-                          onClick={handlelogout}
-                          className="nav-link active"
-                          href="#"
-                        >
-                          <span className="btn-one">Выйти</span>
-                        </a>
+                        <span onClick={handlelogout} className="btn-one">
+                          Выйти
+                        </span>
                       </NavLink>
                     </li>
                   </>
                 ) : (
                   <li className="nav-item auth_btns">
-                    <NavLink className="nav__list-item " to="/enterPage">
-                      <a className="nav-link active navbar_text" href="#">
-                        <span className="btn-one">Личный кабинет</span>
-                      </a>
+                    <NavLink
+                      className="nav__list-item nav-link active navbar_text"
+                      to="/enterPage"
+                    >
+                      <span className="btn-one">Личный кабинет</span>
                     </NavLink>
                   </li>
                 )}

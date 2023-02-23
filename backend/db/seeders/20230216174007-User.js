@@ -8,7 +8,7 @@ module.exports = {
         email: "admin@admin",
         password: await bcrypt.hash("qwerty", 10),
         img: "",
-        phone: "89999999999",
+        phone: "+7(999)999-99-99",
       },
     ];
 
