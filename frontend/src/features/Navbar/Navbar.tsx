@@ -1,13 +1,19 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { NavLink, Outlet } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
 import { logoutUser } from '../auth/authSlice';
 import './NavBarStyles.scss';
 import AccountHeader from '../Account/AccountHeader';
+import { loadService } from '../service/serviceSlice';
 
 function Navbar(): JSX.Element {
   const { user } = useSelector((store: RootState) => store.userState);
+  const { services } = useSelector((store: RootState) => store.serviceState);
+  useEffect(() => {
+    dispatch(loadService());
+  }, []);
 
   const dispatch = useAppDispatch();
 
@@ -59,39 +65,13 @@ function Navbar(): JSX.Element {
                     aria-labelledby="navbarDropdown"
                   >
                     <li>
-                      <NavLink to="/:1">
-                        <a className="dropdown-item" href="#">
-                          Неврология
-                        </a>
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/:2">
-                        <a className="dropdown-item" href="#">
-                          Акупунктура
-                        </a>
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/:3">
-                        <a className="dropdown-item" href="#">
-                          Лечебный массаж
-                        </a>
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/:4">
-                        <a className="dropdown-item" href="#">
-                          Физиотерапия
-                        </a>
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/:5">
-                        <a className="dropdown-item" href="#">
-                          Косметология
-                        </a>
-                      </NavLink>
+                      <div className="">
+                        {services?.map((el) => (
+                          <Link to={`/:${el.id}`}>
+                            <li className="navlink_text"> {el.title}</li>
+                          </Link>
+                        ))}
+                      </div>
                     </li>
                   </ul>
                 </li>

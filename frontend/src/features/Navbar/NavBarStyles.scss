@@ -95,3 +95,14 @@ a {
 .lk {
   padding-left: 20px !important;
 }
+.navlink_text {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  text-decoration: none !important;
+  color: black;
+}
+.navlink_text:hover {
+  text-decoration: none !important;
+  color: black;
+  background-color: #ffd587 !important;
+}
