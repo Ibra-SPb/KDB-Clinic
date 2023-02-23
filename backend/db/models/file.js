@@ -2,7 +2,7 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class File extends Model {
     static associate({ User }) {
-      File.User = File.belongsTo(User, { foreignKey: 'userId' });
+      File.belongsTo(User, { foreignKey: 'userId' });
     }
   }
   File.init(

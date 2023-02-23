@@ -25,6 +25,7 @@ import { loadStock } from '../features/Stock/stockSlice';
 import Stocks from '../features/Stock/Stocks';
 import AccountUpload from '../features/Account/AccountUpload';
 import StockCard from '../features/Stock/StockCard';
+import AccountResults from '../features/Account/AccountResults';
 import PageNotFound from '../features/NotFound/NotFound';
 
 function App(): JSX.Element {
@@ -58,6 +59,7 @@ function App(): JSX.Element {
             <Route path="/account/profile" element={<Profile />} />
             <Route path="/account/visits" element={<AccountVisits />} />
             <Route path="/account/upload" element={<AccountUpload />} />
+            <Route path="/account/results" element={<AccountResults />} />
             <Route path="/stocks" element={<Stocks />} />
             <Route path="/stocks/:id" element={<StockCard />} />
             <Route path="/*" element={<PageNotFound />} />

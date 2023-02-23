@@ -18,9 +18,6 @@ export default function AccountHeader(): JSX.Element {
           alt="account_icon"
         /> */}
         <div>{/* {user.name} */}</div>
-        <button type="button" className="account__appointment">
-          Записаться на приём
-        </button>
       </div>
     </div>
   );

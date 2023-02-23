@@ -15,7 +15,12 @@ function AccountUpload(): JSX.Element {
     docs.forEach((doc) => {
       newFile.append('saveDoc', doc);
     });
-    dispatch(addFiles({ newFile, id: Number(event.target.clientName.value) }));
+    dispatch(
+      addFiles({
+        newFile,
+        id: Number(event.target.clientName.value),
+      })
+    );
   };
 
   return (

@@ -6,6 +6,7 @@ import doctorSlice from './features/doctor/doctorSlice';
 import serviceSlice from './features/service/serviceSlice';
 import visitSlice from './features/Visit/visitSlice';
 import stockSlice from './features/Stock/stockSlice';
+import resultSlice from './features/Account/resultSlice';
 // Слайсы - это отдельные модули нашего приложения. У каждого слайса - свой редьюсер.
 const store = configureStore({
   // теперь функция combineReducers не нужна
@@ -16,6 +17,7 @@ const store = configureStore({
     doctorState: doctorSlice,
     userState: userSlice,
     stockState: stockSlice,
+    resultState: resultSlice,
   },
 });
 // для правильной типизации будем использовать useAppDispatch вместо

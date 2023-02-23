@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const path = require('path');
-const { File } = require('../db/models');
+const { File, User } = require('../db/models');
 
 router.post('/:id', async (req, res) => {
   try {
@@ -30,7 +30,6 @@ router.post('/:id', async (req, res) => {
       });
       return URL;
     });
-console.log(newArr);
     const newResult = await File.create({
       userId: id,
       path: newArr[0],
@@ -40,6 +39,21 @@ console.log(newArr);
   } catch (error) {
     console.log(error.message);
     res.status(500).json();
+  }
+});
+
+router.get('/', async (req, res) => {
+  try {
+    const { userId } = req.session;
+    const user = await User.findByPk(Number(userId));
+    const userResults = await File.findAll({
+      include: [User],
+      raw: true,
+      order: [['createdAt', 'DESC']],
+    });
+    res.status(200).json(userResults);
+  } catch (error) {
+    request.status(500).json();
   }
 });
 
