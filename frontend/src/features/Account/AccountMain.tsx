@@ -15,13 +15,23 @@ export default function AccountMain(): JSX.Element {
     <div className="account__container">
       <AccountHeader />
       <div className="account__main">
-        <button onClick={() => setPage('Профиль')} type="button">
+        <button
+          className="account__page"
+          onClick={() => setPage('Профиль')}
+          type="button"
+        >
           Профиль
         </button>
-        <button onClick={() => setPage('Приёмы')} type="button">Приёмы</button>
-        <button onClick={() => setPage('Результаты')} type="button">Результаты</button>
+        <button className="account__page" onClick={() => setPage('Приёмы')} type="button">
+          Приёмы
+        </button>
+        <button className="account__page" onClick={() => setPage('Результаты')} type="button">
+          Результаты
+        </button>
         {'email' in user && user.name === 'admin' && user.id === 1 && (
-          <button onClick={() => setPage('Загрузка результатов')} type="button">Загрузка результатов</button>
+          <button className="account__page" onClick={() => setPage('Загрузка результатов')} type="button">
+            Загрузка результатов
+          </button>
         )}
       </div>
       <div>{page === 'Профиль' && <Profile />}</div>

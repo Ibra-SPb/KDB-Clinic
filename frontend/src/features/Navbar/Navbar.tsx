@@ -64,7 +64,7 @@ function Navbar(): JSX.Element {
                     <li>
                       <div className="">
                         {services?.map((el) => (
-                          <Link to={`/:${el.id}`}>
+                          <Link to={`/services/:${el.id}`}>
                             <li className="navlink_text"> {el.title}</li>
                           </Link>
                         ))}

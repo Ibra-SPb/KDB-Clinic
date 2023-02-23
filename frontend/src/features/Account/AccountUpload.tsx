@@ -24,7 +24,7 @@ function AccountUpload(): JSX.Element {
   };
 
   return (
-    <div>
+    <div className="upload">
       <form onSubmit={handleChange}>
         <select name="clientName">
           <option>Выберите пациента</option>
@@ -35,7 +35,9 @@ function AccountUpload(): JSX.Element {
           ))}
         </select>
         <input type="file" name="body" />
-        <button type="submit">Загрузить</button>
+        <button className="account__page upload" type="submit">
+          Загрузить
+        </button>
       </form>
     </div>
   );

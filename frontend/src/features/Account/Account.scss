@@ -8,8 +8,29 @@
   width: 20%;
 }
 
+.upload {
+  margin-top: 40px;
+}
+
+.account_upload,
+.upload {
+}
+
 .account {
   padding: 20px 0;
+
+  &__page {
+    margin: 10px;
+    font-size: 25px;
+    border-radius: 5px;
+    background-color: #bee6a8;
+    border: 1px solid grey;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  &__page:hover {
+    transform: scale(1.05);
+  }
 
   &__header {
     display: flex;
@@ -39,7 +60,7 @@
 
 .user_card {
   padding: 20px 0;
-  
+
   &__container {
     padding: 20px;
     display: block;
@@ -67,7 +88,7 @@
       display: flex;
       flex: 1;
       align-items: center;
-      margin-bottom: 0px !important; 
+      margin-bottom: 0px !important;
     }
 
     &_title {
