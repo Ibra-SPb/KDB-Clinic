@@ -87,6 +87,13 @@ function Navbar(): JSX.Element {
                   </NavLink>
                 </li>
                 <li className="nav-item">
+                  <NavLink to="/stocks">
+                    <a className="nav-link active" aria-current="page" href="#">
+                      Акции
+                    </a>
+                  </NavLink>
+                </li>
+                <li className="nav-item">
                   <NavLink to="/contacts">
                     <a className="nav-link active navbar_text" href="#">
                       <span className="btn-one">О НАС</span>
