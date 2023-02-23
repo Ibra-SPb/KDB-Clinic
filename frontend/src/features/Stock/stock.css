@@ -31,6 +31,10 @@
   transition: 1s;
 }
 
+.stockCard:hover {
+  cursor: pointer
+}
+
 .stockCard h1 {
   font-size: 30px;
   color: white;
