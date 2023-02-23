@@ -4,8 +4,10 @@ import { User, State } from './Types/type';
 
 const initialState: State = {
   user: {},
+  users: [],
   isAuth: false,
   error: undefined,
+  files: [],
 };
 
 export const registrUser = createAsyncThunk('user/registr', (action: User) =>
@@ -21,6 +23,9 @@ export const logoutUser = createAsyncThunk('user/logout', async () =>
 );
 export const checkUser = createAsyncThunk('user/session', () =>
   api.checkUser()
+);
+export const loadUsers = createAsyncThunk('user/loadUser', () =>
+  api.loadUsers()
 );
 
 const userSlice = createSlice({
@@ -54,6 +59,9 @@ const userSlice = createSlice({
           state.error = action.payload.error;
         }
       })
+      .addCase(loadUsers.fulfilled, (state, action) => {
+        state.users = action.payload.users;
+      })
 
       .addCase(registrUser.rejected, (state, action) => {
         state.error = action.error.message;
@@ -65,6 +73,9 @@ const userSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(checkUser.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(loadUsers.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

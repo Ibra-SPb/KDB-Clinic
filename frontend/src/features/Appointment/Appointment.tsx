@@ -12,10 +12,11 @@ function Appointment(): JSX.Element {
   const [page, setPage] = useState('service');
   const [service, setService] = useState('');
   const [doctor, setDoctor] = useState('');
-  const [date, setDate] = useState([{ date: new Date(), time: [] }]);
+  const [date, setDate] = useState([[{ date: new Date(), time: [''] }]]);
   const [dateCh, setDateCh] = useState(new Date());
   const [timeCh, setTimeCh] = useState('');
   const [status, setStatus] = useState('');
+  const [pageWeek, setPageWeek] = useState(0);
   const navigate = useNavigate();
 
   const { services } = useSelector((store: RootState) => store.serviceState);
@@ -39,7 +40,13 @@ function Appointment(): JSX.Element {
       dt.date = new Date(dt.date);
     });
 
-    setDate(data.arrDate);
+    const arrWeek = [];
+
+    for (let i = 0; i < data.arrDate.length; i += 7) {
+      arrWeek.push(data.arrDate.slice(i, i + 7));
+    }
+
+    setDate(arrWeek);
     setPage('date');
   };
 
@@ -144,38 +151,47 @@ function Appointment(): JSX.Element {
           )}
 
           {page === 'date' && (
+            <div className="pagination">
+              <div className="handle" onClick={() => pageWeek > 0 ? setPageWeek((prev) => prev - 1) : setPageWeek(3)}>{'<'}</div>
             <div className="choose">
-              <div className="dateTime">
-                {date.map((dt) => (
-                  <div className="dateTimeOne">
-                    <div
-                      className={dateCh === dt.date ? 'dateChoose' : 'dateCh'}
-                      key={dt.date.toLocaleString()}
-                    >
-                      {dt.date.toLocaleString('ru', {
-                        year: 'numeric',
-                        month: 'numeric',
-                        day: 'numeric',
-                        weekday: 'long',
-                      })}
+              {date.map((week, i) => (
+                <div>
+                {pageWeek === i && (
+                  <div className="dateTime">
+                  {week.map((dt) => (
+                    <div className="dateTimeOne">
+                      <div
+                        className={dateCh === dt.date ? 'dateChoose' : 'dateCh'}
+                        key={dt.date.toLocaleString()}
+                      >
+                        {dt.date.toLocaleString('ru', {
+                          year: 'numeric',
+                          month: 'numeric',
+                          day: 'numeric',
+                          weekday: 'long',
+                        })}
+                      </div>
+                      <div className="timeCh">
+                        {dt.time.map((tm) => (
+                          <div
+                            className={
+                              dateCh === dt.date && timeCh === tm
+                                ? 'timeChoose'
+                                : 'timeNone'
+                            }
+                            onClick={() => chooseDateTime(dt.date, tm)}
+                          >
+                            {tm}
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                    <div className="timeCh">
-                      {dt.time.map((tm) => (
-                        <div
-                          className={
-                            dateCh === dt.date && timeCh === tm
-                              ? 'timeChoose'
-                              : 'timeNone'
-                          }
-                          onClick={() => chooseDateTime(dt.date, tm)}
-                        >
-                          {tm}
-                        </div>
-                      ))}
-                    </div>
+                  ))}
                   </div>
-                ))}
-              </div>
+                )}
+                </div>
+              )
+              )}
               <div className="confirmButtons">
                 {timeCh.length > 0 && (
                   <button type="button" onClick={() => setStatus('confirm')}>
@@ -249,6 +265,8 @@ function Appointment(): JSX.Element {
                   </div>
                 </div>
               )}
+            </div>
+              <div className="handle" onClick={() => pageWeek < 3 ? setPageWeek((prev) => prev + 1) : setPageWeek(0)}>{'>'}</div>
             </div>
           )}
         </form>
