@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-newline */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -20,7 +21,9 @@ function Appointment(): JSX.Element {
   const navigate = useNavigate();
 
   const { services } = useSelector((store: RootState) => store.serviceState);
-  const { serviceDoctors } = useSelector((store: RootState) => store.tableState);
+  const { serviceDoctors } = useSelector(
+    (store: RootState) => store.tableState
+  );
   const { doctors } = useSelector((store: RootState) => store.doctorState);
 
   const chooseService = async (): Promise<void> => {
@@ -97,7 +100,7 @@ function Appointment(): JSX.Element {
             <div className="choose">
               <select onChange={(e) => setService(e.target.value)}>
                 <option>Выберите услугу</option>
-                {services.map((oneService: Service) => (
+                {services?.map((oneService: Service) => (
                   <option key={oneService.id} value={oneService.title}>
                     {oneService.title}
                   </option>
@@ -119,7 +122,8 @@ function Appointment(): JSX.Element {
             <div className="choose">
               <select onChange={(e) => setDoctor(e.target.value)}>
                 <option>Выберите врача</option>
-                {serviceDoctors.filter((sd: Service_Doctor) => sd.service.title === service)
+                {serviceDoctors
+                  .filter((sd: Service_Doctor) => sd.service.title === service)
                   .map((sd: Service_Doctor) => (
                     <option key={sd.id}>{sd.doctor.name}</option>
                   ))}
@@ -152,121 +156,140 @@ function Appointment(): JSX.Element {
 
           {page === 'date' && (
             <div className="pagination">
-              <div className="handle" onClick={() => pageWeek > 0 ? setPageWeek((prev) => prev - 1) : setPageWeek(3)}>{'<'}</div>
-            <div className="choose">
-              {date.map((week, i) => (
-                <div>
-                {pageWeek === i && (
-                  <div className="dateTime">
-                  {week.map((dt) => (
-                    <div className="dateTimeOne">
-                      <div
-                        className={dateCh === dt.date ? 'dateChoose' : 'dateCh'}
-                        key={dt.date.toLocaleString()}
-                      >
-                        {dt.date.toLocaleString('ru', {
-                          year: 'numeric',
-                          month: 'numeric',
-                          day: 'numeric',
-                          weekday: 'long',
-                        })}
-                      </div>
-                      <div className="timeCh">
-                        {dt.time.map((tm) => (
-                          <div
-                            className={
-                              dateCh === dt.date && timeCh === tm
-                                ? 'timeChoose'
-                                : 'timeNone'
-                            }
-                            onClick={() => chooseDateTime(dt.date, tm)}
-                          >
-                            {tm}
+              <div
+                className="handle"
+                onClick={() =>
+                  pageWeek > 0
+                    ? setPageWeek((prev) => prev - 1)
+                    : setPageWeek(3)
+                }
+              >
+                {'<'}
+              </div>
+              <div className="choose">
+                {date.map((week, i) => (
+                  <div>
+                    {pageWeek === i && (
+                      <div className="dateTime">
+                        {week.map((dt) => (
+                          <div className="dateTimeOne">
+                            <div
+                              className={
+                                dateCh === dt.date ? 'dateChoose' : 'dateCh'
+                              }
+                              key={dt.date.toLocaleString()}
+                            >
+                              {dt.date.toLocaleString('ru', {
+                                year: 'numeric',
+                                month: 'numeric',
+                                day: 'numeric',
+                                weekday: 'long',
+                              })}
+                            </div>
+                            <div className="timeCh">
+                              {dt.time.map((tm) => (
+                                <div
+                                  className={
+                                    dateCh === dt.date && timeCh === tm
+                                      ? 'timeChoose'
+                                      : 'timeNone'
+                                  }
+                                  onClick={() => chooseDateTime(dt.date, tm)}
+                                >
+                                  {tm}
+                                </div>
+                              ))}
+                            </div>
                           </div>
                         ))}
                       </div>
+                    )}
+                  </div>
+                ))}
+                <div className="confirmButtons">
+                  {timeCh.length > 0 && (
+                    <button type="button" onClick={() => setStatus('confirm')}>
+                      записаться
+                    </button>
+                  )}
+                  <button type="button" onClick={() => setPage('doctor')}>
+                    назад
+                  </button>
+                </div>
+
+                {status === 'confirm' && (
+                  <div className="confirmAppointBack">
+                    <div className="confirmAppoint">
+                      <h1>Подтвердите запись:</h1>
+                      <br />
+                      <p>Услуга: {service}</p>
+                      <p>Врач: {doctor}</p>
+                      <div className="dateTime">
+                        Дата и время:
+                        <br />
+                        <p>
+                          {' '}
+                          {dateCh.toLocaleString('ru', {
+                            year: 'numeric',
+                            month: 'numeric',
+                            day: 'numeric',
+                            weekday: 'long',
+                          })}
+                        </p>
+                        <p> {timeCh}</p>
+                      </div>
+                      <div className="confirmButtons">
+                        <button type="submit">записаться</button>
+                        <button type="button" onClick={() => setStatus('')}>
+                          назад
+                        </button>
+                      </div>
                     </div>
-                  ))}
                   </div>
                 )}
-                </div>
-              )
-              )}
-              <div className="confirmButtons">
-                {timeCh.length > 0 && (
-                  <button type="button" onClick={() => setStatus('confirm')}>
-                    записаться
-                  </button>
-                )}
-                <button type="button" onClick={() => setPage('doctor')}>
-                  назад
-                </button>
-              </div>
 
-              {status === 'confirm' && (
-                <div className="confirmAppointBack">
-                  <div className="confirmAppoint">
-                    <h1>Подтвердите запись:</h1>
-                    <br />
-                    <p>Услуга: {service}</p>
-                    <p>Врач: {doctor}</p>
-                    <div className="dateTime">
-                      Дата и время:
+                {status === 'ready' && (
+                  <div className="confirmAppointBack">
+                    <div className="confirmAppoint">
+                      <h1>Вы записаны:</h1>
                       <br />
-                      <p>
-                        {' '}
-                        {dateCh.toLocaleString('ru', {
-                          year: 'numeric',
-                          month: 'numeric',
-                          day: 'numeric',
-                          weekday: 'long',
-                        })}
-                      </p>
-                      <p> {timeCh}</p>
-                    </div>
-                    <div className="confirmButtons">
-                      <button type="submit">записаться</button>
-                      <button type="button" onClick={() => setStatus('')}>
-                        назад
+                      <p>Услуга: {service}</p>
+                      <p>Врач: {doctor}</p>
+                      <div className="dateTime">
+                        Дата и время:
+                        <br />
+                        <p>
+                          {' '}
+                          {dateCh.toLocaleString('ru', {
+                            year: 'numeric',
+                            month: 'numeric',
+                            day: 'numeric',
+                            weekday: 'long',
+                          })}
+                        </p>
+                        <p> {timeCh}</p>
+                      </div>
+                      <button
+                        className="main_page_btn"
+                        type="button"
+                        onClick={() => navigate('/')}
+                      >
+                        На главную
                       </button>
                     </div>
                   </div>
-                </div>
-              )}
-
-              {status === 'ready' && (
-                <div className="confirmAppointBack">
-                  <div className="confirmAppoint">
-                    <h1>Вы записаны:</h1>
-                    <br />
-                    <p>Услуга: {service}</p>
-                    <p>Врач: {doctor}</p>
-                    <div className="dateTime">
-                      Дата и время:
-                      <br />
-                      <p>
-                        {' '}
-                        {dateCh.toLocaleString('ru', {
-                          year: 'numeric',
-                          month: 'numeric',
-                          day: 'numeric',
-                          weekday: 'long',
-                        })}
-                      </p>
-                      <p> {timeCh}</p>
-                    </div>
-                    <button
-                      className="main_page_btn"
-                      type="button"
-                      onClick={() => navigate('/')}
-                    >
-                      На главную
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-              <div className="handle" onClick={() => pageWeek < 3 ? setPageWeek((prev) => prev + 1) : setPageWeek(0)}>{'>'}</div>
+                )}
+              </div>
+              <div
+                className="handle"
+                onClick={() =>
+                  pageWeek < 3
+                    ? setPageWeek((prev) => prev + 1)
+                    : setPageWeek(0)
+                }
+              >
+                {'>'}
+              </div>
             </div>
           )}
         </form>

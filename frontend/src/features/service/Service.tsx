@@ -8,7 +8,7 @@ function Service(): JSX.Element {
 
   return (
     <div className="allDoctor__container">
-      {services.map((el) => (
+      {services?.map((el) => (
         <OneService key={el.id} oneService={el} />
       ))}
     </div>

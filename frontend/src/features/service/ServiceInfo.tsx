@@ -8,7 +8,7 @@ function ServiceInfo(): JSX.Element {
 
   const navigation = useNavigate();
   const { services } = useSelector((store: RootState) => store.serviceState);
-  const serv = services.find(
+  const serv = services?.find(
     (service) => service.id === Number(serviceId?.[1])
   );
 
