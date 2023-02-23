@@ -11,17 +11,20 @@ function StockCard(): JSX.Element {
 
   return (
     <div className="stockContainer">
-      {stocks.filter((stock) => stock.id === Number(id.id)).map((stock) => (
-      <div>
-        <h1>{stock.title}</h1>
-        <div className="imgDesc">
-          <img src={stock.img} alt="stockImg" />
-          <p>{stock.description}</p>
-        </div>
-      </div>
-    )
-      )}
-    <div onClick={() => nav(-1)}>Вернуться назад</div>
+      {stocks
+        .filter((stock) => stock.id === Number(id.id))
+        .map((stock) => (
+          <div>
+            <h1>{stock.title}</h1>
+            <div className="imgDesc">
+              <img src={stock.img} alt="stockImg" />
+              <div className="stocksinfo">{stock.description}</div>
+            </div>
+          </div>
+        ))}
+      <button type="button" className="btnBack" onClick={() => nav(-1)}>
+        &#10226;
+      </button>
     </div>
   );
 }
