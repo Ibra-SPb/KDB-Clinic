@@ -7,6 +7,5 @@ export type Service = {
 };
 export type State = {
   services: Service[];
-  userServices: Service[];
   error: undefined | string;
 };

@@ -19,6 +19,5 @@ export type Visit = {
 
 export type State = {
   visits: Visit[];
-  userVisits: Visit[];
   error: undefined | string;
 };
