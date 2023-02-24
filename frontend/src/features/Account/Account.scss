@@ -1,0 +1,196 @@
+.btn-back {
+  margin-top: 150px;
+  margin-left: 500px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  background-color: #bee6a8 !important;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  width: 20%;
+}
+
+.upload {
+  margin-top: 40px;
+}
+
+.account_upload,
+.upload {
+}
+
+.account {
+  padding: 20px 0;
+
+  &__page {
+    margin: 10px;
+    font-size: 25px;
+    border-radius: 5px;
+    background-color: #bee6a8;
+    border: 1px solid grey;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  &__page:hover {
+    transform: scale(1.05);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+  }
+
+  &__nickname {
+    display: flex;
+    align-items: center;
+  }
+
+  &__appointment {
+    margin: 10px;
+    cursor: pointer;
+    border: 1px solid #d68c25;
+    color: #a76201;
+    border-radius: 12px;
+    background: transparent;
+  }
+
+  &__image {
+    width: 30px;
+  }
+}
+
+.user_card {
+  padding: 20px 0;
+
+  &__container {
+    padding: 20px;
+    display: block;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  &__body {
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 2px 6px rgba(0 0 0 /12%);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 64px;
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+
+    &_text {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      margin-bottom: 0px !important;
+    }
+
+    &_title {
+      margin: 20px;
+      flex: 3;
+      padding: 0 12px 0 24px;
+      text-align: left;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 19px;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      color: #6a747b;
+    }
+
+    &_name {
+      word-break: break-word;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 7;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 19px;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      color: #1d2f3c;
+      text-align: left;
+      margin-bottom: 0px !important;
+    }
+
+    &_icon {
+      margin-right: 18px;
+      padding: 8px;
+      height: 32px;
+      cursor: pointer;
+      background-color: transparent;
+      border-radius: 4px;
+      transition: 0.1s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.visits {
+  padding: 20px;
+
+  &__container {
+    height: 100%;
+    padding: 10px 16px;
+    min-height: 100%;
+    display: block;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  &__body {
+    height: calc(100% - 16px);
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 2px 6px rgba(0 0 0 /12%);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    display: flex;
+    align-items: flex-start;
+    flex-grow: 1;
+    margin: 10px 0;
+  }
+
+  &__main {
+    width: 100%;
+    height: calc(100% - 120px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    font-size: 16px;
+    text-align: center;
+    color: #6a747b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.appoint:hover {
+  letter-spacing: 0px;
+  background-color: #e2993281;
+  color: black;
+}
+
+.appoint:hover::before {
+  opacity: 1;
+  transform: scale(1, 1);
+}
