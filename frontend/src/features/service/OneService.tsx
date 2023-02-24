@@ -13,7 +13,7 @@ function OneService({ oneService }: { oneService: Service }): JSX.Element {
         <div className="doctorInfo">
           <div className="oneDoctorName">{oneService.title}</div>
 
-          <div>{oneService.price}</div>
+          <div className="priceService">{oneService.price}</div>
 
           <p className="moreInfo">подробная информация</p>
         </div>

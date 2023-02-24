@@ -91,3 +91,24 @@
   background-color: #bee6a8;
   border-radius: 5px;
 }
+.specificP {
+  margin-top: 20px;
+  font-size: 23px;
+}
+.selectSpecific {
+  background: #fff;
+  padding: 0.7em;
+  margin: 15px 0;
+  width: 30%;
+  outline: none;
+  border: 0;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+}
+.selectSpecific:hover {
+  cursor: pointer;
+}
+.priceService {
+  transition: 1s;
+}

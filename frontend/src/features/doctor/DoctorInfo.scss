@@ -46,14 +46,19 @@
   width: 12%;
 }
 .alldoc {
+  padding: 0.5em;
+  border: 0;
   border-radius: 5px;
-  background-color: #bee6a8 !important;
+  background: rgb(190, 230, 168);
+  color: black;
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+  transition: 1s;
   margin-bottom: 20px;
 }
 .bodyService {
   text-align: justify;
 }
-.priceService{
+.priceService {
   font-size: 20px;
   margin-top: 20px;
 }

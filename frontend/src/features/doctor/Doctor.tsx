@@ -26,7 +26,7 @@ function Doctor(): JSX.Element {
 
   return (
     <>
-      <p>Выберите направление:</p>
+      <p className="specificP">Выберите направление:</p>
       <select
         // defaultValue=""
         className="selectSpecific"
