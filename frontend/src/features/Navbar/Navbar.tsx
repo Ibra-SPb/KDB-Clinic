@@ -25,11 +25,6 @@ function Navbar(): JSX.Element {
       <div className="navbar_btn">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
-            <div>
-              <NavLink className="navbar-brand" to="/">
-                <span className="btn-one">KDB Clinic</span>
-              </NavLink>
-            </div>
             <button
               className="navbar-toggler"
               type="button"
@@ -46,6 +41,17 @@ function Navbar(): JSX.Element {
               id="navbarSupportedContent"
             >
               <div className="navbar-nav mr-auto mb-2 mb-lg-0 navbar_center">
+                <li>
+                  <div className="logo_kdb">
+                    <NavLink className="navbar-brand" to="/">
+                      <img
+                        src="./IMG/logo_KDB.png"
+                        alt="logo"
+                        style={{ width: '350px' }}
+                      />
+                    </NavLink>
+                  </div>
+                </li>
                 <li className="nav-item dropdown">
                   <a
                     className="nav-link dropdown-toggle active navbar_text "

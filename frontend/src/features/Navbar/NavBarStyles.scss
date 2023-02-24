@@ -5,11 +5,11 @@ a {
 
 .account__appointment {
   margin: 10px;
-    cursor: pointer;
-    border: 1px solid #d68c25;
-    color: #ffd587;
-    border-radius: 12px;
-    background: transparent;
+  cursor: pointer;
+  border: 1px solid #d68c25;
+  color: #ffd587;
+  border-radius: 12px;
+  background: transparent;
 }
 
 .auth_btns {
@@ -50,6 +50,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: -250px;
 }
 
 .btn-one {
