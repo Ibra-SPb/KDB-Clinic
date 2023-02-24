@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { RootState } from '../../store';
+import { RootState, useAppDispatch } from '../../store';
 import { Doctor } from '../doctor/Type/type';
 import { Service } from '../service/Type/type';
 import './appoint.css';
-import { Service_Doctor } from './Types/types';
+import { Service_Doctor, VisitNew } from './Types/types';
 import './AppointmetStyle.scss';
 
 function Appointment(): JSX.Element {
@@ -18,7 +18,9 @@ function Appointment(): JSX.Element {
   const [timeCh, setTimeCh] = useState('');
   const [status, setStatus] = useState('');
   const [pageWeek, setPageWeek] = useState(0);
+  const [load, setLoad] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const { services } = useSelector((store: RootState) => store.serviceState);
   const { serviceDoctors } = useSelector(
@@ -57,7 +59,7 @@ function Appointment(): JSX.Element {
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     e.preventDefault();
-    console.log(dateCh);
+    setLoad(true);
     const res = await fetch('/api/appoint/create', {
       method: 'POST',
       headers: {
@@ -75,6 +77,17 @@ function Appointment(): JSX.Element {
       setStatus('ready');
     }
   };
+
+  // const handleAppointMake = (): void => {
+  //   const visit: VisitNew = {
+  //     service,
+  //     doctor,
+  //     date: dateCh,
+  //     time: timeCh,
+  //   };
+  //   dispatch(visit);
+  //   console.log(visit);
+  // };
 
   const chooseDateTime = (day: Date, time: string): void => {
     setDateCh(day);
@@ -244,6 +257,8 @@ function Appointment(): JSX.Element {
                         </p>
                         <p> {timeCh}</p>
                       </div>
+                      {load &&
+                        (<div className="loader" />)}
                       <div className="confirmButtons">
                         <button type="submit">записаться</button>
                         <button type="button" onClick={() => setStatus('')}>
