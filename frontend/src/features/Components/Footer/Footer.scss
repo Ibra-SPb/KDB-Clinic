@@ -1,0 +1,40 @@
+.footer {
+  display: flex;
+  background-color: #bee6a8;
+  color: #696767;
+  justify-content: space-between;
+}
+
+.social_icons {
+  margin: 20px;
+  vertical-align: middle;
+}
+
+.footer_title {
+  margin-top: 20px;
+  margin-right: 20px;
+  line-height: 4px;
+}
+
+.first_icon {
+  margin-right: 20px;
+  width: 30px;
+}
+.first_icon:hover {
+  transform: scale(1.2);
+}
+
+.second_icon {
+  margin-right: 20px;
+  width: 30px;
+}
+.second_icon:hover {
+  transform: scale(1.2);
+}
+.third_icon {
+  margin-right: 20px;
+  width: 30px;
+}
+.third_icon:hover {
+  transform: scale(1.2);
+}

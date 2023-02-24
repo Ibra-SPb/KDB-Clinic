@@ -1,0 +1,114 @@
+.photo {
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px 10px 0 0;
+}
+.doctorDIv {
+  margin-top: 1em;
+  width: 24%;
+  margin-bottom: 1em;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.doctorImg {
+  padding: 50%;
+  position: relative;
+  overflow: hidden;
+}
+.allDoctor__container {
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  border-color: #ffa500;
+  border: 10px;
+}
+.container {
+  width: 1300px;
+  margin: 2em auto;
+}
+.doctorInfo {
+  padding: 0.5em;
+  box-sizing: border-box;
+}
+.oneDoctorName {
+  margin: 1em 0;
+  font-weight: 500;
+  font-size: 1.1em;
+  line-height: 25px;
+  color: #1d2f3c;
+  transition: color 0.3s;
+  box-sizing: border-box;
+}
+.oneDoctorScecific {
+  flex: 1;
+  font-size: 0.9em;
+  line-height: 19px;
+  letter-spacing: 0.02em;
+  color: #373737;
+  height: 40px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navlink {
+  text-decoration: none;
+  color: #1d2f3c;
+}
+.oneDoctorScecific {
+  font-size: 17px;
+  color: #1d2f3c;
+}
+.oneServiceTitle,
+.oneDoctorName {
+  font-weight: 700;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+}
+.page {
+  background-color: white;
+  outline: 0 !important;
+  border: 0;
+  margin: 10px;
+}
+
+.actives {
+  background-color: #bee6a8;
+  border-radius: 5px;
+}
+.specificP {
+  margin-top: 20px;
+  font-size: 23px;
+}
+.selectSpecific {
+  background: #fff;
+  padding: 0.7em;
+  margin: 15px 0;
+  width: 30%;
+  outline: none;
+  border: 0;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+}
+.selectSpecific:hover {
+  cursor: pointer;
+}
+.priceService {
+  transition: 1s;
+}

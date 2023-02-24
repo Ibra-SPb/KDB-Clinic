@@ -1,0 +1,250 @@
+.appointContainer {
+  position: relative;
+  margin: 50px 0px;
+}
+
+.addAppoint {
+  width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.addAppoint .step {
+  display: flex;
+  flex-direction: row;
+}
+
+.addAppoint .active,
+.hidden {
+  width: 300px;
+  height: 50px;
+  text-align: center;
+  padding: 1em;
+}
+
+.addAppoint .active {
+  border-bottom: 2px solid rgb(255,188,91);
+  color: rgb(255,188,91);
+}
+
+.addAppoint .hidden {
+  color: grey;
+  opacity: 50%;
+}
+
+.addAppoint .choose {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.addAppoint .doctorCard {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.doctorCard div {
+  display: flex;
+  flex-direction: column;
+}
+
+.doctorCard img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.addAppoint select {
+  background: #fff;
+  padding: 0.7em;
+  margin: 15px 0;
+  width: 30%;
+  outline: none;
+  border: 0;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.addAppoint select:focus {
+  outline: none;
+}
+
+.addAppoint select:hover {
+  cursor: pointer;
+}
+
+.addAppoint button {
+  padding: 0.7em;
+  border: 0;
+  border-radius: 5px;
+  background: rgb(190,230,168);
+  color: black;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transition: 1s;
+}
+.addAppoint button:hover {
+  background: rgb(253,232,193);
+  box-shadow: none;
+  cursor: pointer
+}
+
+.addAppoint .confirmButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5px;
+}
+
+.addAppoint .dateTime {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin-bottom: 50px;
+}
+
+.addAppoint .dateCh {
+  width: 120px;
+  height: 60px;
+  background-color: rgb(78,106,96, 0.7);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+  border-top-right-radius: 10px;
+  color: #fff;
+}
+
+.addAppoint .output {
+  width: 120px;
+  height: 60px;
+  background-color: #c4c2c2;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+  border-top-right-radius: 10px;
+  color: #a6a0a0;
+}
+
+.dateTimeOne {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
+
+.timeCh {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.timeNone:hover {
+  border: 1px solid rgb(255, 167, 66, 0.5);
+  cursor: pointer
+}
+
+.dateChoose {
+  width: 120px;
+  height: 60px;
+  background-color: rgb(255, 167, 66, 0.7);
+  box-shadow: 3px 3px 3px rgb(0 0 0 / 30%);
+  border-radius: 3px;
+  border-top-right-radius: 10px;
+  color: #fff;
+}
+
+.timeChoose {
+  width: 60px;
+  height: 30px;
+  border-radius: 5px;
+  transition: 1s;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border: 2px solid rgb(255, 167, 66, 0.5);
+  color: #ffa742;
+}
+
+.timeNone {
+  width: 60px;
+  height: 30px;
+  border-radius: 5px;
+  transition: 1s;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border: 1px solid rgb(128, 128, 128, 0.5);
+}
+
+.confirmAppointBack {
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.confirmAppoint {
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 40%;
+  z-index: 10;
+  background-color: #fff;
+  padding: 1em;
+  border-radius: 5px;
+}
+
+.confirmAppoint h1 {
+  font-size: 20px;
+}
+
+.confirmAppoint .dateTime {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.handle {
+  width: 60px;
+  color: rgb(78,106,96);
+  text-align: center;
+  transition: 1s;
+  font-size: 30px;
+  font-weight: bolder;
+  margin-bottom: 70px;
+}
+
+.handle:hover {
+  transform: scale(1.2);
+  color: #ffa742;
+  cursor: pointer
+}
+
+.loader {
+  border: 3px solid #f3f3f3; /* Light grey */
+  border-top: 3px solid rgb(78,106,96); /* Blue */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
