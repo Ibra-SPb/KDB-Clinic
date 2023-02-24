@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { RootState, useAppDispatch } from '../../store';
+import { RootState } from '../../store';
 import { Doctor } from '../doctor/Type/type';
 import { Service } from '../service/Type/type';
 import './appoint.css';
-import { Service_Doctor, VisitNew } from './Types/types';
+import { Service_Doctor } from './Types/types';
 import './AppointmetStyle.scss';
 
 function Appointment(): JSX.Element {
@@ -20,7 +20,6 @@ function Appointment(): JSX.Element {
   const [pageWeek, setPageWeek] = useState(0);
   const [load, setLoad] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
 
   const { services } = useSelector((store: RootState) => store.serviceState);
   const { serviceDoctors } = useSelector(
@@ -76,6 +75,12 @@ function Appointment(): JSX.Element {
     if (data.status) {
       setStatus('ready');
     }
+  };
+
+  const handleBack = (): void => {
+    setPage('service');
+    setDoctor('');
+    setService('');
   };
 
   // const handleAppointMake = (): void => {
@@ -161,7 +166,7 @@ function Appointment(): JSX.Element {
                     выбрать
                   </button>
                 )}
-                <button type="button" onClick={() => setPage('service')}>
+                <button type="button" onClick={handleBack}>
                   назад
                 </button>
               </div>
@@ -189,7 +194,16 @@ function Appointment(): JSX.Element {
                           <div className="dateTimeOne">
                             <div
                               className={
-                                dateCh === dt.date ? 'dateChoose' : dt.date.toLocaleString('ru', { weekday: 'long' }).includes('суббота') || dt.date.toLocaleString('ru', { weekday: 'long' }).includes('воскресенье') ? 'output' : 'dateCh'
+                                dateCh === dt.date
+                                  ? 'dateChoose'
+                                  : dt.date
+                                      .toLocaleString('ru', { weekday: 'long' })
+                                      .includes('суббота') ||
+                                    dt.date
+                                      .toLocaleString('ru', { weekday: 'long' })
+                                      .includes('воскресенье')
+                                  ? 'output'
+                                  : 'dateCh'
                               }
                               key={dt.date.toLocaleString()}
                             >
@@ -203,19 +217,27 @@ function Appointment(): JSX.Element {
                             <div className="timeCh">
                               {dt.time.map((tm) => (
                                 <div>
-                                {!(dt.date.toLocaleString('ru', { weekday: 'long' }).includes('суббота') || dt.date.toLocaleString('ru', { weekday: 'long' }).includes('воскресенье')) &&
-                                (
-                                  <div
-                                    className={
-                                    dateCh === dt.date && timeCh === tm
-                                      ? 'timeChoose'
-                                      : 'timeNone'
-                                  }
-                                    onClick={() => chooseDateTime(dt.date, tm)}
-                                  >
-                                  {tm}
-                                  </div>
-                                )}
+                                  {!(
+                                    dt.date
+                                      .toLocaleString('ru', { weekday: 'long' })
+                                      .includes('суббота') ||
+                                    dt.date
+                                      .toLocaleString('ru', { weekday: 'long' })
+                                      .includes('воскресенье')
+                                  ) && (
+                                    <div
+                                      className={
+                                        dateCh === dt.date && timeCh === tm
+                                          ? 'timeChoose'
+                                          : 'timeNone'
+                                      }
+                                      onClick={() =>
+                                        chooseDateTime(dt.date, tm)
+                                      }
+                                    >
+                                      {tm}
+                                    </div>
+                                  )}
                                 </div>
                               ))}
                             </div>
@@ -257,14 +279,16 @@ function Appointment(): JSX.Element {
                         </p>
                         <p> {timeCh}</p>
                       </div>
-                      {load &&
-                        (<div className="loader" />)}
-                      <div className="confirmButtons">
-                        <button type="submit">записаться</button>
-                        <button type="button" onClick={() => setStatus('')}>
-                          назад
-                        </button>
-                      </div>
+                      {load && <div className="loader" />}
+
+                      {!load && (
+                        <div className="confirmButtons">
+                          <button type="submit">записаться</button>
+                          <button type="button" onClick={() => setStatus('')}>
+                            назад
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 )}

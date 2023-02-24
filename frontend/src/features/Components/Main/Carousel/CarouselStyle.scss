@@ -35,11 +35,21 @@
 }
 .btnBack {
   width: 100px;
-  border-radius: 10px;
-  background-color: #bee6a8;
   position: absolute;
-  left: 1430px;
-  top: 700px;
+  left: 1370px;
+  top: 640px;
+  padding: 0.3em;
+  border: 0;
+  border-radius: 5px;
+  background: rgb(190, 230, 168);
+  color: black;
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+  transition: 1s;
+}
+.btnBack:hover {
+  background: rgb(253, 232, 193);
+  box-shadow: none;
+  cursor: pointer;
 }
 .stocksinfo {
   text-align: justify;
